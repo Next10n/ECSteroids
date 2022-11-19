@@ -1,7 +1,7 @@
 using Entitas;
 using Services.View;
 
-namespace Views.Systems
+namespace Services.Systems
 {
     public class RegisterViewServiceSystem : IInitializeSystem
     {

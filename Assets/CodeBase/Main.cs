@@ -1,4 +1,7 @@
+using Game.Systems;
 using Services.AssetProvider;
+using Services.Systems;
+using Services.Time;
 using Services.View;
 using UnityEngine;
 using Views.Systems;
@@ -11,6 +14,7 @@ public class Main : MonoBehaviour
     private RegisterServicesSystem _registerServicesSystem;
     private SpawnAssetViewSystem _spawnAssetViewSystem;
     private GameEventSystems _gameEventSystems;
+    private MovementSystems _movementSystems;
 
     private void Awake()
     {
@@ -22,7 +26,8 @@ public class Main : MonoBehaviour
         _spawnAssetViewSystem = new SpawnAssetViewSystem(_contexts.game, _contexts);
         _registerServicesSystem = new RegisterServicesSystem(_contexts, _diContainer);
         _gameEventSystems = new GameEventSystems(_contexts);
-        
+        _movementSystems = new MovementSystems(_contexts);
+
         CreatePlayer();
     }
 
@@ -31,10 +36,12 @@ public class Main : MonoBehaviour
     {
         _registerServicesSystem.Initialize();
         _spawnAssetViewSystem.Initialize();
+        _movementSystems.Initialize();
     }
 
     private void Update()
     {
+        _movementSystems.Execute();
         _spawnAssetViewSystem.Execute();
     }
 
@@ -48,11 +55,14 @@ public class Main : MonoBehaviour
         GameEntity player = _contexts.game.CreateEntity();
         player.AddAsset("Player");
         player.AddPosition(new Vector2(0f, 0f));
+        player.AddRotationAngle(0f);
+        player.AddDeceleration(1f);
     }
 
     private void RegisterServices()
     {
         _diContainer.Register<IAssetProvider, AssetProvider>(new AssetProvider());
         _diContainer.Register<IViewService, UnityViewService>(new UnityViewService(_diContainer.Resolve<IAssetProvider>()));
+        _diContainer.Register<ITimeService, UnityTimeService>(new UnityTimeService());
     }
 }

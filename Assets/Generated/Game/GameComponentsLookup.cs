@@ -9,20 +9,35 @@
 public static class GameComponentsLookup {
 
     public const int Asset = 0;
-    public const int Position = 1;
-    public const int PositionListener = 2;
+    public const int Deceleration = 1;
+    public const int Direction = 2;
+    public const int Position = 3;
+    public const int RotationAngle = 4;
+    public const int Velocity = 5;
+    public const int PositionListener = 6;
+    public const int RotationAngleListener = 7;
 
-    public const int TotalComponents = 3;
+    public const int TotalComponents = 8;
 
     public static readonly string[] componentNames = {
         "Asset",
+        "Deceleration",
+        "Direction",
         "Position",
-        "PositionListener"
+        "RotationAngle",
+        "Velocity",
+        "PositionListener",
+        "RotationAngleListener"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(Game.Components.AssetComponent),
+        typeof(Game.Components.DecelerationComponent),
+        typeof(Game.Components.DirectionComponent),
         typeof(Game.Components.PositionComponent),
-        typeof(PositionListenerComponent)
+        typeof(Game.Components.RotationAngleComponent),
+        typeof(Game.Components.VelocityComponent),
+        typeof(PositionListenerComponent),
+        typeof(RotationAngleListenerComponent)
     };
 }
