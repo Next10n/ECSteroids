@@ -1,8 +1,7 @@
-using Entitas;
-using Services.View;
+using Services.AssetProvider;
 using UnityEngine;
 
-namespace Services.AssetProvider
+namespace Services.View
 {
     public class UnityViewService : IViewService
     {
@@ -13,12 +12,13 @@ namespace Services.AssetProvider
             _assetProvider = assetProvider;
         }
 
-        public IViewController CreateView(Contexts contexts, IEntity entity, string assetName)
+        public void CreateView(Contexts contexts, GameEntity entity, string assetName)
         {
             GameObject prefab = _assetProvider.Load(assetName);
-            IViewController view = prefab.GetComponent<IViewController>();
-            view.InitializeView(contexts, entity);
-            return view;
+            GameObject instantiate = Object.Instantiate(prefab);
+            UnityGameView[] unityGameViews = instantiate.GetComponents<UnityGameView>();
+            foreach (UnityGameView unityGameView in unityGameViews) 
+                unityGameView.InitializeView(contexts, entity);
         }
     }
 }
