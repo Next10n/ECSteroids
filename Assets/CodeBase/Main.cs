@@ -1,5 +1,6 @@
 using Game.Systems;
 using Services.AssetProvider;
+using Services.Input;
 using Services.Systems;
 using Services.Time;
 using Services.View;
@@ -57,6 +58,9 @@ public class Main : MonoBehaviour
         player.AddPosition(new Vector2(0f, 0f));
         player.AddRotationAngle(0f);
         player.AddDeceleration(1f);
+        player.AddAccelerationSpeed(5f);
+        player.AddAngularSpeed(50f);
+        player.isPlayer = true;
     }
 
     private void RegisterServices()
@@ -64,5 +68,6 @@ public class Main : MonoBehaviour
         _diContainer.Register<IAssetProvider, AssetProvider>(new AssetProvider());
         _diContainer.Register<IViewService, UnityViewService>(new UnityViewService(_diContainer.Resolve<IAssetProvider>()));
         _diContainer.Register<ITimeService, UnityTimeService>(new UnityTimeService());
+        _diContainer.Register<IInputService, UnityInputService>(new UnityInputService());
     }
 }

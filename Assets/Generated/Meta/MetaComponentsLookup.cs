@@ -8,17 +8,20 @@
 //------------------------------------------------------------------------------
 public static class MetaComponentsLookup {
 
-    public const int TimeService = 0;
-    public const int ViewService = 1;
+    public const int InputService = 0;
+    public const int TimeService = 1;
+    public const int ViewService = 2;
 
-    public const int TotalComponents = 2;
+    public const int TotalComponents = 3;
 
     public static readonly string[] componentNames = {
+        "InputService",
         "TimeService",
         "ViewService"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(Services.Components.InputServiceComponent),
         typeof(Services.Components.TimeServiceComponent),
         typeof(Services.Components.ViewServiceComponent)
     };

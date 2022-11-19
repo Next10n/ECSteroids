@@ -8,21 +8,29 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Asset = 0;
-    public const int Deceleration = 1;
-    public const int Direction = 2;
-    public const int Position = 3;
-    public const int RotationAngle = 4;
-    public const int Velocity = 5;
-    public const int PositionListener = 6;
-    public const int RotationAngleListener = 7;
+    public const int Acceleration = 0;
+    public const int AccelerationSpeed = 1;
+    public const int AngularSpeed = 2;
+    public const int Asset = 3;
+    public const int Deceleration = 4;
+    public const int Direction = 5;
+    public const int Player = 6;
+    public const int Position = 7;
+    public const int RotationAngle = 8;
+    public const int Velocity = 9;
+    public const int PositionListener = 10;
+    public const int RotationAngleListener = 11;
 
-    public const int TotalComponents = 8;
+    public const int TotalComponents = 12;
 
     public static readonly string[] componentNames = {
+        "Acceleration",
+        "AccelerationSpeed",
+        "AngularSpeed",
         "Asset",
         "Deceleration",
         "Direction",
+        "Player",
         "Position",
         "RotationAngle",
         "Velocity",
@@ -31,9 +39,13 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(Game.Components.AccelerationComponent),
+        typeof(Game.Components.AccelerationSpeedComponent),
+        typeof(Game.Components.AngularSpeedComponent),
         typeof(Game.Components.AssetComponent),
         typeof(Game.Components.DecelerationComponent),
         typeof(Game.Components.DirectionComponent),
+        typeof(Game.Components.PlayerComponent),
         typeof(Game.Components.PositionComponent),
         typeof(Game.Components.RotationAngleComponent),
         typeof(Game.Components.VelocityComponent),
