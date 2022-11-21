@@ -24,4 +24,9 @@ namespace Game.Components
     {
         public float Value;
     }
+    
+    [Game]
+    public sealed class TeleportableComponent : IComponent
+    {
+    }
 }

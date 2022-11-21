@@ -8,6 +8,7 @@ namespace Game.Systems
     {
         private readonly Contexts _contexts;
         private readonly IGroup<GameEntity> _moveGroup;
+        
         private ITimeService _timeService;
 
         public DecelerationSystem(Contexts contexts)
@@ -27,7 +28,7 @@ namespace Game.Systems
             {
                 if (gameEntity.velocity.Value.magnitude > 0)
                 {
-                    Vector2 deceleratedVelocity = Vector2.Lerp(gameEntity.velocity.Value, Vector2.zero,
+                    Vector2 deceleratedVelocity = Vector2.MoveTowards(gameEntity.velocity.Value, Vector2.zero,
                         gameEntity.deceleration.Value * _timeService.DeltaTime);
                     gameEntity.ReplaceVelocity(deceleratedVelocity);
                 }

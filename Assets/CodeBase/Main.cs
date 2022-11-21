@@ -1,3 +1,4 @@
+using System;
 using Game.Systems;
 using Services.AssetProvider;
 using Services.Input;
@@ -59,8 +60,10 @@ public class Main : MonoBehaviour
         player.AddRotationAngle(0f);
         player.AddDeceleration(1f);
         player.AddAccelerationSpeed(5f);
-        player.AddAngularSpeed(50f);
+        player.AddAngularSpeed(200f);
+        // player.teleportable = true;
         player.isPlayer = true;
+        player.isTeleportable = true;
     }
 
     private void RegisterServices()

@@ -17,11 +17,12 @@ public static class GameComponentsLookup {
     public const int Player = 6;
     public const int Position = 7;
     public const int RotationAngle = 8;
-    public const int Velocity = 9;
-    public const int PositionListener = 10;
-    public const int RotationAngleListener = 11;
+    public const int Teleportable = 9;
+    public const int Velocity = 10;
+    public const int PositionListener = 11;
+    public const int RotationAngleListener = 12;
 
-    public const int TotalComponents = 12;
+    public const int TotalComponents = 13;
 
     public static readonly string[] componentNames = {
         "Acceleration",
@@ -33,6 +34,7 @@ public static class GameComponentsLookup {
         "Player",
         "Position",
         "RotationAngle",
+        "Teleportable",
         "Velocity",
         "PositionListener",
         "RotationAngleListener"
@@ -48,6 +50,7 @@ public static class GameComponentsLookup {
         typeof(Game.Components.PlayerComponent),
         typeof(Game.Components.PositionComponent),
         typeof(Game.Components.RotationAngleComponent),
+        typeof(Game.Components.TeleportableComponent),
         typeof(Game.Components.VelocityComponent),
         typeof(PositionListenerComponent),
         typeof(RotationAngleListenerComponent)
