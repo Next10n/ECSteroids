@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Views.Systems;
 
 namespace Services
 {
@@ -17,11 +16,12 @@ namespace Services
         public static DiContainer Instance => _instance ?? new DiContainer();
         
 
-        public void Register<TInterface, TImplementation>(TImplementation service)
+        public TInterface Register<TInterface, TImplementation>(TImplementation service)
             where TInterface : class, IService
             where TImplementation : TInterface
         {
             _services[typeof(TInterface)] = service;
+            return service;
         }
 
         public T Resolve<T>() where T : class, IService

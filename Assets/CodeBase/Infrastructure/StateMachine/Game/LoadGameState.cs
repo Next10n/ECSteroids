@@ -1,17 +1,17 @@
 using Services.SceneProvider;
 
-namespace Infrastructure.StateMachine
+namespace Infrastructure.StateMachine.Game
 {
-    public class LoadGameState : IState
+    public class LoadGameState : IGameState
     {
         private const string GameScene = "Game";
         private readonly ISceneProvider _sceneProvider;
-        private readonly IGameStateMachine _gameStateMachine;
+        private readonly IStateMachine _stateMachine;
 
-        public LoadGameState(ISceneProvider sceneProvider, IGameStateMachine gameStateMachine)
+        public LoadGameState(ISceneProvider sceneProvider, IStateMachine stateMachine)
         {
             _sceneProvider = sceneProvider;
-            _gameStateMachine = gameStateMachine;
+            _stateMachine = stateMachine;
         }
 
         public void Enter()
@@ -25,7 +25,7 @@ namespace Infrastructure.StateMachine
 
         private void OnLoad()
         {
-            _gameStateMachine.Enter<GameLoopState>();
+            _stateMachine.Enter<GameLoopState>();
         }
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Infrastructure.StateMachine
+namespace Services.UpdateService
 {
     public class UnityUpdateService : MonoBehaviour, IUpdateService
     {

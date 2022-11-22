@@ -1,4 +1,4 @@
-namespace Views.Systems
+namespace Services
 {
     public interface IService
     {

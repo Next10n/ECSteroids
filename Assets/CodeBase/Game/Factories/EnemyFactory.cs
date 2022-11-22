@@ -7,20 +7,20 @@ namespace Game.Factories
     {
         private readonly IRandomProvider _randomProvider;
         private readonly ICameraProvider _cameraProvider;
+        private readonly GameContext _gameContext;
 
-        private GameContext _gameContext;
         private int _playerIndex;
         private Bounds _bounds;
 
-        public EnemyFactory(IRandomProvider randomProvider, ICameraProvider cameraProvider)
+        public EnemyFactory(IRandomProvider randomProvider, ICameraProvider cameraProvider, GameContext gameContext)
         {
             _randomProvider = randomProvider;
             _cameraProvider = cameraProvider;
+            _gameContext = gameContext;
         }
 
-        public void Initialize(GameContext gameContext, int playerIndex)
+        public void Initialize(int playerIndex)
         {
-            _gameContext = gameContext;
             _playerIndex = playerIndex;
             _bounds = _cameraProvider.GetMainCameraBounds();
         }

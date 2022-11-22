@@ -1,5 +1,3 @@
-using Views.Systems;
-
 namespace Services
 {
     public interface IRandomProvider : IService

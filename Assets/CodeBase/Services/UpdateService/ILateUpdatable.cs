@@ -1,4 +1,4 @@
-namespace Infrastructure.StateMachine
+namespace Services.UpdateService
 {
     public interface ILateUpdatable
     {

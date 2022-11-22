@@ -1,5 +1,3 @@
-using Views.Systems;
-
 namespace Services.Time
 {
     public interface ITimeService : IService

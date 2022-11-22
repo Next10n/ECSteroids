@@ -1,31 +1,30 @@
-using Game.Factories;
 using Services;
 using Services.AssetProvider;
+using Services.Coroutine;
 using Services.Input;
 using Services.SceneProvider;
 using Services.Time;
+using Services.UpdateService;
 using Services.View;
 
-namespace Infrastructure.StateMachine
+namespace Infrastructure.StateMachine.Game
 {
-    public class BootstrapState : IState
+    public class BootstrapState : IGameState
     {
         private readonly DiContainer _diContainer;
-        private readonly IGameStateMachine _gameStateMachine;
-        private readonly Contexts _contexts;
+        private readonly IStateMachine _stateMachine;
 
-        public BootstrapState(DiContainer diContainer, IGameStateMachine gameStateMachine, Contexts contexts,
-            UnityUpdateService updateService, CoroutineRunner coroutineRunner)
+        public BootstrapState(DiContainer diContainer, IStateMachine stateMachine, UnityUpdateService updateService,
+            CoroutineRunner coroutineRunner)
         {
             _diContainer = diContainer;
-            _gameStateMachine = gameStateMachine;
-            _contexts = contexts;
+            _stateMachine = stateMachine;
             RegisterServices(updateService, coroutineRunner);
         }
 
         public void Enter()
         {
-            _gameStateMachine.Enter<LoadGameState>();
+            _stateMachine.Enter<LoadGameState>();
         }
 
         public void Exit()
@@ -41,13 +40,13 @@ namespace Infrastructure.StateMachine
             _diContainer.Register<IInputService, UnityInputService>(new UnityInputService());
             _diContainer.Register<ICameraProvider, UnityCameraProvider>(new UnityCameraProvider());
             _diContainer.Register<IRandomProvider, UnityRandomProvider>(new UnityRandomProvider());
-            _diContainer.Register<IEnemyFactory, EnemyFactory>(new EnemyFactory(_diContainer.Resolve<IRandomProvider>(),
-                _diContainer.Resolve<ICameraProvider>()));
             _diContainer.Register<ICoroutineRunner, CoroutineRunner>(coroutineRunner);
-            _diContainer.Register<ISceneProvider, UnitySceneProvider>(new UnitySceneProvider(_diContainer.Resolve<ICoroutineRunner>()));
-            _diContainer.Register<IPlayerFactory, PlayerFactory>(new PlayerFactory(_contexts));
+            _diContainer.Register<ISceneProvider, UnitySceneProvider>(
+                new UnitySceneProvider(_diContainer.Resolve<ICoroutineRunner>()));
             _diContainer.Register<IUpdateService, UnityUpdateService>(updateService);
-            _diContainer.Register<IPlayerFactory, PlayerFactory>(new PlayerFactory(_contexts));
+            // _diContainer.Register<IPlayerFactory, PlayerFactory>(new PlayerFactory(_contexts));
+            // _diContainer.Register<IEnemyFactory, EnemyFactory>(new EnemyFactory(_diContainer.Resolve<IRandomProvider>(),
+            //     _diContainer.Resolve<ICameraProvider>()));
         }
     }
 }

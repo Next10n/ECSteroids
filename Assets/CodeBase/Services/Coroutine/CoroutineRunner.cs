@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Services.SceneProvider
+namespace Services.Coroutine
 {
     public class CoroutineRunner : MonoBehaviour, ICoroutineRunner
     {

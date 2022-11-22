@@ -1,10 +1,10 @@
-using Views.Systems;
+using Services;
 
 namespace Game.Factories
 {
     public interface IEnemyFactory : IService
     {
-        void Initialize(GameContext gameContext, int playerIndex);
+        void Initialize(int playerIndex);
         GameEntity CreateAsteroid();
         GameEntity CreateUfo();
     }
