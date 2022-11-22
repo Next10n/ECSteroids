@@ -1,35 +1,34 @@
 using Game.Factories;
-using Services;
 
 namespace Infrastructure.StateMachine.Gameplay
 {
     public class BootstrapGameplayState : IGameplayState
     {
-        private readonly DiContainer _diContainer;
         private readonly Contexts _contexts;
         
-        private IPlayerFactory _playerFactory;
-        private IEnemyFactory _enemyFactory;
+        private readonly IPlayerFactory _playerFactory;
+        private readonly IEnemyFactory _enemyFactory;
 
-        public BootstrapGameplayState(Contexts contexts)
+        public BootstrapGameplayState(Contexts contexts, IPlayerFactory playerFactory, IEnemyFactory enemyFactory)
         {
-            _diContainer = DiContainer.Instance;
             _contexts = contexts;
-            RegisterServices();
+            _playerFactory = playerFactory;
+            _enemyFactory = enemyFactory;
         }
-
-        private void RegisterServices()
-        {
-            _playerFactory = _diContainer.Register<IPlayerFactory, PlayerFactory>(new PlayerFactory(_contexts));
-            _enemyFactory = _diContainer.Register<IEnemyFactory, EnemyFactory>(new EnemyFactory(_diContainer.Resolve<IRandomProvider>(), 
-                _diContainer.Resolve<ICameraProvider>(), _contexts.game));
-        }
-
+        
         public void Enter()
         {
+            _playerFactory.Initialize(_contexts.game);
             GameEntity player = _playerFactory.Create();
-            _enemyFactory.Initialize(player.creationIndex);
+            _enemyFactory.Initialize(_contexts.game, player.creationIndex);
+            CreateSpawners();
             // TODO Create Hud
+            // TODO Create Spawners
+        }
+
+        private void CreateSpawners()
+        {
+            GameEntity asteroidSpawner = _contexts.game.CreateEntity();
         }
 
         public void Exit()

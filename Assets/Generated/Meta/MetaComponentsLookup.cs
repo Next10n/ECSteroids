@@ -9,14 +9,16 @@
 public static class MetaComponentsLookup {
 
     public const int CameraProvider = 0;
-    public const int InputService = 1;
-    public const int TimeService = 2;
-    public const int ViewService = 3;
+    public const int EnemyFactory = 1;
+    public const int InputService = 2;
+    public const int TimeService = 3;
+    public const int ViewService = 4;
 
-    public const int TotalComponents = 4;
+    public const int TotalComponents = 5;
 
     public static readonly string[] componentNames = {
         "CameraProvider",
+        "EnemyFactory",
         "InputService",
         "TimeService",
         "ViewService"
@@ -24,6 +26,7 @@ public static class MetaComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(Services.Components.CameraProviderComponent),
+        typeof(Services.Components.EnemyFactoryComponent),
         typeof(Services.Components.InputServiceComponent),
         typeof(Services.Components.TimeServiceComponent),
         typeof(Services.Components.ViewServiceComponent)

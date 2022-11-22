@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Game.Factories;
 using Services;
 using Services.Coroutine;
 using Services.Input;
@@ -18,7 +19,8 @@ namespace Infrastructure.StateMachine.Game
         private readonly CoroutineRunner _coroutineRunner;
         private readonly UnityUpdateService _updateService;
 
-        public GameStateMachine(DiContainer diContainer, UnityUpdateService updateService, CoroutineRunner coroutineRunner) : base()
+        public GameStateMachine(DiContainer diContainer, UnityUpdateService updateService,
+            CoroutineRunner coroutineRunner)
         {
             _updateService = updateService;
             _coroutineRunner = coroutineRunner;
@@ -33,8 +35,10 @@ namespace Infrastructure.StateMachine.Game
             {
                 [typeof(BootstrapState)] = new BootstrapState(_diContainer, this, _updateService, _coroutineRunner),
                 [typeof(LoadGameState)] = new LoadGameState(_diContainer.Resolve<ISceneProvider>(), this),
-                [typeof(GameLoopState)] = new GameLoopState(_diContainer.Resolve<IViewService>(), _diContainer.Resolve<ITimeService>(),
-                    _diContainer.Resolve<IInputService>(), _diContainer.Resolve<ICameraProvider>(), _diContainer.Resolve<IUpdateService>())
+                [typeof(GameLoopState)] = new GameLoopState(_diContainer.Resolve<IViewService>(),
+                    _diContainer.Resolve<ITimeService>(), _diContainer.Resolve<IInputService>(),
+                    _diContainer.Resolve<ICameraProvider>(), _diContainer.Resolve<IUpdateService>(),
+                    _diContainer.Resolve<IEnemyFactory>(), _diContainer.Resolve<IPlayerFactory>())
             };
         }
     }

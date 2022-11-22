@@ -13,19 +13,22 @@ public static class GameComponentsLookup {
     public const int AccelerationSpeed = 2;
     public const int AngularSpeed = 3;
     public const int Asset = 4;
-    public const int Deceleration = 5;
-    public const int Destroyed = 6;
-    public const int Direction = 7;
-    public const int Player = 8;
-    public const int Position = 9;
-    public const int RotationAngle = 10;
-    public const int Teleportable = 11;
-    public const int Triggered = 12;
-    public const int Velocity = 13;
-    public const int PositionListener = 14;
-    public const int RotationAngleListener = 15;
+    public const int CurrentSpawnTime = 5;
+    public const int Deceleration = 6;
+    public const int Destroyed = 7;
+    public const int Direction = 8;
+    public const int Player = 9;
+    public const int Position = 10;
+    public const int RotationAngle = 11;
+    public const int Spawner = 12;
+    public const int SpawnTime = 13;
+    public const int Teleportable = 14;
+    public const int Triggered = 15;
+    public const int Velocity = 16;
+    public const int PositionListener = 17;
+    public const int RotationAngleListener = 18;
 
-    public const int TotalComponents = 16;
+    public const int TotalComponents = 19;
 
     public static readonly string[] componentNames = {
         "DestroyedListener",
@@ -33,12 +36,15 @@ public static class GameComponentsLookup {
         "AccelerationSpeed",
         "AngularSpeed",
         "Asset",
+        "CurrentSpawnTime",
         "Deceleration",
         "Destroyed",
         "Direction",
         "Player",
         "Position",
         "RotationAngle",
+        "Spawner",
+        "SpawnTime",
         "Teleportable",
         "Triggered",
         "Velocity",
@@ -52,12 +58,15 @@ public static class GameComponentsLookup {
         typeof(Game.Components.AccelerationSpeedComponent),
         typeof(Game.Components.AngularSpeedComponent),
         typeof(Game.Components.AssetComponent),
+        typeof(Game.Components.CurrentSpawnTimeComponent),
         typeof(Game.Components.DecelerationComponent),
         typeof(Game.Components.DestroyedComponent),
         typeof(Game.Components.DirectionComponent),
         typeof(Game.Components.PlayerComponent),
         typeof(Game.Components.PositionComponent),
         typeof(Game.Components.RotationAngleComponent),
+        typeof(Game.Components.SpawnerComponent),
+        typeof(Game.Components.SpawnTimeComponent),
         typeof(Game.Components.TeleportableComponent),
         typeof(Game.Components.TriggeredComponent),
         typeof(Game.Components.VelocityComponent),

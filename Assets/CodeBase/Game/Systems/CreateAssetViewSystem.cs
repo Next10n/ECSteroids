@@ -4,12 +4,12 @@ using Services.View;
 
 namespace Game.Systems
 {
-    public class SpawnAssetViewSystem : ReactiveSystem<GameEntity>, IInitializeSystem
+    public class CreateAssetViewSystem : ReactiveSystem<GameEntity>, IInitializeSystem
     {
         private readonly Contexts _contexts;
         private IViewService _viewService;
 
-        public SpawnAssetViewSystem(IContext<GameEntity> gameContext, Contexts contexts) : base(gameContext)
+        public CreateAssetViewSystem(IContext<GameEntity> gameContext, Contexts contexts) : base(gameContext)
         {
             _contexts = contexts;
         }

@@ -4,16 +4,16 @@ namespace Game.Factories
 {
     public class PlayerFactory : IPlayerFactory
     {
-        private readonly Contexts _contexts;
-
-        public PlayerFactory(Contexts contexts)
+        private GameContext _gameContext;
+        
+        public void Initialize(GameContext gameContext)
         {
-            _contexts = contexts;
+            _gameContext = gameContext;
         }
         
         public GameEntity Create(/* player data */)
         {
-            GameEntity player = _contexts.game.CreateEntity();
+            GameEntity player = _gameContext.CreateEntity();
             player.AddAsset("Player");
             player.AddPosition(new Vector2(0f, 0f));
             player.AddRotationAngle(0f);

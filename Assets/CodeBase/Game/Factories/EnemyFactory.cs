@@ -1,3 +1,4 @@
+using Game.Components;
 using Services;
 using UnityEngine;
 
@@ -7,25 +8,38 @@ namespace Game.Factories
     {
         private readonly IRandomProvider _randomProvider;
         private readonly ICameraProvider _cameraProvider;
-        private readonly GameContext _gameContext;
 
+        private GameContext _gameContext;
         private int _playerIndex;
         private Bounds _bounds;
 
-        public EnemyFactory(IRandomProvider randomProvider, ICameraProvider cameraProvider, GameContext gameContext)
+        public EnemyFactory(IRandomProvider randomProvider, ICameraProvider cameraProvider)
         {
             _randomProvider = randomProvider;
             _cameraProvider = cameraProvider;
-            _gameContext = gameContext;
         }
 
-        public void Initialize(int playerIndex)
+        public void Initialize(GameContext gameContext, int playerIndex)
         {
+            _gameContext = gameContext;
             _playerIndex = playerIndex;
             _bounds = _cameraProvider.GetMainCameraBounds();
         }
 
-        public GameEntity CreateAsteroid()
+        public void Create(EnemyType spawnerValue)
+        {
+            switch (spawnerValue)
+            {
+                case EnemyType.Asteroid:
+                    CreateAsteroid();
+                    break;
+                case EnemyType.Ufo:
+                    CreateUfo();
+                    break;
+            }
+        }
+
+        private GameEntity CreateAsteroid()
         {
             GameEntity asteroid = _gameContext.CreateEntity();
             AddSpaceComponents(asteroid);
@@ -33,7 +47,7 @@ namespace Game.Factories
             return asteroid;
         }
 
-        public GameEntity CreateUfo()
+        private GameEntity CreateUfo()
         {
             GameEntity ufo = _gameContext.CreateEntity();
             AddSpaceComponents(ufo);
