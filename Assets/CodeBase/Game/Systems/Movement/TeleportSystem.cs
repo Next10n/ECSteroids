@@ -1,21 +1,24 @@
 using System.Collections.Generic;
 using Entitas;
 using Extensions;
+using Services;
 using UnityEngine;
 
 namespace Game.Systems
 {
     public class TeleportSystem : ReactiveSystem<GameEntity>, IInitializeSystem
     {
+        private readonly Contexts _contexts;
         private Bounds _orthographicBounds;
-        
-        public void Initialize()
-        {
-            _orthographicBounds = Camera.main.OrthographicBounds();
-        }
 
         public TeleportSystem(Contexts contexts) : base(contexts.game)
         {
+            _contexts = contexts;
+        }
+
+        public void Initialize()
+        {
+            _orthographicBounds = _contexts.meta.cameraProvider.Value.GetMainCameraBounds();
         }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)

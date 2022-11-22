@@ -6,17 +6,12 @@ namespace Services.View
     {
         protected GameEntity Entity;
         protected Contexts Contexts;
-        
-        // public Vector2 Position { get => transform.position; set => transform.position = value; }
+
+        public int EntityIndex => Entity.creationIndex;
         public virtual void InitializeView(Contexts contexts, GameEntity entity)
         {
             Contexts = contexts;
             Entity = entity;
-        }
-
-        public virtual void DestroyView()
-        {
-            Destroy(gameObject);
         }
     }
 }

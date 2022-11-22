@@ -8,49 +8,58 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Acceleration = 0;
-    public const int AccelerationSpeed = 1;
-    public const int AngularSpeed = 2;
-    public const int Asset = 3;
-    public const int Deceleration = 4;
-    public const int Direction = 5;
-    public const int Player = 6;
-    public const int Position = 7;
-    public const int RotationAngle = 8;
-    public const int Teleportable = 9;
-    public const int Velocity = 10;
-    public const int PositionListener = 11;
-    public const int RotationAngleListener = 12;
+    public const int DestroyedListener = 0;
+    public const int Acceleration = 1;
+    public const int AccelerationSpeed = 2;
+    public const int AngularSpeed = 3;
+    public const int Asset = 4;
+    public const int Deceleration = 5;
+    public const int Destroyed = 6;
+    public const int Direction = 7;
+    public const int Player = 8;
+    public const int Position = 9;
+    public const int RotationAngle = 10;
+    public const int Teleportable = 11;
+    public const int Triggered = 12;
+    public const int Velocity = 13;
+    public const int PositionListener = 14;
+    public const int RotationAngleListener = 15;
 
-    public const int TotalComponents = 13;
+    public const int TotalComponents = 16;
 
     public static readonly string[] componentNames = {
+        "DestroyedListener",
         "Acceleration",
         "AccelerationSpeed",
         "AngularSpeed",
         "Asset",
         "Deceleration",
+        "Destroyed",
         "Direction",
         "Player",
         "Position",
         "RotationAngle",
         "Teleportable",
+        "Triggered",
         "Velocity",
         "PositionListener",
         "RotationAngleListener"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(DestroyedListenerComponent),
         typeof(Game.Components.AccelerationComponent),
         typeof(Game.Components.AccelerationSpeedComponent),
         typeof(Game.Components.AngularSpeedComponent),
         typeof(Game.Components.AssetComponent),
         typeof(Game.Components.DecelerationComponent),
+        typeof(Game.Components.DestroyedComponent),
         typeof(Game.Components.DirectionComponent),
         typeof(Game.Components.PlayerComponent),
         typeof(Game.Components.PositionComponent),
         typeof(Game.Components.RotationAngleComponent),
         typeof(Game.Components.TeleportableComponent),
+        typeof(Game.Components.TriggeredComponent),
         typeof(Game.Components.VelocityComponent),
         typeof(PositionListenerComponent),
         typeof(RotationAngleListenerComponent)

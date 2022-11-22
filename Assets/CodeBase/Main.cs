@@ -1,5 +1,6 @@
-using System;
+using Game.Factories;
 using Game.Systems;
+using Services;
 using Services.AssetProvider;
 using Services.Input;
 using Services.Systems;
@@ -17,6 +18,9 @@ public class Main : MonoBehaviour
     private SpawnAssetViewSystem _spawnAssetViewSystem;
     private GameEventSystems _gameEventSystems;
     private MovementSystems _movementSystems;
+    private IEnemyFactory _enemyFactory;
+    private DestroyPlayerOnTrigger2DSystem _destroyPlayerOnTrigger2DSystem;
+    private GameCleanupSystems _gameCleanupSystems;
 
     private void Awake()
     {
@@ -29,8 +33,8 @@ public class Main : MonoBehaviour
         _registerServicesSystem = new RegisterServicesSystem(_contexts, _diContainer);
         _gameEventSystems = new GameEventSystems(_contexts);
         _movementSystems = new MovementSystems(_contexts);
-
-        CreatePlayer();
+        _gameCleanupSystems = new GameCleanupSystems(_contexts);
+        _destroyPlayerOnTrigger2DSystem = new DestroyPlayerOnTrigger2DSystem(_contexts);
     }
 
 
@@ -39,20 +43,28 @@ public class Main : MonoBehaviour
         _registerServicesSystem.Initialize();
         _spawnAssetViewSystem.Initialize();
         _movementSystems.Initialize();
+        GameEntity player = CreatePlayer();
+        _enemyFactory = _diContainer.Resolve<IEnemyFactory>();
+        _enemyFactory.Initialize(player.creationIndex);
+
+        InvokeRepeating(nameof(CreateAsteroid), 1f, 5f);
+        InvokeRepeating(nameof(CreateUfo), 1f, 5f);
     }
 
     private void Update()
     {
         _movementSystems.Execute();
         _spawnAssetViewSystem.Execute();
+        _destroyPlayerOnTrigger2DSystem.Execute();
     }
 
     private void LateUpdate()
     {
         _gameEventSystems.Execute();
+        _gameCleanupSystems.Cleanup();
     }
 
-    private void CreatePlayer()
+    private GameEntity CreatePlayer()
     {
         GameEntity player = _contexts.game.CreateEntity();
         player.AddAsset("Player");
@@ -61,16 +73,31 @@ public class Main : MonoBehaviour
         player.AddDeceleration(1f);
         player.AddAccelerationSpeed(5f);
         player.AddAngularSpeed(200f);
-        // player.teleportable = true;
         player.isPlayer = true;
         player.isTeleportable = true;
+        return player;
+    }
+
+    private void CreateAsteroid()
+    {
+        _enemyFactory.CreateAsteroid();
+    }
+    
+    private void CreateUfo()
+    {
+        _enemyFactory.CreateUfo();
     }
 
     private void RegisterServices()
     {
         _diContainer.Register<IAssetProvider, AssetProvider>(new AssetProvider());
-        _diContainer.Register<IViewService, UnityViewService>(new UnityViewService(_diContainer.Resolve<IAssetProvider>()));
+        _diContainer.Register<IViewService, UnityViewService>(
+            new UnityViewService(_diContainer.Resolve<IAssetProvider>()));
         _diContainer.Register<ITimeService, UnityTimeService>(new UnityTimeService());
         _diContainer.Register<IInputService, UnityInputService>(new UnityInputService());
+        _diContainer.Register<ICameraProvider, UnityCameraProvider>(new UnityCameraProvider());
+        _diContainer.Register<IRandomProvider, UnityRandomProvider>(new UnityRandomProvider());
+        _diContainer.Register<IEnemyFactory, EnemyFactory>(new EnemyFactory(_diContainer.Resolve<IRandomProvider>(),
+            _contexts.game, _diContainer.Resolve<ICameraProvider>()));
     }
 }

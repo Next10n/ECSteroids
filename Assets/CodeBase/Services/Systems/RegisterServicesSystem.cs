@@ -12,6 +12,7 @@ namespace Services.Systems
             Add(new RegisterViewServiceSystem(contexts, container.Resolve<IViewService>()));
             Add(new RegisterTimeServiceSystem(contexts, container.Resolve<ITimeService>()));
             Add(new RegisterInputServiceSystem(contexts, container.Resolve<IInputService>()));
+            Add(new RegisterCameraProviderSystem(contexts, container.Resolve<ICameraProvider>()));
         }
     }
 }

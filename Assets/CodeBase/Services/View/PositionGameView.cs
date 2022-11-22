@@ -9,13 +9,7 @@ namespace Services.View
             base.InitializeView(contexts, entity);
             Entity.AddPositionListener(this);
         }
-
-        public override void DestroyView()
-        {
-            base.DestroyView();
-            Entity.RemovePositionListener(this);
-        }
-
+        
         public void OnPosition(GameEntity entity, Vector2 value)
         {
             transform.position = value;
