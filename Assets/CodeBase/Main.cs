@@ -25,12 +25,11 @@ public class Main : MonoBehaviour
     private void Awake()
     {
         _contexts = new Contexts();
-
-        _diContainer = new DiContainer();
+        _diContainer = DiContainer.Instance;
         RegisterServices();
 
         _spawnAssetViewSystem = new SpawnAssetViewSystem(_contexts.game, _contexts);
-        _registerServicesSystem = new RegisterServicesSystem(_contexts, _diContainer);
+        // _registerServicesSystem = new RegisterServicesSystem(_contexts, _diContainer);
         _gameEventSystems = new GameEventSystems(_contexts);
         _movementSystems = new MovementSystems(_contexts);
         _gameCleanupSystems = new GameCleanupSystems(_contexts);
@@ -43,9 +42,9 @@ public class Main : MonoBehaviour
         _registerServicesSystem.Initialize();
         _spawnAssetViewSystem.Initialize();
         _movementSystems.Initialize();
-        GameEntity player = CreatePlayer();
+        // GameEntity player = CreatePlayer();
         _enemyFactory = _diContainer.Resolve<IEnemyFactory>();
-        _enemyFactory.Initialize(player.creationIndex);
+        // _enemyFactory.Initialize(player.creationIndex);
 
         InvokeRepeating(nameof(CreateAsteroid), 1f, 5f);
         InvokeRepeating(nameof(CreateUfo), 1f, 5f);
@@ -63,21 +62,7 @@ public class Main : MonoBehaviour
         _gameEventSystems.Execute();
         _gameCleanupSystems.Cleanup();
     }
-
-    private GameEntity CreatePlayer()
-    {
-        GameEntity player = _contexts.game.CreateEntity();
-        player.AddAsset("Player");
-        player.AddPosition(new Vector2(0f, 0f));
-        player.AddRotationAngle(0f);
-        player.AddDeceleration(1f);
-        player.AddAccelerationSpeed(5f);
-        player.AddAngularSpeed(200f);
-        player.isPlayer = true;
-        player.isTeleportable = true;
-        return player;
-    }
-
+    
     private void CreateAsteroid()
     {
         _enemyFactory.CreateAsteroid();
@@ -97,7 +82,7 @@ public class Main : MonoBehaviour
         _diContainer.Register<IInputService, UnityInputService>(new UnityInputService());
         _diContainer.Register<ICameraProvider, UnityCameraProvider>(new UnityCameraProvider());
         _diContainer.Register<IRandomProvider, UnityRandomProvider>(new UnityRandomProvider());
-        _diContainer.Register<IEnemyFactory, EnemyFactory>(new EnemyFactory(_diContainer.Resolve<IRandomProvider>(),
-            _contexts.game, _diContainer.Resolve<ICameraProvider>()));
+        _diContainer.Register<IEnemyFactory, EnemyFactory>(new EnemyFactory(_diContainer.Resolve<IRandomProvider>()
+            , _diContainer.Resolve<ICameraProvider>()));
     }
 }

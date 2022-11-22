@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using Entitas;
-using Services.AssetProvider;
 using Services.View;
 
-namespace Views.Systems
+namespace Game.Systems
 {
     public class SpawnAssetViewSystem : ReactiveSystem<GameEntity>, IInitializeSystem
     {

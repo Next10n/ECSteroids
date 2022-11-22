@@ -1,14 +1,23 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
+using Views.Systems;
 
-namespace Views.Systems
+namespace Services
 {
     public class DiContainer
     {
         private readonly Dictionary<Type, IService> _services = new Dictionary<Type, IService>();
 
-        public void Register<TInterface, TImplementation>(TImplementation service) 
+        private static DiContainer _instance;
+
+        private DiContainer()
+        {
+            _instance = this;
+        }
+        public static DiContainer Instance => _instance ?? new DiContainer();
+        
+
+        public void Register<TInterface, TImplementation>(TImplementation service)
             where TInterface : class, IService
             where TImplementation : TInterface
         {

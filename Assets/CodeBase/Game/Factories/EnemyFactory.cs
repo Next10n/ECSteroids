@@ -6,22 +6,22 @@ namespace Game.Factories
     public class EnemyFactory : IEnemyFactory
     {
         private readonly IRandomProvider _randomProvider;
-        private readonly GameContext _gameContext;
         private readonly ICameraProvider _cameraProvider;
 
+        private GameContext _gameContext;
         private int _playerIndex;
         private Bounds _bounds;
 
-        public EnemyFactory(IRandomProvider randomProvider, GameContext gameContext, ICameraProvider cameraProvider)
+        public EnemyFactory(IRandomProvider randomProvider, ICameraProvider cameraProvider)
         {
             _randomProvider = randomProvider;
-            _gameContext = gameContext;
             _cameraProvider = cameraProvider;
         }
 
-        public void Initialize(int index)
+        public void Initialize(GameContext gameContext, int playerIndex)
         {
-            _playerIndex = index;
+            _gameContext = gameContext;
+            _playerIndex = playerIndex;
             _bounds = _cameraProvider.GetMainCameraBounds();
         }
 

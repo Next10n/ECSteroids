@@ -1,18 +1,18 @@
 using Services.Input;
 using Services.Time;
 using Services.View;
-using Views.Systems;
 
 namespace Services.Systems
 {
     public sealed class RegisterServicesSystem : Feature
     {
-        public RegisterServicesSystem(Contexts contexts, DiContainer container)
+        public RegisterServicesSystem(Contexts contexts, IViewService viewService, ITimeService timeService,
+            IInputService inputService, ICameraProvider cameraProvider)
         {
-            Add(new RegisterViewServiceSystem(contexts, container.Resolve<IViewService>()));
-            Add(new RegisterTimeServiceSystem(contexts, container.Resolve<ITimeService>()));
-            Add(new RegisterInputServiceSystem(contexts, container.Resolve<IInputService>()));
-            Add(new RegisterCameraProviderSystem(contexts, container.Resolve<ICameraProvider>()));
+            Add(new RegisterViewServiceSystem(contexts, viewService));
+            Add(new RegisterTimeServiceSystem(contexts, timeService));
+            Add(new RegisterInputServiceSystem(contexts, inputService));
+            Add(new RegisterCameraProviderSystem(contexts, cameraProvider));
         }
     }
 }
