@@ -1,3 +1,4 @@
+using Game.Components;
 using Game.Factories;
 
 namespace Infrastructure.StateMachine.Gameplay
@@ -23,12 +24,19 @@ namespace Infrastructure.StateMachine.Gameplay
             _enemyFactory.Initialize(_contexts.game, player.creationIndex);
             CreateSpawners();
             // TODO Create Hud
-            // TODO Create Spawners
         }
 
         private void CreateSpawners()
         {
             GameEntity asteroidSpawner = _contexts.game.CreateEntity();
+            asteroidSpawner.AddSpawner(EnemyType.Asteroid);
+            asteroidSpawner.AddSpawnTime(5f);
+            asteroidSpawner.AddCurrentSpawnTime(0f);
+            
+            GameEntity ufoSpawner = _contexts.game.CreateEntity();
+            ufoSpawner.AddSpawner(EnemyType.Ufo);
+            ufoSpawner.AddSpawnTime(10f);
+            ufoSpawner.AddCurrentSpawnTime(0f);
         }
 
         public void Exit()

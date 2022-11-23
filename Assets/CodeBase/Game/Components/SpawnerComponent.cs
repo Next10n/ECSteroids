@@ -1,4 +1,5 @@
 using Entitas;
+using Entitas.CodeGeneration.Attributes;
 
 namespace Game.Components
 {
@@ -24,6 +25,11 @@ namespace Game.Components
     public sealed class CurrentSpawnTimeComponent : IComponent
     {
         public float Value;
+    }
+    
+    [Game, Cleanup(CleanupMode.RemoveComponent)]
+    public sealed class SpawnTimerReadyComponent : IComponent
+    {
     }
     
 }

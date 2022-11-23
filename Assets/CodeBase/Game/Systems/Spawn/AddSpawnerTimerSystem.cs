@@ -3,14 +3,14 @@ using Services.Time;
 
 namespace Game.Systems
 {
-    public class SpawnTimerSystem : IExecuteSystem, IInitializeSystem
+    public class AddSpawnerTimerSystem : IExecuteSystem, IInitializeSystem
     {
         private readonly Contexts _contexts;
         private readonly IGroup<GameEntity> _timerGroup;
         
         private ITimeService _timeService;
 
-        public SpawnTimerSystem(Contexts contexts)
+        public AddSpawnerTimerSystem(Contexts contexts)
         {
             _contexts = contexts;
             _timerGroup = _contexts.game.GetGroup(GameMatcher.CurrentSpawnTime);

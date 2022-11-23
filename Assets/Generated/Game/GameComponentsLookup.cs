@@ -22,13 +22,14 @@ public static class GameComponentsLookup {
     public const int RotationAngle = 11;
     public const int Spawner = 12;
     public const int SpawnTime = 13;
-    public const int Teleportable = 14;
-    public const int Triggered = 15;
-    public const int Velocity = 16;
-    public const int PositionListener = 17;
-    public const int RotationAngleListener = 18;
+    public const int SpawnTimerReady = 14;
+    public const int Teleportable = 15;
+    public const int Triggered = 16;
+    public const int Velocity = 17;
+    public const int PositionListener = 18;
+    public const int RotationAngleListener = 19;
 
-    public const int TotalComponents = 19;
+    public const int TotalComponents = 20;
 
     public static readonly string[] componentNames = {
         "DestroyedListener",
@@ -45,6 +46,7 @@ public static class GameComponentsLookup {
         "RotationAngle",
         "Spawner",
         "SpawnTime",
+        "SpawnTimerReady",
         "Teleportable",
         "Triggered",
         "Velocity",
@@ -67,6 +69,7 @@ public static class GameComponentsLookup {
         typeof(Game.Components.RotationAngleComponent),
         typeof(Game.Components.SpawnerComponent),
         typeof(Game.Components.SpawnTimeComponent),
+        typeof(Game.Components.SpawnTimerReadyComponent),
         typeof(Game.Components.TeleportableComponent),
         typeof(Game.Components.TriggeredComponent),
         typeof(Game.Components.VelocityComponent),

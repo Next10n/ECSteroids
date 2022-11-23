@@ -2,13 +2,12 @@ using System.Collections.Generic;
 using Entitas;
 using Game.Factories;
 
-namespace Game.Systems
+namespace Game.Systems.Spawn
 {
     public class SpawnEnemySystem : ReactiveSystem<GameEntity>, IInitializeSystem
     {
-        private IEnemyFactory _enemyFactory;
-        
         private readonly Contexts _contexts;
+        private IEnemyFactory _enemyFactory;
 
         public SpawnEnemySystem(Contexts contexts) : base(contexts.game)
         {
@@ -22,24 +21,19 @@ namespace Game.Systems
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
-            return context.CreateCollector(GameMatcher.CurrentSpawnTime);
+            return context.CreateCollector(GameMatcher.SpawnTimerReady);
         }
 
         protected override bool Filter(GameEntity entity)
         {
-            return entity.hasSpawner && entity.hasSpawnTime;
+            return entity.hasSpawner;
         }
 
         protected override void Execute(List<GameEntity> entities)
         {
             foreach (GameEntity e in entities)
             {
-                if (e.currentSpawnTime.Value >= e.spawnTime.Value)
-                {
-                    float resetTime = e.currentSpawnTime.Value - e.spawnTime.Value;
-                    e.ReplaceCurrentSpawnTime(resetTime);
-                    _enemyFactory.Create(e.spawner.Value);
-                }
+                _enemyFactory.Create(e.spawner.Value);
             }
         }
     }
