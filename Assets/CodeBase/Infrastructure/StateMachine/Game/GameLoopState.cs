@@ -1,5 +1,6 @@
 using Game.Factories;
 using Game.Systems;
+using Game.Systems.Dead;
 using Infrastructure.StateMachine.Gameplay;
 using Services;
 using Services.Input;
@@ -30,6 +31,7 @@ namespace Infrastructure.StateMachine.Game
         private readonly IEnemyFactory _enemyFactory;
         private readonly IPlayerFactory _playerFactory;
         private readonly IWindowService _windowService;
+        private ShowResultSystem _showResultSystem;
 
         public GameLoopState(IViewService viewService, ITimeService timeService, IInputService inputService,
             ICameraProvider cameraProvider, IUpdateService updateService, IEnemyFactory enemyFactory,
@@ -60,12 +62,14 @@ namespace Infrastructure.StateMachine.Game
             _createAssetViewSystem.Initialize();
             _movementSystems.Initialize();
             _spawnSystem.Initialize();
+            _showResultSystem.Initialize();
         }
 
         public void Update()
         {
             _movementSystems.Execute();
             _spawnSystem.Execute();
+            _showResultSystem.Execute();
             _destroyPlayerOnTrigger2DSystem.Execute();
         }
 
@@ -95,6 +99,7 @@ namespace Infrastructure.StateMachine.Game
             _movementSystems = new MovementSystems(_contexts);
             _gameCleanupSystems = new GameCleanupSystems(_contexts);
             _destroyPlayerOnTrigger2DSystem = new DestroyPlayerOnTrigger2DSystem(_contexts);
+            _showResultSystem = new ShowResultSystem(_contexts);
         }
 
         private void RegisterUpdatable()

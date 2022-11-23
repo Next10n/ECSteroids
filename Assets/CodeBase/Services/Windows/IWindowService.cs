@@ -6,5 +6,7 @@ namespace Services.Windows
     {
         void Initialize();
         PlayerHud CreateHud();
+        void ShowResult();
+        void HideResult();
     }
 }

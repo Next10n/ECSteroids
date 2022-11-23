@@ -3,7 +3,6 @@ using Game.Factories;
 using Services.Windows;
 using TMPro;
 using UI;
-using UnityEngine;
 
 namespace Infrastructure.StateMachine.Gameplay
 {

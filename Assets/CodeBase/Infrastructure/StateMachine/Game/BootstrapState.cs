@@ -1,4 +1,5 @@
 using Game.Factories;
+using Infrastructure.StateMachine.Gameplay;
 using Services;
 using Services.AssetProvider;
 using Services.Coroutine;
@@ -47,7 +48,7 @@ namespace Infrastructure.StateMachine.Game
                 new UnitySceneProvider(_diContainer.Resolve<ICoroutineRunner>()));
             _diContainer.Register<IUpdateService, UnityUpdateService>(updateService);
             _diContainer.Register<IWindowService, WindowService>(new WindowService(
-                _diContainer.Resolve<IAssetProvider>()));
+                _diContainer.Resolve<IAssetProvider>(), _diContainer.Resolve<IGameplayStateMachine>()));
             _diContainer.Register<IPlayerFactory, PlayerFactory>(new PlayerFactory());
             _diContainer.Register<IEnemyFactory, EnemyFactory>(new EnemyFactory(_diContainer.Resolve<IRandomProvider>(),
                 _diContainer.Resolve<ICameraProvider>()));

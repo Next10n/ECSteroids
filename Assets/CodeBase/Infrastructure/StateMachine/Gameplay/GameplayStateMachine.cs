@@ -29,7 +29,8 @@ namespace Infrastructure.StateMachine.Gameplay
             return new Dictionary<Type, IGameplayState>()
             {
                 [typeof(BootstrapGameplayState)] = new BootstrapGameplayState(_contexts, _playerFactory, _enemyFactory,
-                    _windowService)
+                    _windowService),
+                [typeof(RestartState)] = new RestartState()
             };
         }
     }

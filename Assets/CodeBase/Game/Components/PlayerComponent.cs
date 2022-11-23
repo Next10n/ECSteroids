@@ -38,7 +38,7 @@ namespace Game.Components
     }
     
     [Game, Cleanup(CleanupMode.DestroyEntity), Event(EventTarget.Self)]
-    public sealed class DestroyedComponent : IComponent
+    public sealed class DestroyedComponent : IComponent // TODO DeadComponent
     {
     }
 }
