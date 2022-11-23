@@ -7,6 +7,7 @@ namespace UI
     {
         [SerializeField] private UnityGameView[] _gameViews;
         
+        
         public void Initialize(Contexts contexts, GameEntity entity)
         {
             foreach (UnityGameView unityGameView in _gameViews)

@@ -26,7 +26,7 @@ namespace Game.Systems
 
         protected override bool Filter(GameEntity entity)
         {
-            return entity.hasAsset && entity.hasPositionListener == false;
+            return entity.hasAsset;
         }
 
         protected override void Execute(List<GameEntity> entities)

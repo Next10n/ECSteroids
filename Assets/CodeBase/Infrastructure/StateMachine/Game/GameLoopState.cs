@@ -7,6 +7,7 @@ using Services.Systems;
 using Services.Time;
 using Services.UpdateService;
 using Services.View;
+using Services.Windows;
 
 namespace Infrastructure.StateMachine.Game
 {
@@ -28,10 +29,11 @@ namespace Infrastructure.StateMachine.Game
         private readonly ICameraProvider _cameraProvider;
         private readonly IEnemyFactory _enemyFactory;
         private readonly IPlayerFactory _playerFactory;
+        private readonly IWindowService _windowService;
 
         public GameLoopState(IViewService viewService, ITimeService timeService, IInputService inputService,
             ICameraProvider cameraProvider, IUpdateService updateService, IEnemyFactory enemyFactory,
-            IPlayerFactory playerFactory)
+            IPlayerFactory playerFactory, IWindowService windowService)
         {
             _viewService = viewService;
             _timeService = timeService;
@@ -40,6 +42,7 @@ namespace Infrastructure.StateMachine.Game
             _updateService = updateService;
             _enemyFactory = enemyFactory;
             _playerFactory = playerFactory;
+            _windowService = windowService;
         }
 
         public void Enter()
@@ -103,7 +106,7 @@ namespace Infrastructure.StateMachine.Game
         private void StartGameplay()
         {
             GameplayStateMachine gameplayStateMachine =
-                new GameplayStateMachine(_contexts, _playerFactory, _enemyFactory);
+                new GameplayStateMachine(_contexts, _playerFactory, _enemyFactory, _windowService);
             gameplayStateMachine.Enter<BootstrapGameplayState>();
         }
     }

@@ -8,6 +8,7 @@ using Services.SceneProvider;
 using Services.Time;
 using Services.UpdateService;
 using Services.View;
+using Services.Windows;
 using TMPro.EditorUtilities;
 using UnityEngine;
 
@@ -38,7 +39,8 @@ namespace Infrastructure.StateMachine.Game
                 [typeof(GameLoopState)] = new GameLoopState(_diContainer.Resolve<IViewService>(),
                     _diContainer.Resolve<ITimeService>(), _diContainer.Resolve<IInputService>(),
                     _diContainer.Resolve<ICameraProvider>(), _diContainer.Resolve<IUpdateService>(),
-                    _diContainer.Resolve<IEnemyFactory>(), _diContainer.Resolve<IPlayerFactory>())
+                    _diContainer.Resolve<IEnemyFactory>(), _diContainer.Resolve<IPlayerFactory>(),
+                    _diContainer.Resolve<IWindowService>())
             };
         }
     }

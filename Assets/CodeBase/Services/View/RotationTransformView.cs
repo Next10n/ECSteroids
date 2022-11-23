@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Services.View
 {
-    public class RotationGameView : UnityGameView, IRotationAngleListener
+    public class RotationTransformView : RotationListener
     {
         public override void InitializeView(Contexts contexts, GameEntity entity)
         {
@@ -10,7 +10,7 @@ namespace Services.View
             Entity.AddRotationAngleListener(this);
         }
         
-        public void OnRotationAngle(GameEntity entity, float value)
+        public override void OnRotationAngle(GameEntity entity, float value)
         {
             transform.rotation = Quaternion.Euler(0f, 0f, value);
         }
