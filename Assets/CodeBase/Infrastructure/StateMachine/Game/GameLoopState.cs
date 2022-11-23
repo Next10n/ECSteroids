@@ -90,7 +90,7 @@ namespace Infrastructure.StateMachine.Game
             _spawnSystem = new SpawnSystems(_contexts);
             _createAssetViewSystem = new CreateAssetViewSystem(_contexts.game, _contexts);
             _registerServicesSystem = new RegisterServicesSystem(_contexts, _viewService, _timeService, _inputService,
-                _cameraProvider, _enemyFactory);
+                _cameraProvider, _enemyFactory, _windowService);
             _gameEventSystems = new GameEventSystems(_contexts);
             _movementSystems = new MovementSystems(_contexts);
             _gameCleanupSystems = new GameCleanupSystems(_contexts);
