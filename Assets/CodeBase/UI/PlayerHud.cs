@@ -7,11 +7,11 @@ namespace UI
     {
         [SerializeField] private UnityGameView[] _gameViews;
 
-        public void Initialize(Contexts contexts, GameEntity entity)
+        public void Initialize(Contexts contexts, GameEntity player)
         {
             foreach (UnityGameView unityGameView in _gameViews)
             {
-                unityGameView.InitializeView(contexts, entity);
+                unityGameView.InitializeView(contexts, player);
             }
         }   
     }

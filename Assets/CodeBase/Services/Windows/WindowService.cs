@@ -11,12 +11,16 @@ namespace Services.Windows
         private ResultWindow _resultWindow;
 
         private readonly IAssetProvider _assetProvider;
-        private readonly IStateMachine _gameplayStateMachine;
+        private IStateMachine _stateMachine;
 
-        public WindowService(IAssetProvider assetProvider, IStateMachine gameplayStateMachine)
+        public WindowService(IAssetProvider assetProvider)
         {
             _assetProvider = assetProvider;
-            _gameplayStateMachine = gameplayStateMachine;
+        }
+
+        public void InitializeStateMachine(IStateMachine stateMachine)
+        {
+            _stateMachine = stateMachine;
         }
 
         public void Initialize()
@@ -45,7 +49,7 @@ namespace Services.Windows
         {
             ResultWindow resultWindow = _assetProvider.Load<ResultWindow>("ResultWindow");
             ResultWindow window = Object.Instantiate(resultWindow, _rootCanvas.transform);
-            window.Construct(_gameplayStateMachine);
+            window.Construct(_stateMachine);
             return window;
         }
     }

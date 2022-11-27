@@ -1,18 +1,16 @@
-using Game.Factories;
+﻿using Game.Factories;
 using Game.Systems;
 using Game.Systems.Dead;
-using Infrastructure.StateMachine.Gameplay;
 using Services;
 using Services.Input;
 using Services.Systems;
 using Services.Time;
-using Services.UpdateService;
 using Services.View;
 using Services.Windows;
 
 namespace Infrastructure.StateMachine.Game
 {
-    public class GameLoopState : IGameState, ILateUpdatable, IUpdatable
+    public class EcsService : IEcsService
     {
         private RegisterServicesSystem _registerServicesSystem;
         private CreateAssetViewSystem _createAssetViewSystem;
@@ -22,47 +20,32 @@ namespace Infrastructure.StateMachine.Game
         private GameCleanupSystems _gameCleanupSystems;
         private SpawnSystems _spawnSystem;
         private Contexts _contexts;
+        private ShowResultSystem _showResultSystem;
 
-        private readonly IUpdateService _updateService;
         private readonly IViewService _viewService;
         private readonly ITimeService _timeService;
         private readonly IInputService _inputService;
         private readonly ICameraProvider _cameraProvider;
         private readonly IEnemyFactory _enemyFactory;
-        private readonly IPlayerFactory _playerFactory;
         private readonly IWindowService _windowService;
-        private ShowResultSystem _showResultSystem;
 
-        public GameLoopState(IViewService viewService, ITimeService timeService, IInputService inputService,
-            ICameraProvider cameraProvider, IUpdateService updateService, IEnemyFactory enemyFactory,
-            IPlayerFactory playerFactory, IWindowService windowService)
+        public EcsService(IViewService viewService, ITimeService timeService, IInputService inputService,
+            ICameraProvider cameraProvider, IEnemyFactory enemyFactory, IWindowService windowService)
         {
             _viewService = viewService;
             _timeService = timeService;
             _inputService = inputService;
             _cameraProvider = cameraProvider;
-            _updateService = updateService;
             _enemyFactory = enemyFactory;
-            _playerFactory = playerFactory;
             _windowService = windowService;
         }
 
-        public void Enter()
+        public Contexts CreateEcsWorld()
         {
-            CreateContexts();
+            Contexts contexts = CreateContexts();
             CreateSystems();
             InitializeSystems();
-            RegisterUpdatable();
-            StartGameplay();
-        }
-
-        private void InitializeSystems()
-        {
-            _registerServicesSystem.Initialize();
-            _createAssetViewSystem.Initialize();
-            _movementSystems.Initialize();
-            _spawnSystem.Initialize();
-            _showResultSystem.Initialize();
+            return contexts;
         }
 
         public void Update()
@@ -80,13 +63,16 @@ namespace Infrastructure.StateMachine.Game
             _gameCleanupSystems.Cleanup();
         }
 
-        public void Exit()
+        private void InitializeSystems()
         {
-            _updateService.UnRegisterUpdatable(this);
-            _updateService.UnRegisterLateUpdatable(this);
+            _registerServicesSystem.Initialize();
+            _createAssetViewSystem.Initialize();
+            _movementSystems.Initialize();
+            _spawnSystem.Initialize();
+            _showResultSystem.Initialize();
         }
 
-        private void CreateContexts() =>
+        private Contexts CreateContexts() =>
             _contexts = new Contexts();
 
         private void CreateSystems()
@@ -100,19 +86,6 @@ namespace Infrastructure.StateMachine.Game
             _gameCleanupSystems = new GameCleanupSystems(_contexts);
             _destroyPlayerOnTrigger2DSystem = new DestroyPlayerOnTrigger2DSystem(_contexts);
             _showResultSystem = new ShowResultSystem(_contexts);
-        }
-
-        private void RegisterUpdatable()
-        {
-            _updateService.RegisterUpdatable(this);
-            _updateService.RegisterLateUpdatable(this);
-        }
-
-        private void StartGameplay()
-        {
-            GameplayStateMachine gameplayStateMachine =
-                new GameplayStateMachine(_contexts, _playerFactory, _enemyFactory, _windowService);
-            gameplayStateMachine.Enter<BootstrapGameplayState>();
         }
     }
 }

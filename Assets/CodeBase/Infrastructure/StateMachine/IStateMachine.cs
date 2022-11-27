@@ -4,6 +4,6 @@ namespace Infrastructure.StateMachine
 {
     public interface IStateMachine : IService
     {
-        void Enter<T>() where T : IState;
+        void Enter<T>() where T : class, IState;
     }
 }

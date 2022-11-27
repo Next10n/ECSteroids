@@ -1,3 +1,4 @@
+using Infrastructure.StateMachine;
 using UI;
 
 namespace Services.Windows
@@ -8,5 +9,6 @@ namespace Services.Windows
         PlayerHud CreateHud();
         void ShowResult();
         void HideResult();
+        void InitializeStateMachine(IStateMachine stateMachine);
     }
 }

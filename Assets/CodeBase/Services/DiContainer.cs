@@ -7,18 +7,17 @@ namespace Services
     {
         private readonly Dictionary<Type, IService> _services = new Dictionary<Type, IService>();
 
-        private static DiContainer _instance;
+        // private static DiContainer _instance;
+        //
+        // private DiContainer()
+        // {
+        //     _instance = this;
+        // }
+        //
+        // public static DiContainer Instance => _instance ?? new DiContainer();
 
-        private DiContainer()
-        {
-            _instance = this;
-        }
-        public static DiContainer Instance => _instance ?? new DiContainer();
-        
-
-        public TInterface Register<TInterface, TImplementation>(TImplementation service)
+        public TInterface Bind<TInterface>(TInterface service)
             where TInterface : class, IService
-            where TImplementation : TInterface
         {
             _services[typeof(TInterface)] = service;
             return service;

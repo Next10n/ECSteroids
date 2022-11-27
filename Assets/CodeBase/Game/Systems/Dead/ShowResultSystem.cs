@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Entitas;
 using Services.Windows;
+using UnityEngine;
 
 namespace Game.Systems.Dead
 {
@@ -33,6 +34,7 @@ namespace Game.Systems.Dead
         {
             foreach (GameEntity e in entities)
             {
+                Debug.Log("Execute Result System");
                 _windowService.ShowResult();
             }
         }

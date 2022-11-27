@@ -1,47 +1,54 @@
 using System;
 using System.Collections.Generic;
 using Game.Factories;
-using Services;
-using Services.Coroutine;
-using Services.Input;
+using Infrastructure.StateMachine.Gameplay;
 using Services.SceneProvider;
-using Services.Time;
 using Services.UpdateService;
-using Services.View;
 using Services.Windows;
-using TMPro.EditorUtilities;
-using UnityEngine;
 
 namespace Infrastructure.StateMachine.Game
 {
-    public class GameStateMachine : BaseStateMachine<IGameState>, IGameStateMachine
+    public class GameStateMachine : IStateMachine
     {
-        private readonly DiContainer _diContainer;
-        private readonly CoroutineRunner _coroutineRunner;
-        private readonly UnityUpdateService _updateService;
+        private readonly Dictionary<Type, IExitableState> _states;
+        private IExitableState _currentState;
 
-        public GameStateMachine(DiContainer diContainer, UnityUpdateService updateService,
-            CoroutineRunner coroutineRunner)
+        public GameStateMachine(IUpdateService updateService, IWindowService windowService,
+            ISceneProvider sceneProvider, IEcsService ecsService, IPlayerFactory playerFactory, IEnemyFactory enemyFactory)
         {
-            _updateService = updateService;
-            _coroutineRunner = coroutineRunner;
-            _diContainer = diContainer;
-            _diContainer.Register<IGameStateMachine, GameStateMachine>(this);
-            InitializeStates();
-        }
-
-        protected override Dictionary<Type, IGameState> CreateStates()
-        {
-            return new Dictionary<Type, IGameState>
+            _states = new Dictionary<Type, IExitableState>
             {
-                [typeof(BootstrapState)] = new BootstrapState(_diContainer, this, _updateService, _coroutineRunner),
-                [typeof(LoadGameState)] = new LoadGameState(_diContainer.Resolve<ISceneProvider>(), this),
-                [typeof(GameLoopState)] = new GameLoopState(_diContainer.Resolve<IViewService>(),
-                    _diContainer.Resolve<ITimeService>(), _diContainer.Resolve<IInputService>(),
-                    _diContainer.Resolve<ICameraProvider>(), _diContainer.Resolve<IUpdateService>(),
-                    _diContainer.Resolve<IEnemyFactory>(), _diContainer.Resolve<IPlayerFactory>(),
-                    _diContainer.Resolve<IWindowService>())
+                [typeof(BootstrapState)] = new BootstrapState(this, windowService),
+                [typeof(LoadGameState)] = new LoadGameState(sceneProvider, this, ecsService, updateService, windowService, playerFactory, 
+                    enemyFactory),
+                [typeof(RestartState)] = new RestartState()
             };
         }
+
+        public void Enter<TState>() where TState : class, IState
+        {
+            IState state = ChangeState<TState>();
+            state.Enter();
+        }
+
+
+        public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadState<TPayload>
+        {
+            TState state = ChangeState<TState>();
+            state.Enter(payload);
+        }
+
+        private TState ChangeState<TState>() where TState : class, IExitableState
+        {
+            _currentState?.Exit();
+
+            TState state = GetState<TState>();
+            _currentState = state;
+
+            return state;
+        }
+
+        private TState GetState<TState>() where TState : class, IExitableState =>
+            _states[typeof(TState)] as TState;
     }
 }
