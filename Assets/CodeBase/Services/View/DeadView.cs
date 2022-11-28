@@ -15,6 +15,7 @@ namespace Services.View
 
         public void OnDead(GameEntity entity)
         {
+            entity.RemoveDeadListener(this);
             _spriteRenderer.enabled = false;
             _destroyParticle.SetActive(true);
             Destroy(gameObject, 2f);

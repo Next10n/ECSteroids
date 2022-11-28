@@ -20,8 +20,8 @@ namespace Infrastructure.StateMachine.Game
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, windowFactory),
                 [typeof(LoadGameState)] = new LoadGameState(sceneProvider, ecsService, updateService, windowService, playerFactory,
-                    enemyFactory, windowFactory),
-                [typeof(RestartState)] = new RestartState()
+                    enemyFactory, windowFactory, this),
+                [typeof(RestartState)] = new RestartState(playerFactory, windowService)
             };
         }
 

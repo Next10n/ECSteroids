@@ -58,7 +58,7 @@ namespace Game.Factories
         private void AddSpaceComponents(GameEntity gameEntity)
         {
             gameEntity.AddPosition(RandomBoundsPosition());
-            gameEntity.AddVelocity(new Vector2(_randomProvider.Random(0f, 1f), _randomProvider.Random(0, 1f)));
+            gameEntity.AddVelocity(new Vector2(_randomProvider.Random(1f, 3f), _randomProvider.Random(1, 3f)));
             gameEntity.isTeleportable = true;
         }
 

@@ -16,9 +16,11 @@ namespace Infrastructure.StateMachine.Game
         private readonly IPlayerFactory _playerFactory;
         private readonly IEnemyFactory _enemyFactory;
         private readonly IWindowFactory _windowFactory;
+        private readonly IStateMachine _stateMachine;
 
         public LoadGameState(ISceneProvider sceneProvider, IEcsService ecsService, IUpdateService updateService,
-            IWindowService windowService, IPlayerFactory playerFactory, IEnemyFactory enemyFactory, IWindowFactory windowFactory)
+            IWindowService windowService, IPlayerFactory playerFactory, IEnemyFactory enemyFactory, IWindowFactory windowFactory,
+            IStateMachine stateMachine)
         {
             _sceneProvider = sceneProvider;
             _ecsService = ecsService;
@@ -27,6 +29,7 @@ namespace Infrastructure.StateMachine.Game
             _playerFactory = playerFactory;
             _enemyFactory = enemyFactory;
             _windowFactory = windowFactory;
+            _stateMachine = stateMachine;
         }
 
         public void Enter()
@@ -43,7 +46,7 @@ namespace Infrastructure.StateMachine.Game
             Contexts contexts = _ecsService.CreateEcsWorld();
             _updateService.RegisterUpdatable(_ecsService);
             _updateService.RegisterLateUpdatable(_ecsService);
-            _windowFactory.InitCanvas();
+            _windowFactory.Initialize(_stateMachine, contexts);
             _playerFactory.Initialize(contexts.game);
             GameEntity player = _playerFactory.Create();
             _enemyFactory.Initialize(contexts.game, player.creationIndex);

@@ -12,9 +12,11 @@ namespace UI
         [SerializeField] private Button _restartButton;
         
         private IStateMachine _gameStateMachine;
+        private Contexts _contexts;
 
-        public void Construct(IStateMachine gameplayStateMachine)
+        public void Construct(Contexts contexts, IStateMachine gameplayStateMachine)
         {
+            _contexts = contexts;
             _gameStateMachine = gameplayStateMachine;
         }
 
@@ -25,6 +27,6 @@ namespace UI
             _restartButton.onClick.RemoveListener(RestartGame);
 
         private void RestartGame() => 
-            _gameStateMachine.Enter<RestartState>();
+            _gameStateMachine.Enter<RestartState, Contexts>(_contexts);
     }
 }

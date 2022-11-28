@@ -11,19 +11,17 @@ namespace Services.Windows
         private IStateMachine _stateMachine;
 
         private readonly IAssetProvider _assetProvider;
+        private Contexts _contexts;
 
         public WindowFactory(IAssetProvider assetProvider)
         {
             _assetProvider = assetProvider;
         }
 
-        public void Initialize(IStateMachine stateMachine)
+        public void Initialize(IStateMachine stateMachine, Contexts contexts)
         {
+            _contexts = contexts;
             _stateMachine = stateMachine;
-        }
-
-        public void InitCanvas()
-        {
             _rootCanvas = Object.FindObjectOfType<Canvas>();
         }
         
@@ -37,7 +35,7 @@ namespace Services.Windows
         {
             ResultWindow resultWindow = _assetProvider.Load<ResultWindow>("ResultWindow");
             ResultWindow window = Object.Instantiate(resultWindow, _rootCanvas.transform);
-            window.Construct(_stateMachine);
+            window.Construct(_contexts, _stateMachine);
             return window;
         }
     }

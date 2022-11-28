@@ -15,7 +15,6 @@ namespace Infrastructure.StateMachine.Game
 
         public void Enter()
         {
-            _windowFactory.Initialize(_stateMachine);
             _stateMachine.Enter<LoadGameState>();
         }
 

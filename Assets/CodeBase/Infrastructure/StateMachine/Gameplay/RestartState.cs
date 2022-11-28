@@ -1,12 +1,36 @@
-using UnityEngine;
+using Game.Factories;
+using Services.Windows;
 
 namespace Infrastructure.StateMachine.Gameplay
 {
-    public class RestartState : IState
+    public class RestartState : IPayloadState<Contexts>
     {
-        public void Enter()
+        private readonly IPlayerFactory _playerFactory;
+        private readonly IWindowService _windowService;
+
+        public RestartState(IPlayerFactory playerFactory, IWindowService windowService)
         {
-            Debug.Log("Restart game");
+            _playerFactory = playerFactory;
+            _windowService = windowService;
+        }
+
+        public void Enter(Contexts contexts)
+        {
+            DestroyEntities(contexts);
+            _windowService.HideResult();
+            GameEntity player = _playerFactory.Create();
+            _windowService.InitializeHud(contexts, player);
+            // Destroy all Enemies
+        }
+
+        private static void DestroyEntities(Contexts contexts)
+        {
+            GameEntity[] gameEntities = contexts.game.GetEntities();
+            foreach(GameEntity gameEntity in gameEntities)
+            {
+                if(gameEntity.hasPosition)
+                    gameEntity.Destroy();
+            }
         }
 
         public void Exit()
