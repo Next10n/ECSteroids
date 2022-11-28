@@ -3,11 +3,11 @@ using Entitas;
 
 namespace Game.Systems
 {
-    public class KillPlayerOnTriggerEnemySystem : ReactiveSystem<GameEntity>
+    public class DestroyPlayerOnTriggerEnemySystem : ReactiveSystem<GameEntity>
     {
         private readonly IGroup<GameEntity> _enemies;
 
-        public KillPlayerOnTriggerEnemySystem(Contexts contexts) : base(contexts.game)
+        public DestroyPlayerOnTriggerEnemySystem(Contexts contexts) : base(contexts.game)
         {
             _enemies = contexts.game.GetGroup(GameMatcher.Enemy);
         }
@@ -27,7 +27,7 @@ namespace Game.Systems
             foreach(GameEntity enemy in _enemies)
             foreach(GameEntity e in entities)
                 if(e.triggered.Value == enemy.creationIndex)
-                    e.isDead = true;
+                    e.isDestroyEntity = true;
         }
     }
 }

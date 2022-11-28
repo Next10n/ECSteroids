@@ -1,5 +1,6 @@
 using Game.Components;
 using Game.Factories;
+using Game.Systems.WeaponSystems;
 using Infrastructure.StateMachine.Gameplay;
 using Services.SceneProvider;
 using Services.StaticData;
@@ -21,10 +22,11 @@ namespace Infrastructure.StateMachine.Game
         private readonly IWindowFactory _windowFactory;
         private readonly IStateMachine _stateMachine;
         private readonly IStaticDataService _staticDataService;
+        private readonly IBulletFactory _bulletFactory;
 
         public LoadGameState(ISceneProvider sceneProvider, IEcsService ecsService, IUpdateService updateService,
             IWindowService windowService, IPlayerFactory playerFactory, IEnemyFactory enemyFactory, IWindowFactory windowFactory,
-            IStateMachine stateMachine, IStaticDataService staticDataService)
+            IStateMachine stateMachine, IStaticDataService staticDataService, IBulletFactory bulletFactory)
         {
             _sceneProvider = sceneProvider;
             _ecsService = ecsService;
@@ -35,6 +37,7 @@ namespace Infrastructure.StateMachine.Game
             _windowFactory = windowFactory;
             _stateMachine = stateMachine;
             _staticDataService = staticDataService;
+            _bulletFactory = bulletFactory;
         }
 
         public void Enter()
@@ -51,6 +54,7 @@ namespace Infrastructure.StateMachine.Game
             Contexts contexts = _ecsService.CreateEcsWorld();
             _updateService.RegisterUpdatable(_ecsService);
             _updateService.RegisterLateUpdatable(_ecsService);
+            _bulletFactory.Initialize(contexts);
             _windowFactory.Initialize(_stateMachine, contexts);
             _playerFactory.Initialize(contexts.game);
             GameEntity player = _playerFactory.Create(_staticDataService.PlayerStaticData);

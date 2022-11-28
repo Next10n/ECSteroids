@@ -53,10 +53,41 @@ namespace Game.Components
     {
         public Transform Value;
     }
+
+    public enum WeaponType
+    {
+        Bullet,
+        Laser
+    }
     
+    public sealed class WeaponComponent : IComponent
+    {
+        public WeaponType Value;
+    }
     
+    public sealed class BulletComponent : IComponent
+    {
+        
+    }
     
+    public sealed class LaserComponent : IComponent
+    {
+        
+    }
     
+    public sealed class DestroyDelayComponent : IComponent
+    {
+        public float Value;
+    }
     
-    
+    public sealed class DestroyTimerComponent : IComponent
+    {
+        public float Value;
+    }
+
+
+
+
+
+
 }

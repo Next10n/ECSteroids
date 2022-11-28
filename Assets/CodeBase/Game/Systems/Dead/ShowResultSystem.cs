@@ -21,7 +21,7 @@ namespace Game.Systems.Dead
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
-            return context.CreateCollector(GameMatcher.Dead);
+            return context.CreateCollector(GameMatcher.DestroyEntity);
         }
 
         protected override bool Filter(GameEntity entity)

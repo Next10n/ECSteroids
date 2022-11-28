@@ -11,9 +11,14 @@ namespace Services.View
             
             if(col.TryGetComponent(out UnityGameView unityGameView))
             {
-                unityGameView.Entity.AddTriggered(Entity.creationIndex);
-                Entity.AddTriggered(unityGameView.Entity.creationIndex);
+                if(AlreadyTriggered(unityGameView.Entity, Entity) == false)
+                    unityGameView.Entity.ReplaceTriggered(Entity.creationIndex);
+                if(AlreadyTriggered(Entity, unityGameView.Entity) == false)
+                    Entity.ReplaceTriggered(unityGameView.Entity.creationIndex);
             }
         }
+
+        private bool AlreadyTriggered(GameEntity trigger, GameEntity triggered) => 
+            trigger.hasTriggered && trigger.triggered.Value == triggered.creationIndex;
     }
 }

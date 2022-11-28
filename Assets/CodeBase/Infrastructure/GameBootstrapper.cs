@@ -1,4 +1,5 @@
 using Game.Factories;
+using Game.Systems.WeaponSystems;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.Game;
 using Infrastructure.StateMachine.Gameplay;
@@ -35,6 +36,7 @@ namespace Infrastructure
         private IEcsService _ecsService;
         private IWindowFactory _windowFactory;
         private IStaticDataService _staticDataService;
+        private IBulletFactory _bulletFactory;
 
         private void Awake()
         {
@@ -61,9 +63,10 @@ namespace Infrastructure
             _playerFactory = new PlayerFactory();
             _staticDataService = new StaticDataService(_assetProvider);
             _enemyFactory = new EnemyFactory(_randomProvider, _cameraProvider, _staticDataService);
-            _ecsService = new EcsService(_viewService, _timeService, _inputService, _cameraProvider, _enemyFactory, _windowService);
+            _bulletFactory = new BulletFactory(); 
+            _ecsService = new EcsService(_viewService, _timeService, _inputService, _cameraProvider, _enemyFactory, _windowService, _bulletFactory);
             _gameStateMachine = new GameStateMachine(_updateService, _windowService, _sceneProvider, _ecsService, _playerFactory, _enemyFactory, 
-                _windowFactory, _staticDataService);
+                _windowFactory, _staticDataService, _bulletFactory);
         }
     }
 }

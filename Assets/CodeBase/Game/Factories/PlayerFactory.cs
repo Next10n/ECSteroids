@@ -1,3 +1,4 @@
+using Game.Components;
 using StaticData;
 using UnityEngine;
 
@@ -21,8 +22,10 @@ namespace Game.Factories
             player.AddDeceleration(playerStaticData.Deceleration);
             player.AddAccelerationSpeed(playerStaticData.AccelerationSpeed);
             player.AddAngularSpeed(playerStaticData.AngularSpeed);
+            player.AddVelocity(Vector2.zero);
             player.isPlayer = true;
             player.isTeleportable = true;
+            player.AddWeapon(WeaponType.Bullet);
             return player;
         }
     }

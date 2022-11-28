@@ -8,16 +8,18 @@
 //------------------------------------------------------------------------------
 public static class MetaComponentsLookup {
 
-    public const int CameraProvider = 0;
-    public const int EnemyFactory = 1;
-    public const int InputService = 2;
-    public const int TimeService = 3;
-    public const int ViewService = 4;
-    public const int WindowService = 5;
+    public const int BulletFactory = 0;
+    public const int CameraProvider = 1;
+    public const int EnemyFactory = 2;
+    public const int InputService = 3;
+    public const int TimeService = 4;
+    public const int ViewService = 5;
+    public const int WindowService = 6;
 
-    public const int TotalComponents = 6;
+    public const int TotalComponents = 7;
 
     public static readonly string[] componentNames = {
+        "BulletFactory",
         "CameraProvider",
         "EnemyFactory",
         "InputService",
@@ -27,6 +29,7 @@ public static class MetaComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(Services.Components.BulletFactoryComponent),
         typeof(Services.Components.CameraProviderComponent),
         typeof(Services.Components.EnemyFactoryComponent),
         typeof(Services.Components.InputServiceComponent),
