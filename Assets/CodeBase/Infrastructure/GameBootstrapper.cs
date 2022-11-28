@@ -1,11 +1,13 @@
 using Game.Factories;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.Game;
+using Infrastructure.StateMachine.Gameplay;
 using Services;
 using Services.AssetProvider;
 using Services.Coroutine;
 using Services.Input;
 using Services.SceneProvider;
+using Services.StaticData;
 using Services.Time;
 using Services.UpdateService;
 using Services.View;
@@ -32,6 +34,7 @@ namespace Infrastructure
         private IEnemyFactory _enemyFactory;
         private IEcsService _ecsService;
         private IWindowFactory _windowFactory;
+        private IStaticDataService _staticDataService;
 
         private void Awake()
         {
@@ -56,10 +59,11 @@ namespace Infrastructure
             _windowFactory = new WindowFactory(_assetProvider);
             _windowService = new WindowService(_windowFactory);
             _playerFactory = new PlayerFactory();
-            _enemyFactory = new EnemyFactory(_randomProvider, _cameraProvider);
+            _staticDataService = new StaticDataService(_assetProvider);
+            _enemyFactory = new EnemyFactory(_randomProvider, _cameraProvider, _staticDataService);
             _ecsService = new EcsService(_viewService, _timeService, _inputService, _cameraProvider, _enemyFactory, _windowService);
             _gameStateMachine = new GameStateMachine(_updateService, _windowService, _sceneProvider, _ecsService, _playerFactory, _enemyFactory, 
-                _windowFactory);
+                _windowFactory, _staticDataService);
         }
     }
 }

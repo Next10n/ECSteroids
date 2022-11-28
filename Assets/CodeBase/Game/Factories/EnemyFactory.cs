@@ -1,5 +1,8 @@
 using Game.Components;
+using Infrastructure.StateMachine.Gameplay;
 using Services;
+using Services.StaticData;
+using StaticData;
 using UnityEngine;
 
 namespace Game.Factories
@@ -8,15 +11,17 @@ namespace Game.Factories
     {
         private readonly IRandomProvider _randomProvider;
         private readonly ICameraProvider _cameraProvider;
+        private readonly IStaticDataService _staticDataService;
 
         private GameContext _gameContext;
         private int _playerIndex;
         private Bounds _bounds;
 
-        public EnemyFactory(IRandomProvider randomProvider, ICameraProvider cameraProvider)
+        public EnemyFactory(IRandomProvider randomProvider, ICameraProvider cameraProvider, IStaticDataService staticDataService)
         {
             _randomProvider = randomProvider;
             _cameraProvider = cameraProvider;
+            _staticDataService = staticDataService;
         }
 
         public void Initialize(GameContext gameContext, int playerIndex)
@@ -26,40 +31,50 @@ namespace Game.Factories
             _bounds = _cameraProvider.GetMainCameraBounds();
         }
 
-        public void Create(EnemyType spawnerValue)
+        public void Create(EnemyType enemyType)
         {
-            switch (spawnerValue)
+            EnemyStaticData enemyStaticData = _staticDataService.GetEnemyData(enemyType);
+            switch (enemyType)
             {
                 case EnemyType.Asteroid:
-                    CreateAsteroid();
+                    CreateAsteroid(enemyStaticData);
                     break;
                 case EnemyType.Ufo:
-                    CreateUfo();
+                    CreateUfo(enemyStaticData);
                     break;
             }
         }
 
-        private GameEntity CreateAsteroid()
+        private GameEntity CreateAsteroid(EnemyStaticData enemyStaticData)
         {
             GameEntity asteroid = _gameContext.CreateEntity();
-            AddSpaceComponents(asteroid);
-            asteroid.AddAsset("Asteroid");
+            AddSpaceComponents(asteroid, enemyStaticData);
+            asteroid.AddAsset(enemyStaticData.AssetPath);
             return asteroid;
         }
 
-        private GameEntity CreateUfo()
+        private GameEntity CreateUfo(EnemyStaticData enemyStaticData)
         {
             GameEntity ufo = _gameContext.CreateEntity();
-            AddSpaceComponents(ufo);
-            ufo.AddAsset("UFO");
+            AddSpaceComponents(ufo, enemyStaticData);
+            ufo.AddAsset(enemyStaticData.AssetPath);
             return ufo;
         }
 
-        private void AddSpaceComponents(GameEntity gameEntity)
+        private void AddSpaceComponents(GameEntity gameEntity, EnemyStaticData enemyStaticData)
         {
             gameEntity.AddPosition(RandomBoundsPosition());
-            gameEntity.AddVelocity(new Vector2(_randomProvider.Random(1f, 3f), _randomProvider.Random(1, 3f)));
+            gameEntity.AddVelocity(RandomVelocity(enemyStaticData));
             gameEntity.isTeleportable = true;
+        }
+
+        private Vector2 RandomVelocity(EnemyStaticData enemyStaticData)
+        {
+            float randomX = _randomProvider.Random(0f, 1f) * (_randomProvider.RandomFlag() ? 1f : -1f);
+            float randomY = _randomProvider.Random(0f, 1f) * (_randomProvider.RandomFlag() ? 1f : -1f);
+            Vector2 randomDirection = new Vector2(randomX, randomY);
+            Vector2 velocity = randomDirection.normalized * _randomProvider.Random(enemyStaticData.MaxVelocity, enemyStaticData.MinVelocity);
+            return velocity;
         }
 
         private Vector2 RandomBoundsPosition()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Game.Factories;
 using Infrastructure.StateMachine.Gameplay;
 using Services.SceneProvider;
+using Services.StaticData;
 using Services.UpdateService;
 using Services.Windows;
 
@@ -14,14 +15,14 @@ namespace Infrastructure.StateMachine.Game
         private IExitableState _currentState;
 
         public GameStateMachine(IUpdateService updateService, IWindowService windowService, ISceneProvider sceneProvider, IEcsService ecsService,
-            IPlayerFactory playerFactory, IEnemyFactory enemyFactory, IWindowFactory windowFactory)
+            IPlayerFactory playerFactory, IEnemyFactory enemyFactory, IWindowFactory windowFactory, IStaticDataService staticDataService)
         {
             _states = new Dictionary<Type, IExitableState>
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, windowFactory),
+                [typeof(BootstrapState)] = new BootstrapState(this, staticDataService),
                 [typeof(LoadGameState)] = new LoadGameState(sceneProvider, ecsService, updateService, windowService, playerFactory,
-                    enemyFactory, windowFactory, this),
-                [typeof(RestartState)] = new RestartState(playerFactory, windowService)
+                    enemyFactory, windowFactory, this, staticDataService),
+                [typeof(RestartState)] = new RestartState(playerFactory, windowService, staticDataService)
             };
         }
 

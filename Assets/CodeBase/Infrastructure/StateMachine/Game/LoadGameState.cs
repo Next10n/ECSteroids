@@ -1,8 +1,11 @@
 using Game.Components;
 using Game.Factories;
+using Infrastructure.StateMachine.Gameplay;
 using Services.SceneProvider;
+using Services.StaticData;
 using Services.UpdateService;
 using Services.Windows;
+using StaticData;
 
 namespace Infrastructure.StateMachine.Game
 {
@@ -17,10 +20,11 @@ namespace Infrastructure.StateMachine.Game
         private readonly IEnemyFactory _enemyFactory;
         private readonly IWindowFactory _windowFactory;
         private readonly IStateMachine _stateMachine;
+        private readonly IStaticDataService _staticDataService;
 
         public LoadGameState(ISceneProvider sceneProvider, IEcsService ecsService, IUpdateService updateService,
             IWindowService windowService, IPlayerFactory playerFactory, IEnemyFactory enemyFactory, IWindowFactory windowFactory,
-            IStateMachine stateMachine)
+            IStateMachine stateMachine, IStaticDataService staticDataService)
         {
             _sceneProvider = sceneProvider;
             _ecsService = ecsService;
@@ -30,6 +34,7 @@ namespace Infrastructure.StateMachine.Game
             _enemyFactory = enemyFactory;
             _windowFactory = windowFactory;
             _stateMachine = stateMachine;
+            _staticDataService = staticDataService;
         }
 
         public void Enter()
@@ -48,7 +53,7 @@ namespace Infrastructure.StateMachine.Game
             _updateService.RegisterLateUpdatable(_ecsService);
             _windowFactory.Initialize(_stateMachine, contexts);
             _playerFactory.Initialize(contexts.game);
-            GameEntity player = _playerFactory.Create();
+            GameEntity player = _playerFactory.Create(_staticDataService.PlayerStaticData);
             _enemyFactory.Initialize(contexts.game, player.creationIndex);
             CreateSpawners(contexts);
             CreateHud(contexts, player);
@@ -62,15 +67,16 @@ namespace Infrastructure.StateMachine.Game
 
         private void CreateSpawners(Contexts contexts)
         {
-            GameEntity asteroidSpawner = contexts.game.CreateEntity();
-            asteroidSpawner.AddSpawner(EnemyType.Asteroid);
-            asteroidSpawner.AddSpawnTime(5f);
-            asteroidSpawner.AddCurrentSpawnTime(0f);
+            foreach(SpawnerStaticData spawnerStaticData in _staticDataService.SpawnersStaticData) 
+                CreateSpawner(contexts, spawnerStaticData);
+        }
 
-            GameEntity ufoSpawner = contexts.game.CreateEntity();
-            ufoSpawner.AddSpawner(EnemyType.Ufo);
-            ufoSpawner.AddSpawnTime(10f);
-            ufoSpawner.AddCurrentSpawnTime(0f);
+        private void CreateSpawner(Contexts contexts, SpawnerStaticData spawnerStaticData)
+        {
+            GameEntity spawner = contexts.game.CreateEntity();
+            spawner.AddSpawner(spawnerStaticData.EnemyType);
+            spawner.AddSpawnTime(spawnerStaticData.SpawnDelay);
+            spawner.AddCurrentSpawnTime(0f);
         }
     }
 }

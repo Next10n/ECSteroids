@@ -6,6 +6,6 @@ namespace Game.Factories
     public interface IEnemyFactory : IService
     {
         void Initialize(GameContext gameContext, int playerIndex);
-        void Create(EnemyType spawnerValue);
+        void Create(EnemyType enemyType);
     }
 }

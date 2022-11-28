@@ -1,4 +1,5 @@
 using Game.Factories;
+using Services.StaticData;
 using Services.Windows;
 
 namespace Infrastructure.StateMachine.Gameplay
@@ -7,18 +8,20 @@ namespace Infrastructure.StateMachine.Gameplay
     {
         private readonly IPlayerFactory _playerFactory;
         private readonly IWindowService _windowService;
+        private readonly IStaticDataService _staticDataService;
 
-        public RestartState(IPlayerFactory playerFactory, IWindowService windowService)
+        public RestartState(IPlayerFactory playerFactory, IWindowService windowService, IStaticDataService staticDataService)
         {
             _playerFactory = playerFactory;
             _windowService = windowService;
+            _staticDataService = staticDataService;
         }
 
         public void Enter(Contexts contexts)
         {
             DestroyEntities(contexts);
             _windowService.HideResult();
-            GameEntity player = _playerFactory.Create();
+            GameEntity player = _playerFactory.Create(_staticDataService.PlayerStaticData);
             _windowService.InitializeHud(contexts, player);
             // Destroy all Enemies
         }

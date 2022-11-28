@@ -1,3 +1,4 @@
+using StaticData;
 using UnityEngine;
 
 namespace Game.Factories
@@ -11,15 +12,15 @@ namespace Game.Factories
             _gameContext = gameContext;
         }
         
-        public GameEntity Create(/* player data */)
+        public GameEntity Create(PlayerStaticData playerStaticData)
         {
             GameEntity player = _gameContext.CreateEntity();
-            player.AddAsset("Player");
+            player.AddAsset(playerStaticData.PlayerAssetPath);
             player.AddPosition(new Vector2(0f, 0f));
             player.AddRotationAngle(0f);
-            player.AddDeceleration(1f);
-            player.AddAccelerationSpeed(5f);
-            player.AddAngularSpeed(200f);
+            player.AddDeceleration(playerStaticData.Deceleration);
+            player.AddAccelerationSpeed(playerStaticData.AccelerationSpeed);
+            player.AddAngularSpeed(playerStaticData.AngularSpeed);
             player.isPlayer = true;
             player.isTeleportable = true;
             return player;
