@@ -5,17 +5,17 @@ namespace Infrastructure.StateMachine.Game
     public class BootstrapState : IState
     {
         private readonly IStateMachine _stateMachine;
-        private readonly IWindowService _windowService;
+        private readonly IWindowFactory _windowFactory;
 
-        public BootstrapState(IStateMachine stateMachine, IWindowService windowService)
+        public BootstrapState(IStateMachine stateMachine, IWindowFactory windowFactory)
         {
             _stateMachine = stateMachine;
-            _windowService = windowService;
+            _windowFactory = windowFactory;
         }
 
         public void Enter()
         {
-            _windowService.Initialize(_stateMachine);
+            _windowFactory.Initialize(_stateMachine);
             _stateMachine.Enter<LoadGameState>();
         }
 

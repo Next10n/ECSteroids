@@ -1,56 +1,39 @@
-using Infrastructure.StateMachine;
-using Services.AssetProvider;
 using UI;
-using UnityEngine;
 
 namespace Services.Windows
 {
     public class WindowService : IWindowService
     {
-        private Canvas _rootCanvas;
         private ResultWindow _resultWindow;
+        private PlayerHud _hud;
+        
+        private readonly IWindowFactory _windowFactory;
 
-        private readonly IAssetProvider _assetProvider;
-        private IStateMachine _stateMachine;
-
-        public WindowService(IAssetProvider assetProvider)
+        public WindowService(IWindowFactory windowFactory)
         {
-            _assetProvider = assetProvider;
+            _windowFactory = windowFactory;
         }
 
-        public void Initialize(IStateMachine stateMachine)
+        public void ShowHud()
         {
-            _stateMachine = stateMachine;
+            if(_hud == null)
+                _hud = _windowFactory.CreateHud();
         }
 
-        public void Initialize()
+        public void InitializeHud(Contexts contexts, GameEntity player)
         {
-            _rootCanvas = Object.FindObjectOfType<Canvas>();
-        }
-
-        public PlayerHud CreateHud()
-        {
-            PlayerHud hud = _assetProvider.Load<PlayerHud>("Hud");
-            return Object.Instantiate(hud, _rootCanvas.transform);
+            _hud.Initialize(contexts, player);
         }
 
         public void ShowResult()
         {
             if (_resultWindow == null)
-                _resultWindow = CreateResultWindow();
+                _resultWindow = _windowFactory.CreateResultWindow();
             else
                 _resultWindow.gameObject.SetActive(true);
         }
 
         public void HideResult() => 
             _resultWindow.gameObject.SetActive(false);
-
-        private ResultWindow CreateResultWindow()
-        {
-            ResultWindow resultWindow = _assetProvider.Load<ResultWindow>("ResultWindow");
-            ResultWindow window = Object.Instantiate(resultWindow, _rootCanvas.transform);
-            window.Construct(_stateMachine);
-            return window;
-        }
     }
 }

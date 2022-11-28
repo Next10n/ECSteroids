@@ -3,7 +3,6 @@ using Game.Factories;
 using Services.SceneProvider;
 using Services.UpdateService;
 using Services.Windows;
-using UI;
 
 namespace Infrastructure.StateMachine.Game
 {
@@ -11,23 +10,23 @@ namespace Infrastructure.StateMachine.Game
     {
         private const string GameScene = "Game";
         private readonly ISceneProvider _sceneProvider;
-        private readonly IStateMachine _stateMachine;
         private readonly IEcsService _ecsService;
         private readonly IUpdateService _updateService;
         private readonly IWindowService _windowService;
         private readonly IPlayerFactory _playerFactory;
         private readonly IEnemyFactory _enemyFactory;
+        private readonly IWindowFactory _windowFactory;
 
-        public LoadGameState(ISceneProvider sceneProvider, IStateMachine stateMachine, IEcsService ecsService, IUpdateService updateService,
-            IWindowService windowService, IPlayerFactory playerFactory, IEnemyFactory enemyFactory)
+        public LoadGameState(ISceneProvider sceneProvider, IEcsService ecsService, IUpdateService updateService,
+            IWindowService windowService, IPlayerFactory playerFactory, IEnemyFactory enemyFactory, IWindowFactory windowFactory)
         {
             _sceneProvider = sceneProvider;
-            _stateMachine = stateMachine;
             _ecsService = ecsService;
             _updateService = updateService;
             _windowService = windowService;
             _playerFactory = playerFactory;
             _enemyFactory = enemyFactory;
+            _windowFactory = windowFactory;
         }
 
         public void Enter()
@@ -44,7 +43,7 @@ namespace Infrastructure.StateMachine.Game
             Contexts contexts = _ecsService.CreateEcsWorld();
             _updateService.RegisterUpdatable(_ecsService);
             _updateService.RegisterLateUpdatable(_ecsService);
-            _windowService.Initialize();
+            _windowFactory.InitCanvas();
             _playerFactory.Initialize(contexts.game);
             GameEntity player = _playerFactory.Create();
             _enemyFactory.Initialize(contexts.game, player.creationIndex);
@@ -54,8 +53,8 @@ namespace Infrastructure.StateMachine.Game
 
         private void CreateHud(Contexts contexts, GameEntity player)
         {
-            PlayerHud hud = _windowService.CreateHud();
-            hud.Initialize(contexts, player);
+            _windowService.ShowHud();
+            _windowService.InitializeHud(contexts, player);
         }
 
         private void CreateSpawners(Contexts contexts)

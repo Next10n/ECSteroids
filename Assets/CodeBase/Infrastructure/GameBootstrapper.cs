@@ -31,6 +31,7 @@ namespace Infrastructure
         private IPlayerFactory _playerFactory;
         private IEnemyFactory _enemyFactory;
         private IEcsService _ecsService;
+        private IWindowFactory _windowFactory;
 
         private void Awake()
         {
@@ -52,11 +53,13 @@ namespace Infrastructure
             _cameraProvider = new UnityCameraProvider();
             _randomProvider = new UnityRandomProvider();
             _sceneProvider = new UnitySceneProvider(_coroutineRunner);
-            _windowService = new WindowService(_assetProvider);
+            _windowFactory = new WindowFactory(_assetProvider);
+            _windowService = new WindowService(_windowFactory);
             _playerFactory = new PlayerFactory();
             _enemyFactory = new EnemyFactory(_randomProvider, _cameraProvider);
             _ecsService = new EcsService(_viewService, _timeService, _inputService, _cameraProvider, _enemyFactory, _windowService);
-            _gameStateMachine = new GameStateMachine(_updateService, _windowService, _sceneProvider, _ecsService, _playerFactory, _enemyFactory);
+            _gameStateMachine = new GameStateMachine(_updateService, _windowService, _sceneProvider, _ecsService, _playerFactory, _enemyFactory, 
+                _windowFactory);
         }
     }
 }

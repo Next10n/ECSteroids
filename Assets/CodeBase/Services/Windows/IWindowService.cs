@@ -1,14 +1,10 @@
-using Infrastructure.StateMachine;
-using UI;
-
 namespace Services.Windows
 {
-    public interface IWindowService : IService
+    public interface IWindowService
     {
-        void Initialize();
-        PlayerHud CreateHud();
+        void ShowHud();
+        void InitializeHud(Contexts contexts, GameEntity player);
         void ShowResult();
         void HideResult();
-        void Initialize(IStateMachine stateMachine);
     }
 }

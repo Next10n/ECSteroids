@@ -13,14 +13,14 @@ namespace Infrastructure.StateMachine.Game
         private readonly Dictionary<Type, IExitableState> _states;
         private IExitableState _currentState;
 
-        public GameStateMachine(IUpdateService updateService, IWindowService windowService,
-            ISceneProvider sceneProvider, IEcsService ecsService, IPlayerFactory playerFactory, IEnemyFactory enemyFactory)
+        public GameStateMachine(IUpdateService updateService, IWindowService windowService, ISceneProvider sceneProvider, IEcsService ecsService,
+            IPlayerFactory playerFactory, IEnemyFactory enemyFactory, IWindowFactory windowFactory)
         {
             _states = new Dictionary<Type, IExitableState>
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, windowService),
-                [typeof(LoadGameState)] = new LoadGameState(sceneProvider, this, ecsService, updateService, windowService, playerFactory, 
-                    enemyFactory),
+                [typeof(BootstrapState)] = new BootstrapState(this, windowFactory),
+                [typeof(LoadGameState)] = new LoadGameState(sceneProvider, ecsService, updateService, windowService, playerFactory,
+                    enemyFactory, windowFactory),
                 [typeof(RestartState)] = new RestartState()
             };
         }
