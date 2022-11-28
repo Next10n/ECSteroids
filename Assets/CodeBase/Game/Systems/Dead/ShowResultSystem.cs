@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Entitas;
 using Services.Windows;
-using UnityEngine;
 
 namespace Game.Systems.Dead
 {
@@ -22,7 +21,7 @@ namespace Game.Systems.Dead
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
-            return context.CreateCollector(GameMatcher.Destroyed);
+            return context.CreateCollector(GameMatcher.Dead);
         }
 
         protected override bool Filter(GameEntity entity)
@@ -32,11 +31,8 @@ namespace Game.Systems.Dead
 
         protected override void Execute(List<GameEntity> entities)
         {
-            foreach (GameEntity e in entities)
-            {
-                Debug.Log("Execute Result System");
+            if(entities.Count > 0)
                 _windowService.ShowResult();
-            }
         }
     }
 }

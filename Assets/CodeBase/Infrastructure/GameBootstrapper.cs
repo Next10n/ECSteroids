@@ -40,7 +40,7 @@ namespace Infrastructure
 
         private void Start()
         {
-            _gameStateMachine.Enter<LoadGameState>();            
+            _gameStateMachine.Enter<BootstrapState>();            
         }
 
         private void CreateServices()

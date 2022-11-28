@@ -3,9 +3,9 @@ using Entitas;
 
 namespace Game.Systems
 {
-    public class DestroyPlayerOnTrigger2DSystem : ReactiveSystem<GameEntity>
+    public class KillPlayerOnTrigger2DSystem : ReactiveSystem<GameEntity>
     {
-        public DestroyPlayerOnTrigger2DSystem(Contexts contexts) : base(contexts.game)
+        public KillPlayerOnTrigger2DSystem(Contexts contexts) : base(contexts.game)
         {
         }
 
@@ -23,7 +23,7 @@ namespace Game.Systems
         {
             foreach (GameEntity e in entities)
             {
-                e.isDestroyed = true;
+                e.isDead = true;
             }
         }
     }

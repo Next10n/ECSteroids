@@ -18,7 +18,7 @@ namespace Services.Windows
             _assetProvider = assetProvider;
         }
 
-        public void InitializeStateMachine(IStateMachine stateMachine)
+        public void Initialize(IStateMachine stateMachine)
         {
             _stateMachine = stateMachine;
         }

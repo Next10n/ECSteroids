@@ -8,18 +8,18 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly Game.Components.DestroyedComponent destroyedComponent = new Game.Components.DestroyedComponent();
+    static readonly Game.Components.DeadComponent deadComponent = new Game.Components.DeadComponent();
 
-    public bool isDestroyed {
-        get { return HasComponent(GameComponentsLookup.Destroyed); }
+    public bool isDead {
+        get { return HasComponent(GameComponentsLookup.Dead); }
         set {
-            if (value != isDestroyed) {
-                var index = GameComponentsLookup.Destroyed;
+            if (value != isDead) {
+                var index = GameComponentsLookup.Dead;
                 if (value) {
                     var componentPool = GetComponentPool(index);
                     var component = componentPool.Count > 0
                             ? componentPool.Pop()
-                            : destroyedComponent;
+                            : deadComponent;
 
                     AddComponent(index, component);
                 } else {
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherDestroyed;
+    static Entitas.IMatcher<GameEntity> _matcherDead;
 
-    public static Entitas.IMatcher<GameEntity> Destroyed {
+    public static Entitas.IMatcher<GameEntity> Dead {
         get {
-            if (_matcherDestroyed == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Destroyed);
+            if (_matcherDead == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Dead);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherDestroyed = matcher;
+                _matcherDead = matcher;
             }
 
-            return _matcherDestroyed;
+            return _matcherDead;
         }
     }
 }

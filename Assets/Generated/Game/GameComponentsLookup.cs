@@ -8,14 +8,14 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int DestroyedListener = 0;
+    public const int DeadListener = 0;
     public const int Acceleration = 1;
     public const int AccelerationSpeed = 2;
     public const int AngularSpeed = 3;
     public const int Asset = 4;
     public const int CurrentSpawnTime = 5;
-    public const int Deceleration = 6;
-    public const int Destroyed = 7;
+    public const int Dead = 6;
+    public const int Deceleration = 7;
     public const int Direction = 8;
     public const int Player = 9;
     public const int Position = 10;
@@ -32,14 +32,14 @@ public static class GameComponentsLookup {
     public const int TotalComponents = 20;
 
     public static readonly string[] componentNames = {
-        "DestroyedListener",
+        "DeadListener",
         "Acceleration",
         "AccelerationSpeed",
         "AngularSpeed",
         "Asset",
         "CurrentSpawnTime",
+        "Dead",
         "Deceleration",
-        "Destroyed",
         "Direction",
         "Player",
         "Position",
@@ -55,14 +55,14 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(DestroyedListenerComponent),
+        typeof(DeadListenerComponent),
         typeof(Game.Components.AccelerationComponent),
         typeof(Game.Components.AccelerationSpeedComponent),
         typeof(Game.Components.AngularSpeedComponent),
         typeof(Game.Components.AssetComponent),
         typeof(Game.Components.CurrentSpawnTimeComponent),
+        typeof(Game.Components.DeadComponent),
         typeof(Game.Components.DecelerationComponent),
-        typeof(Game.Components.DestroyedComponent),
         typeof(Game.Components.DirectionComponent),
         typeof(Game.Components.PlayerComponent),
         typeof(Game.Components.PositionComponent),

@@ -9,6 +9,6 @@ namespace Services.Windows
         PlayerHud CreateHud();
         void ShowResult();
         void HideResult();
-        void InitializeStateMachine(IStateMachine stateMachine);
+        void Initialize(IStateMachine stateMachine);
     }
 }

@@ -11,11 +11,11 @@ namespace UI
         [SerializeField] private TMP_Text _score;
         [SerializeField] private Button _restartButton;
         
-        private IStateMachine _gameplayStateMachine;
+        private IStateMachine _gameStateMachine;
 
         public void Construct(IStateMachine gameplayStateMachine)
         {
-            _gameplayStateMachine = gameplayStateMachine;
+            _gameStateMachine = gameplayStateMachine;
         }
 
         private void OnEnable() => 
@@ -24,9 +24,7 @@ namespace UI
         private void OnDisable() => 
             _restartButton.onClick.RemoveListener(RestartGame);
 
-        private void RestartGame()
-        {
-            _gameplayStateMachine.Enter<RestartState>();
-        }
+        private void RestartGame() => 
+            _gameStateMachine.Enter<RestartState>();
     }
 }
