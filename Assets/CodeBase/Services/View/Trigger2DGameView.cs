@@ -6,9 +6,13 @@ namespace Services.View
     {
         private void OnTriggerEnter2D(Collider2D col)
         {
+            if(Entity.isEnabled == false)
+                return;
+            
             if(col.TryGetComponent(out UnityGameView unityGameView))
             {
-                Entity.AddTriggered(unityGameView.EntityIndex);
+                unityGameView.Entity.AddTriggered(Entity.creationIndex);
+                Entity.AddTriggered(unityGameView.Entity.creationIndex);
             }
         }
     }

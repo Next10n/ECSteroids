@@ -7,7 +7,7 @@ namespace Services.View
             base.InitializeView(contexts, entity);
             Entity.AddRotationAngleListener(this);
         }
-
+        
         public abstract void OnRotationAngle(GameEntity entity, float value);
     }
 }

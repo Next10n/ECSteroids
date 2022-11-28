@@ -23,7 +23,6 @@ namespace Infrastructure.StateMachine.Gameplay
             _windowService.HideResult();
             GameEntity player = _playerFactory.Create(_staticDataService.PlayerStaticData);
             _windowService.InitializeHud(contexts, player);
-            // Destroy all Enemies
         }
 
         private static void DestroyEntities(Contexts contexts)
@@ -32,7 +31,7 @@ namespace Infrastructure.StateMachine.Gameplay
             foreach(GameEntity gameEntity in gameEntities)
             {
                 if(gameEntity.hasPosition)
-                    gameEntity.Destroy();
+                    gameEntity.isDestroyEntity = true;
             }
         }
 

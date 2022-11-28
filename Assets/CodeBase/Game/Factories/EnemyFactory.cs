@@ -47,18 +47,21 @@ namespace Game.Factories
 
         private GameEntity CreateAsteroid(EnemyStaticData enemyStaticData)
         {
-            GameEntity asteroid = _gameContext.CreateEntity();
-            AddSpaceComponents(asteroid, enemyStaticData);
-            asteroid.AddAsset(enemyStaticData.AssetPath);
-            return asteroid;
+            return CreateEnemy(enemyStaticData);
         }
 
         private GameEntity CreateUfo(EnemyStaticData enemyStaticData)
         {
-            GameEntity ufo = _gameContext.CreateEntity();
-            AddSpaceComponents(ufo, enemyStaticData);
-            ufo.AddAsset(enemyStaticData.AssetPath);
-            return ufo;
+            return CreateEnemy(enemyStaticData);
+        }
+
+        private GameEntity CreateEnemy(EnemyStaticData enemyStaticData)
+        {
+            GameEntity enemy = _gameContext.CreateEntity();
+            AddSpaceComponents(enemy, enemyStaticData);
+            enemy.AddAsset(enemyStaticData.AssetPath);
+            enemy.isEnemy = true;
+            return enemy;
         }
 
         private void AddSpaceComponents(GameEntity gameEntity, EnemyStaticData enemyStaticData)

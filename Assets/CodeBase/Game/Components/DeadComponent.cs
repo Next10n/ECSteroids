@@ -3,7 +3,7 @@ using Entitas.CodeGeneration.Attributes;
 
 namespace Game.Components
 {
-    [Game, Cleanup(CleanupMode.DestroyEntity), Event(EventTarget.Self)]
+    [Game, Event(EventTarget.Self)]
     public sealed class DeadComponent : IComponent
     {
     }

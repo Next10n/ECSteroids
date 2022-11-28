@@ -16,11 +16,12 @@ namespace Infrastructure.StateMachine.Game
         private CreateAssetViewSystem _createAssetViewSystem;
         private GameEventSystems _gameEventSystems;
         private MovementSystems _movementSystems;
-        private KillPlayerOnTrigger2DSystem _killPlayerOnTrigger2DSystem;
+        private KillPlayerOnTriggerEnemySystem _killPlayerOnTriggerEnemySystem;
         private GameCleanupSystems _gameCleanupSystems;
         private SpawnSystems _spawnSystem;
         private Contexts _contexts;
         private ShowResultSystem _showResultSystem;
+        private DestroyDeadSystem _destroyDeadSystem;
 
         private readonly IViewService _viewService;
         private readonly ITimeService _timeService;
@@ -52,7 +53,8 @@ namespace Infrastructure.StateMachine.Game
         {
             _movementSystems.Execute();
             _spawnSystem.Execute();
-            _killPlayerOnTrigger2DSystem.Execute();
+            _killPlayerOnTriggerEnemySystem.Execute();
+            _destroyDeadSystem.Execute();
         }
 
         public void LateUpdate()
@@ -84,8 +86,9 @@ namespace Infrastructure.StateMachine.Game
             _gameEventSystems = new GameEventSystems(_contexts);
             _movementSystems = new MovementSystems(_contexts);
             _gameCleanupSystems = new GameCleanupSystems(_contexts);
-            _killPlayerOnTrigger2DSystem = new KillPlayerOnTrigger2DSystem(_contexts);
+            _killPlayerOnTriggerEnemySystem = new KillPlayerOnTriggerEnemySystem(_contexts);
             _showResultSystem = new ShowResultSystem(_contexts);
+            _destroyDeadSystem = new DestroyDeadSystem(_contexts);
         }
     }
 }

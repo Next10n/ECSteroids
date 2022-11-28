@@ -9,38 +9,47 @@
 public static class GameComponentsLookup {
 
     public const int DeadListener = 0;
-    public const int Acceleration = 1;
-    public const int AccelerationSpeed = 2;
-    public const int AngularSpeed = 3;
-    public const int Asset = 4;
-    public const int CurrentSpawnTime = 5;
-    public const int Dead = 6;
-    public const int Deceleration = 7;
-    public const int Direction = 8;
-    public const int Player = 9;
-    public const int Position = 10;
-    public const int RotationAngle = 11;
-    public const int Spawner = 12;
-    public const int SpawnTime = 13;
-    public const int SpawnTimerReady = 14;
-    public const int Teleportable = 15;
-    public const int Triggered = 16;
-    public const int Velocity = 17;
-    public const int PositionListener = 18;
-    public const int RotationAngleListener = 19;
+    public const int DestroyEntityListener = 1;
+    public const int Acceleration = 2;
+    public const int AccelerationSpeed = 3;
+    public const int Aim = 4;
+    public const int AngularSpeed = 5;
+    public const int Asset = 6;
+    public const int CurrentSpawnTime = 7;
+    public const int Dead = 8;
+    public const int Deceleration = 9;
+    public const int DestroyEntity = 10;
+    public const int Direction = 11;
+    public const int Enemy = 12;
+    public const int Player = 13;
+    public const int Position = 14;
+    public const int RotationAngle = 15;
+    public const int Spawner = 16;
+    public const int SpawnTime = 17;
+    public const int SpawnTimerReady = 18;
+    public const int Teleportable = 19;
+    public const int Triggered = 20;
+    public const int Velocity = 21;
+    public const int PositionListener = 22;
+    public const int RotationAngleListener = 23;
+    public const int VelocityListener = 24;
 
-    public const int TotalComponents = 20;
+    public const int TotalComponents = 25;
 
     public static readonly string[] componentNames = {
         "DeadListener",
+        "DestroyEntityListener",
         "Acceleration",
         "AccelerationSpeed",
+        "Aim",
         "AngularSpeed",
         "Asset",
         "CurrentSpawnTime",
         "Dead",
         "Deceleration",
+        "DestroyEntity",
         "Direction",
+        "Enemy",
         "Player",
         "Position",
         "RotationAngle",
@@ -51,19 +60,24 @@ public static class GameComponentsLookup {
         "Triggered",
         "Velocity",
         "PositionListener",
-        "RotationAngleListener"
+        "RotationAngleListener",
+        "VelocityListener"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(DeadListenerComponent),
+        typeof(DestroyEntityListenerComponent),
         typeof(Game.Components.AccelerationComponent),
         typeof(Game.Components.AccelerationSpeedComponent),
+        typeof(Game.Components.AimComponent),
         typeof(Game.Components.AngularSpeedComponent),
         typeof(Game.Components.AssetComponent),
         typeof(Game.Components.CurrentSpawnTimeComponent),
         typeof(Game.Components.DeadComponent),
         typeof(Game.Components.DecelerationComponent),
+        typeof(Game.Components.DestroyEntityComponent),
         typeof(Game.Components.DirectionComponent),
+        typeof(Game.Components.EnemyComponent),
         typeof(Game.Components.PlayerComponent),
         typeof(Game.Components.PositionComponent),
         typeof(Game.Components.RotationAngleComponent),
@@ -74,6 +88,7 @@ public static class GameComponentsLookup {
         typeof(Game.Components.TriggeredComponent),
         typeof(Game.Components.VelocityComponent),
         typeof(PositionListenerComponent),
-        typeof(RotationAngleListenerComponent)
+        typeof(RotationAngleListenerComponent),
+        typeof(VelocityListenerComponent)
     };
 }

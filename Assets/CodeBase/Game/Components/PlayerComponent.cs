@@ -1,5 +1,6 @@
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
+using UnityEngine;
 
 namespace Game.Components
 {
@@ -36,4 +37,26 @@ namespace Game.Components
     {
         public int Value;
     }
+    
+    [Game]
+    public sealed class EnemyComponent : IComponent
+    {
+    }
+    
+    [Game, Cleanup(CleanupMode.DestroyEntity), Event(EventTarget.Self)]
+    public sealed class DestroyEntityComponent : IComponent
+    {
+    }
+    
+    [Game]
+    public sealed class AimComponent : IComponent
+    {
+        public Transform Value;
+    }
+    
+    
+    
+    
+    
+    
 }

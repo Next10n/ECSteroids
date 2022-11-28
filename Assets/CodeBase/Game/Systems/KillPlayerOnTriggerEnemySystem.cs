@@ -3,10 +3,13 @@ using Entitas;
 
 namespace Game.Systems
 {
-    public class KillPlayerOnTrigger2DSystem : ReactiveSystem<GameEntity>
+    public class KillPlayerOnTriggerEnemySystem : ReactiveSystem<GameEntity>
     {
-        public KillPlayerOnTrigger2DSystem(Contexts contexts) : base(contexts.game)
+        private readonly IGroup<GameEntity> _enemies;
+
+        public KillPlayerOnTriggerEnemySystem(Contexts contexts) : base(contexts.game)
         {
+            _enemies = contexts.game.GetGroup(GameMatcher.Enemy);
         }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -21,10 +24,10 @@ namespace Game.Systems
 
         protected override void Execute(List<GameEntity> entities)
         {
-            foreach (GameEntity e in entities)
-            {
-                e.isDead = true;
-            }
+            foreach(GameEntity enemy in _enemies)
+            foreach(GameEntity e in entities)
+                if(e.triggered.Value == enemy.creationIndex)
+                    e.isDead = true;
         }
     }
 }
