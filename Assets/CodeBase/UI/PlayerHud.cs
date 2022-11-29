@@ -1,4 +1,4 @@
-using Services.View;
+using UI.View;
 using UnityEngine;
 
 namespace UI

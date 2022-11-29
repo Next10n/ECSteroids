@@ -1,5 +1,6 @@
-using Infrastructure.StateMachine;
-using Infrastructure.StateMachine.Gameplay;
+using Infrastructure.Services.StateMachine;
+using Infrastructure.Services.StateMachine.States;
+using UI.View;
 using UnityEngine;
 using UnityEngine.UI;
 

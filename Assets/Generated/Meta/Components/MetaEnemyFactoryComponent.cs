@@ -6,13 +6,17 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Factories;
+using Core.Meta.Components;
+
 public partial class MetaContext {
 
     public MetaEntity enemyFactoryEntity { get { return GetGroup(MetaMatcher.EnemyFactory).GetSingleEntity(); } }
-    public Services.Components.EnemyFactoryComponent enemyFactory { get { return enemyFactoryEntity.enemyFactory; } }
+    public EnemyFactoryComponent enemyFactory { get { return enemyFactoryEntity.enemyFactory; } }
     public bool hasEnemyFactory { get { return enemyFactoryEntity != null; } }
 
-    public MetaEntity SetEnemyFactory(Game.Factories.IEnemyFactory newValue) {
+    public MetaEntity SetEnemyFactory(IEnemyFactory newValue) {
         if (hasEnemyFactory) {
             throw new Entitas.EntitasException("Could not set EnemyFactory!\n" + this + " already has an entity with Services.Components.EnemyFactoryComponent!",
                 "You should check if the context already has a enemyFactoryEntity before setting it or use context.ReplaceEnemyFactory().");
@@ -22,7 +26,7 @@ public partial class MetaContext {
         return entity;
     }
 
-    public void ReplaceEnemyFactory(Game.Factories.IEnemyFactory newValue) {
+    public void ReplaceEnemyFactory(IEnemyFactory newValue) {
         var entity = enemyFactoryEntity;
         if (entity == null) {
             entity = SetEnemyFactory(newValue);
@@ -46,19 +50,19 @@ public partial class MetaContext {
 //------------------------------------------------------------------------------
 public partial class MetaEntity {
 
-    public Services.Components.EnemyFactoryComponent enemyFactory { get { return (Services.Components.EnemyFactoryComponent)GetComponent(MetaComponentsLookup.EnemyFactory); } }
+    public EnemyFactoryComponent enemyFactory { get { return (EnemyFactoryComponent)GetComponent(MetaComponentsLookup.EnemyFactory); } }
     public bool hasEnemyFactory { get { return HasComponent(MetaComponentsLookup.EnemyFactory); } }
 
-    public void AddEnemyFactory(Game.Factories.IEnemyFactory newValue) {
+    public void AddEnemyFactory(IEnemyFactory newValue) {
         var index = MetaComponentsLookup.EnemyFactory;
-        var component = (Services.Components.EnemyFactoryComponent)CreateComponent(index, typeof(Services.Components.EnemyFactoryComponent));
+        var component = (EnemyFactoryComponent)CreateComponent(index, typeof(EnemyFactoryComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceEnemyFactory(Game.Factories.IEnemyFactory newValue) {
+    public void ReplaceEnemyFactory(IEnemyFactory newValue) {
         var index = MetaComponentsLookup.EnemyFactory;
-        var component = (Services.Components.EnemyFactoryComponent)CreateComponent(index, typeof(Services.Components.EnemyFactoryComponent));
+        var component = (EnemyFactoryComponent)CreateComponent(index, typeof(EnemyFactoryComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

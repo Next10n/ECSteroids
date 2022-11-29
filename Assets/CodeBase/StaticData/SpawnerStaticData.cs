@@ -1,5 +1,5 @@
 ﻿using System;
-using Game.Components;
+using Core.Game.Components;
 
 namespace StaticData
 {

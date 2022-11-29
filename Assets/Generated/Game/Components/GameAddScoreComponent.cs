@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components;
+
 public partial class GameEntity {
 
-    public Game.Components.AddScoreComponent addScore { get { return (Game.Components.AddScoreComponent)GetComponent(GameComponentsLookup.AddScore); } }
+    public AddScoreComponent addScore { get { return (AddScoreComponent)GetComponent(GameComponentsLookup.AddScore); } }
     public bool hasAddScore { get { return HasComponent(GameComponentsLookup.AddScore); } }
 
     public void AddAddScore(int newValue) {
         var index = GameComponentsLookup.AddScore;
-        var component = (Game.Components.AddScoreComponent)CreateComponent(index, typeof(Game.Components.AddScoreComponent));
+        var component = (AddScoreComponent)CreateComponent(index, typeof(AddScoreComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceAddScore(int newValue) {
         var index = GameComponentsLookup.AddScore;
-        var component = (Game.Components.AddScoreComponent)CreateComponent(index, typeof(Game.Components.AddScoreComponent));
+        var component = (AddScoreComponent)CreateComponent(index, typeof(AddScoreComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

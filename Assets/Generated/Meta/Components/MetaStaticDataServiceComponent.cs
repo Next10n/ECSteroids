@@ -6,13 +6,17 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Meta.Components;
+using Infrastructure.Services.StaticData;
+
 public partial class MetaContext {
 
     public MetaEntity staticDataServiceEntity { get { return GetGroup(MetaMatcher.StaticDataService).GetSingleEntity(); } }
-    public Services.Components.StaticDataServiceComponent staticDataService { get { return staticDataServiceEntity.staticDataService; } }
+    public StaticDataServiceComponent staticDataService { get { return staticDataServiceEntity.staticDataService; } }
     public bool hasStaticDataService { get { return staticDataServiceEntity != null; } }
 
-    public MetaEntity SetStaticDataService(Services.StaticData.IStaticDataService newValue) {
+    public MetaEntity SetStaticDataService(IStaticDataService newValue) {
         if (hasStaticDataService) {
             throw new Entitas.EntitasException("Could not set StaticDataService!\n" + this + " already has an entity with Services.Components.StaticDataServiceComponent!",
                 "You should check if the context already has a staticDataServiceEntity before setting it or use context.ReplaceStaticDataService().");
@@ -22,7 +26,7 @@ public partial class MetaContext {
         return entity;
     }
 
-    public void ReplaceStaticDataService(Services.StaticData.IStaticDataService newValue) {
+    public void ReplaceStaticDataService(IStaticDataService newValue) {
         var entity = staticDataServiceEntity;
         if (entity == null) {
             entity = SetStaticDataService(newValue);
@@ -46,19 +50,19 @@ public partial class MetaContext {
 //------------------------------------------------------------------------------
 public partial class MetaEntity {
 
-    public Services.Components.StaticDataServiceComponent staticDataService { get { return (Services.Components.StaticDataServiceComponent)GetComponent(MetaComponentsLookup.StaticDataService); } }
+    public StaticDataServiceComponent staticDataService { get { return (StaticDataServiceComponent)GetComponent(MetaComponentsLookup.StaticDataService); } }
     public bool hasStaticDataService { get { return HasComponent(MetaComponentsLookup.StaticDataService); } }
 
-    public void AddStaticDataService(Services.StaticData.IStaticDataService newValue) {
+    public void AddStaticDataService(IStaticDataService newValue) {
         var index = MetaComponentsLookup.StaticDataService;
-        var component = (Services.Components.StaticDataServiceComponent)CreateComponent(index, typeof(Services.Components.StaticDataServiceComponent));
+        var component = (StaticDataServiceComponent)CreateComponent(index, typeof(StaticDataServiceComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceStaticDataService(Services.StaticData.IStaticDataService newValue) {
+    public void ReplaceStaticDataService(IStaticDataService newValue) {
         var index = MetaComponentsLookup.StaticDataService;
-        var component = (Services.Components.StaticDataServiceComponent)CreateComponent(index, typeof(Services.Components.StaticDataServiceComponent));
+        var component = (StaticDataServiceComponent)CreateComponent(index, typeof(StaticDataServiceComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

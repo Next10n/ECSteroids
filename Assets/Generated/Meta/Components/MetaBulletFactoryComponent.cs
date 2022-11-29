@@ -6,13 +6,17 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Factories;
+using Core.Meta.Components;
+
 public partial class MetaContext {
 
     public MetaEntity bulletFactoryEntity { get { return GetGroup(MetaMatcher.BulletFactory).GetSingleEntity(); } }
-    public Services.Components.BulletFactoryComponent bulletFactory { get { return bulletFactoryEntity.bulletFactory; } }
+    public BulletFactoryComponent bulletFactory { get { return bulletFactoryEntity.bulletFactory; } }
     public bool hasBulletFactory { get { return bulletFactoryEntity != null; } }
 
-    public MetaEntity SetBulletFactory(Game.Systems.WeaponSystems.IBulletFactory newValue) {
+    public MetaEntity SetBulletFactory(IBulletFactory newValue) {
         if (hasBulletFactory) {
             throw new Entitas.EntitasException("Could not set BulletFactory!\n" + this + " already has an entity with Services.Components.BulletFactoryComponent!",
                 "You should check if the context already has a bulletFactoryEntity before setting it or use context.ReplaceBulletFactory().");
@@ -22,7 +26,7 @@ public partial class MetaContext {
         return entity;
     }
 
-    public void ReplaceBulletFactory(Game.Systems.WeaponSystems.IBulletFactory newValue) {
+    public void ReplaceBulletFactory(IBulletFactory newValue) {
         var entity = bulletFactoryEntity;
         if (entity == null) {
             entity = SetBulletFactory(newValue);
@@ -46,19 +50,19 @@ public partial class MetaContext {
 //------------------------------------------------------------------------------
 public partial class MetaEntity {
 
-    public Services.Components.BulletFactoryComponent bulletFactory { get { return (Services.Components.BulletFactoryComponent)GetComponent(MetaComponentsLookup.BulletFactory); } }
+    public BulletFactoryComponent bulletFactory { get { return (BulletFactoryComponent)GetComponent(MetaComponentsLookup.BulletFactory); } }
     public bool hasBulletFactory { get { return HasComponent(MetaComponentsLookup.BulletFactory); } }
 
-    public void AddBulletFactory(Game.Systems.WeaponSystems.IBulletFactory newValue) {
+    public void AddBulletFactory(IBulletFactory newValue) {
         var index = MetaComponentsLookup.BulletFactory;
-        var component = (Services.Components.BulletFactoryComponent)CreateComponent(index, typeof(Services.Components.BulletFactoryComponent));
+        var component = (BulletFactoryComponent)CreateComponent(index, typeof(BulletFactoryComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceBulletFactory(Game.Systems.WeaponSystems.IBulletFactory newValue) {
+    public void ReplaceBulletFactory(IBulletFactory newValue) {
         var index = MetaComponentsLookup.BulletFactory;
-        var component = (Services.Components.BulletFactoryComponent)CreateComponent(index, typeof(Services.Components.BulletFactoryComponent));
+        var component = (BulletFactoryComponent)CreateComponent(index, typeof(BulletFactoryComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

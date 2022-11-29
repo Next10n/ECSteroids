@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components;
+
 public partial class GameEntity {
 
-    public Game.Components.SpawnTimeComponent spawnTime { get { return (Game.Components.SpawnTimeComponent)GetComponent(GameComponentsLookup.SpawnTime); } }
+    public SpawnTimeComponent spawnTime { get { return (SpawnTimeComponent)GetComponent(GameComponentsLookup.SpawnTime); } }
     public bool hasSpawnTime { get { return HasComponent(GameComponentsLookup.SpawnTime); } }
 
     public void AddSpawnTime(float newValue) {
         var index = GameComponentsLookup.SpawnTime;
-        var component = (Game.Components.SpawnTimeComponent)CreateComponent(index, typeof(Game.Components.SpawnTimeComponent));
+        var component = (SpawnTimeComponent)CreateComponent(index, typeof(SpawnTimeComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceSpawnTime(float newValue) {
         var index = GameComponentsLookup.SpawnTime;
-        var component = (Game.Components.SpawnTimeComponent)CreateComponent(index, typeof(Game.Components.SpawnTimeComponent));
+        var component = (SpawnTimeComponent)CreateComponent(index, typeof(SpawnTimeComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

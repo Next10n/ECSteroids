@@ -6,6 +6,9 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Meta.Components;
+
 public static class MetaComponentsLookup {
 
     public const int BulletFactory = 0;
@@ -33,14 +36,14 @@ public static class MetaComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(Services.Components.BulletFactoryComponent),
-        typeof(Services.Components.CameraProviderComponent),
-        typeof(Services.Components.EnemyFactoryComponent),
-        typeof(Services.Components.InputServiceComponent),
-        typeof(Services.Components.RandomProviderComponent),
-        typeof(Services.Components.StaticDataServiceComponent),
-        typeof(Services.Components.TimeServiceComponent),
-        typeof(Services.Components.ViewServiceComponent),
-        typeof(Services.Components.WindowServiceComponent)
+        typeof(BulletFactoryComponent),
+        typeof(CameraProviderComponent),
+        typeof(EnemyFactoryComponent),
+        typeof(InputServiceComponent),
+        typeof(RandomProviderComponent),
+        typeof(StaticDataServiceComponent),
+        typeof(TimeServiceComponent),
+        typeof(ViewServiceComponent),
+        typeof(WindowServiceComponent)
     };
 }
