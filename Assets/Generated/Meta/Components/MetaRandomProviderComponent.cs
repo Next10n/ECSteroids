@@ -6,19 +6,15 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Meta.Components;
-using Infrastructure.Services;
-
 public partial class MetaContext {
 
     public MetaEntity randomProviderEntity { get { return GetGroup(MetaMatcher.RandomProvider).GetSingleEntity(); } }
-    public RandomProviderComponent randomProvider { get { return randomProviderEntity.randomProvider; } }
+    public Core.Meta.Components.RandomProviderComponent randomProvider { get { return randomProviderEntity.randomProvider; } }
     public bool hasRandomProvider { get { return randomProviderEntity != null; } }
 
-    public MetaEntity SetRandomProvider(IRandomProvider newValue) {
+    public MetaEntity SetRandomProvider(Infrastructure.Services.IRandomProvider newValue) {
         if (hasRandomProvider) {
-            throw new Entitas.EntitasException("Could not set RandomProvider!\n" + this + " already has an entity with Services.Components.RandomProviderComponent!",
+            throw new Entitas.EntitasException("Could not set RandomProvider!\n" + this + " already has an entity with Core.Meta.Components.RandomProviderComponent!",
                 "You should check if the context already has a randomProviderEntity before setting it or use context.ReplaceRandomProvider().");
         }
         var entity = CreateEntity();
@@ -26,7 +22,7 @@ public partial class MetaContext {
         return entity;
     }
 
-    public void ReplaceRandomProvider(IRandomProvider newValue) {
+    public void ReplaceRandomProvider(Infrastructure.Services.IRandomProvider newValue) {
         var entity = randomProviderEntity;
         if (entity == null) {
             entity = SetRandomProvider(newValue);
@@ -50,19 +46,19 @@ public partial class MetaContext {
 //------------------------------------------------------------------------------
 public partial class MetaEntity {
 
-    public RandomProviderComponent randomProvider { get { return (RandomProviderComponent)GetComponent(MetaComponentsLookup.RandomProvider); } }
+    public Core.Meta.Components.RandomProviderComponent randomProvider { get { return (Core.Meta.Components.RandomProviderComponent)GetComponent(MetaComponentsLookup.RandomProvider); } }
     public bool hasRandomProvider { get { return HasComponent(MetaComponentsLookup.RandomProvider); } }
 
-    public void AddRandomProvider(IRandomProvider newValue) {
+    public void AddRandomProvider(Infrastructure.Services.IRandomProvider newValue) {
         var index = MetaComponentsLookup.RandomProvider;
-        var component = (RandomProviderComponent)CreateComponent(index, typeof(RandomProviderComponent));
+        var component = (Core.Meta.Components.RandomProviderComponent)CreateComponent(index, typeof(Core.Meta.Components.RandomProviderComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceRandomProvider(IRandomProvider newValue) {
+    public void ReplaceRandomProvider(Infrastructure.Services.IRandomProvider newValue) {
         var index = MetaComponentsLookup.RandomProvider;
-        var component = (RandomProviderComponent)CreateComponent(index, typeof(RandomProviderComponent));
+        var component = (Core.Meta.Components.RandomProviderComponent)CreateComponent(index, typeof(Core.Meta.Components.RandomProviderComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

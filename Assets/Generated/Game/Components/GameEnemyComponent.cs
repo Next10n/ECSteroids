@@ -6,12 +6,9 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Game.Components;
-
 public partial class GameEntity {
 
-    static readonly EnemyComponent enemyComponent = new EnemyComponent();
+    static readonly Core.Game.Components.EnemyComponent enemyComponent = new Core.Game.Components.EnemyComponent();
 
     public bool isEnemy {
         get { return HasComponent(GameComponentsLookup.Enemy); }

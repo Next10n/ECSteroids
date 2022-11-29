@@ -6,24 +6,21 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Game.Components;
-
 public partial class GameEntity {
 
-    public PositionComponent position { get { return (PositionComponent)GetComponent(GameComponentsLookup.Position); } }
+    public Core.Game.Components.PositionComponent position { get { return (Core.Game.Components.PositionComponent)GetComponent(GameComponentsLookup.Position); } }
     public bool hasPosition { get { return HasComponent(GameComponentsLookup.Position); } }
 
     public void AddPosition(UnityEngine.Vector2 newValue) {
         var index = GameComponentsLookup.Position;
-        var component = (PositionComponent)CreateComponent(index, typeof(PositionComponent));
+        var component = (Core.Game.Components.PositionComponent)CreateComponent(index, typeof(Core.Game.Components.PositionComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplacePosition(UnityEngine.Vector2 newValue) {
         var index = GameComponentsLookup.Position;
-        var component = (PositionComponent)CreateComponent(index, typeof(PositionComponent));
+        var component = (Core.Game.Components.PositionComponent)CreateComponent(index, typeof(Core.Game.Components.PositionComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

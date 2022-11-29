@@ -2,6 +2,7 @@
 using Core.Game.Systems.DestroySystems;
 using Core.Game.Systems.Score;
 using Core.Game.Systems.Spawn;
+using Core.Game.Systems.Weapon;
 
 namespace Core.Game.Systems
 {

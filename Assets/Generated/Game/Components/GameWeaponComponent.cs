@@ -6,24 +6,21 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Game.Components;
-
 public partial class GameEntity {
 
-    public WeaponComponent weapon { get { return (WeaponComponent)GetComponent(GameComponentsLookup.Weapon); } }
+    public Core.Game.Components.WeaponComponent weapon { get { return (Core.Game.Components.WeaponComponent)GetComponent(GameComponentsLookup.Weapon); } }
     public bool hasWeapon { get { return HasComponent(GameComponentsLookup.Weapon); } }
 
-    public void AddWeapon(WeaponType newValue) {
+    public void AddWeapon(Core.Game.Components.WeaponType newValue) {
         var index = GameComponentsLookup.Weapon;
-        var component = (WeaponComponent)CreateComponent(index, typeof(WeaponComponent));
+        var component = (Core.Game.Components.WeaponComponent)CreateComponent(index, typeof(Core.Game.Components.WeaponComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceWeapon(WeaponType newValue) {
+    public void ReplaceWeapon(Core.Game.Components.WeaponType newValue) {
         var index = GameComponentsLookup.Weapon;
-        var component = (WeaponComponent)CreateComponent(index, typeof(WeaponComponent));
+        var component = (Core.Game.Components.WeaponComponent)CreateComponent(index, typeof(Core.Game.Components.WeaponComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

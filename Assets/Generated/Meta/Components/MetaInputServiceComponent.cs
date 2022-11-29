@@ -6,19 +6,15 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Meta.Components;
-using Infrastructure.Services.Input;
-
 public partial class MetaContext {
 
     public MetaEntity inputServiceEntity { get { return GetGroup(MetaMatcher.InputService).GetSingleEntity(); } }
-    public InputServiceComponent inputService { get { return inputServiceEntity.inputService; } }
+    public Core.Meta.Components.InputServiceComponent inputService { get { return inputServiceEntity.inputService; } }
     public bool hasInputService { get { return inputServiceEntity != null; } }
 
-    public MetaEntity SetInputService(IInputService newValue) {
+    public MetaEntity SetInputService(Infrastructure.Services.Input.IInputService newValue) {
         if (hasInputService) {
-            throw new Entitas.EntitasException("Could not set InputService!\n" + this + " already has an entity with Services.Components.InputServiceComponent!",
+            throw new Entitas.EntitasException("Could not set InputService!\n" + this + " already has an entity with Core.Meta.Components.InputServiceComponent!",
                 "You should check if the context already has a inputServiceEntity before setting it or use context.ReplaceInputService().");
         }
         var entity = CreateEntity();
@@ -26,7 +22,7 @@ public partial class MetaContext {
         return entity;
     }
 
-    public void ReplaceInputService(IInputService newValue) {
+    public void ReplaceInputService(Infrastructure.Services.Input.IInputService newValue) {
         var entity = inputServiceEntity;
         if (entity == null) {
             entity = SetInputService(newValue);
@@ -50,19 +46,19 @@ public partial class MetaContext {
 //------------------------------------------------------------------------------
 public partial class MetaEntity {
 
-    public InputServiceComponent inputService { get { return (InputServiceComponent)GetComponent(MetaComponentsLookup.InputService); } }
+    public Core.Meta.Components.InputServiceComponent inputService { get { return (Core.Meta.Components.InputServiceComponent)GetComponent(MetaComponentsLookup.InputService); } }
     public bool hasInputService { get { return HasComponent(MetaComponentsLookup.InputService); } }
 
-    public void AddInputService(IInputService newValue) {
+    public void AddInputService(Infrastructure.Services.Input.IInputService newValue) {
         var index = MetaComponentsLookup.InputService;
-        var component = (InputServiceComponent)CreateComponent(index, typeof(InputServiceComponent));
+        var component = (Core.Meta.Components.InputServiceComponent)CreateComponent(index, typeof(Core.Meta.Components.InputServiceComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceInputService(IInputService newValue) {
+    public void ReplaceInputService(Infrastructure.Services.Input.IInputService newValue) {
         var index = MetaComponentsLookup.InputService;
-        var component = (InputServiceComponent)CreateComponent(index, typeof(InputServiceComponent));
+        var component = (Core.Meta.Components.InputServiceComponent)CreateComponent(index, typeof(Core.Meta.Components.InputServiceComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

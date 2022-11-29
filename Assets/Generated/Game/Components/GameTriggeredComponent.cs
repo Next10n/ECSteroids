@@ -6,24 +6,21 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Game.Components;
-
 public partial class GameEntity {
 
-    public TriggeredComponent triggered { get { return (TriggeredComponent)GetComponent(GameComponentsLookup.Triggered); } }
+    public Core.Game.Components.TriggeredComponent triggered { get { return (Core.Game.Components.TriggeredComponent)GetComponent(GameComponentsLookup.Triggered); } }
     public bool hasTriggered { get { return HasComponent(GameComponentsLookup.Triggered); } }
 
     public void AddTriggered(int newValue) {
         var index = GameComponentsLookup.Triggered;
-        var component = (TriggeredComponent)CreateComponent(index, typeof(TriggeredComponent));
+        var component = (Core.Game.Components.TriggeredComponent)CreateComponent(index, typeof(Core.Game.Components.TriggeredComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceTriggered(int newValue) {
         var index = GameComponentsLookup.Triggered;
-        var component = (TriggeredComponent)CreateComponent(index, typeof(TriggeredComponent));
+        var component = (Core.Game.Components.TriggeredComponent)CreateComponent(index, typeof(Core.Game.Components.TriggeredComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

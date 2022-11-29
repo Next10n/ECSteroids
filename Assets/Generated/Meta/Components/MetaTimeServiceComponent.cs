@@ -6,19 +6,15 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Meta.Components;
-using Infrastructure.Services.Time;
-
 public partial class MetaContext {
 
     public MetaEntity timeServiceEntity { get { return GetGroup(MetaMatcher.TimeService).GetSingleEntity(); } }
-    public TimeServiceComponent timeService { get { return timeServiceEntity.timeService; } }
+    public Core.Meta.Components.TimeServiceComponent timeService { get { return timeServiceEntity.timeService; } }
     public bool hasTimeService { get { return timeServiceEntity != null; } }
 
-    public MetaEntity SetTimeService(ITimeService newValue) {
+    public MetaEntity SetTimeService(Infrastructure.Services.Time.ITimeService newValue) {
         if (hasTimeService) {
-            throw new Entitas.EntitasException("Could not set TimeService!\n" + this + " already has an entity with Services.Components.TimeServiceComponent!",
+            throw new Entitas.EntitasException("Could not set TimeService!\n" + this + " already has an entity with Core.Meta.Components.TimeServiceComponent!",
                 "You should check if the context already has a timeServiceEntity before setting it or use context.ReplaceTimeService().");
         }
         var entity = CreateEntity();
@@ -26,7 +22,7 @@ public partial class MetaContext {
         return entity;
     }
 
-    public void ReplaceTimeService(ITimeService newValue) {
+    public void ReplaceTimeService(Infrastructure.Services.Time.ITimeService newValue) {
         var entity = timeServiceEntity;
         if (entity == null) {
             entity = SetTimeService(newValue);
@@ -50,19 +46,19 @@ public partial class MetaContext {
 //------------------------------------------------------------------------------
 public partial class MetaEntity {
 
-    public TimeServiceComponent timeService { get { return (TimeServiceComponent)GetComponent(MetaComponentsLookup.TimeService); } }
+    public Core.Meta.Components.TimeServiceComponent timeService { get { return (Core.Meta.Components.TimeServiceComponent)GetComponent(MetaComponentsLookup.TimeService); } }
     public bool hasTimeService { get { return HasComponent(MetaComponentsLookup.TimeService); } }
 
-    public void AddTimeService(ITimeService newValue) {
+    public void AddTimeService(Infrastructure.Services.Time.ITimeService newValue) {
         var index = MetaComponentsLookup.TimeService;
-        var component = (TimeServiceComponent)CreateComponent(index, typeof(TimeServiceComponent));
+        var component = (Core.Meta.Components.TimeServiceComponent)CreateComponent(index, typeof(Core.Meta.Components.TimeServiceComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceTimeService(ITimeService newValue) {
+    public void ReplaceTimeService(Infrastructure.Services.Time.ITimeService newValue) {
         var index = MetaComponentsLookup.TimeService;
-        var component = (TimeServiceComponent)CreateComponent(index, typeof(TimeServiceComponent));
+        var component = (Core.Meta.Components.TimeServiceComponent)CreateComponent(index, typeof(Core.Meta.Components.TimeServiceComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

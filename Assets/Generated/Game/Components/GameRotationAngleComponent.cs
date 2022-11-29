@@ -6,24 +6,21 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Game.Components;
-
 public partial class GameEntity {
 
-    public RotationAngleComponent rotationAngle { get { return (RotationAngleComponent)GetComponent(GameComponentsLookup.RotationAngle); } }
+    public Core.Game.Components.RotationAngleComponent rotationAngle { get { return (Core.Game.Components.RotationAngleComponent)GetComponent(GameComponentsLookup.RotationAngle); } }
     public bool hasRotationAngle { get { return HasComponent(GameComponentsLookup.RotationAngle); } }
 
     public void AddRotationAngle(float newValue) {
         var index = GameComponentsLookup.RotationAngle;
-        var component = (RotationAngleComponent)CreateComponent(index, typeof(RotationAngleComponent));
+        var component = (Core.Game.Components.RotationAngleComponent)CreateComponent(index, typeof(Core.Game.Components.RotationAngleComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceRotationAngle(float newValue) {
         var index = GameComponentsLookup.RotationAngle;
-        var component = (RotationAngleComponent)CreateComponent(index, typeof(RotationAngleComponent));
+        var component = (Core.Game.Components.RotationAngleComponent)CreateComponent(index, typeof(Core.Game.Components.RotationAngleComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

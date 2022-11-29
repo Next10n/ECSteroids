@@ -6,12 +6,9 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Game.Components;
-
 public partial class GameEntity {
 
-    static readonly TeleportableComponent teleportableComponent = new TeleportableComponent();
+    static readonly Core.Game.Components.TeleportableComponent teleportableComponent = new Core.Game.Components.TeleportableComponent();
 
     public bool isTeleportable {
         get { return HasComponent(GameComponentsLookup.Teleportable); }

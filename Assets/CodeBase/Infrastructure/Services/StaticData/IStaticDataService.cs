@@ -11,6 +11,7 @@ namespace Infrastructure.Services.StaticData
         int MaxAsteroidFragments { get; }
         int MinAsteroidFragments { get; }
         EnemyStaticData GetEnemyData(EnemyType enemyType);
+        WeaponStaticData GetWeaponData(WeaponType weaponType);
         void Load();
     }
 }

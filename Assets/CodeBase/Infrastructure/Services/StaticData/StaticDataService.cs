@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Core.Game.Components;
 using Infrastructure.Services.AssetProvider;
@@ -9,6 +8,8 @@ namespace Infrastructure.Services.StaticData
 {
     public class StaticDataService : IStaticDataService
     {
+        private const string StaticDataPath = "GameStaticData";
+        
         private readonly IAssetProvider _assetProvider;
         private GameStaticData _gameStaticData;
 
@@ -24,15 +25,13 @@ namespace Infrastructure.Services.StaticData
 
         public void Load()
         {
-            _gameStaticData = _assetProvider.Load<GameStaticData>("GameStaticData");
+            _gameStaticData = _assetProvider.Load<GameStaticData>(StaticDataPath);
         }
 
-        public EnemyStaticData GetEnemyData(EnemyType enemyType)
-        {
-            EnemyStaticData enemyStaticData = _gameStaticData.Enemies.First(x => x.EnemyType == enemyType);
-            if(enemyStaticData != null)
-                return enemyStaticData;
-            throw new InvalidOperationException($"Enemy with Type: {enemyType} doesn't found in static data service");
-        }
+        public EnemyStaticData GetEnemyData(EnemyType enemyType) => 
+            _gameStaticData.Enemies.First(x => x.EnemyType == enemyType);
+
+        public WeaponStaticData GetWeaponData(WeaponType weaponType) => 
+            _gameStaticData.Weapons.First(x => x.WeaponType == weaponType);
     }
 }

@@ -6,12 +6,9 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Game.Components;
-
 public partial class GameEntity {
 
-    static readonly DeadComponent deadComponent = new DeadComponent();
+    static readonly Core.Game.Components.DeadComponent deadComponent = new Core.Game.Components.DeadComponent();
 
     public bool isDead {
         get { return HasComponent(GameComponentsLookup.Dead); }

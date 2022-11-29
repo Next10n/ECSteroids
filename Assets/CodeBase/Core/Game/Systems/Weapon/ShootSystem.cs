@@ -2,7 +2,7 @@
 using Entitas;
 using Infrastructure.Services.Input;
 
-namespace Core.Game.Systems.Score
+namespace Core.Game.Systems.Weapon
 {
     public class ShootSystem : IExecuteSystem, IInitializeSystem
     {
@@ -31,11 +31,7 @@ namespace Core.Game.Systems.Score
 
             foreach(GameEntity entity in _weaponGroup)
             {
-                GameEntity bullet = _bulletFactory.Create(entity.weapon.Value);
-                bullet.AddPosition(entity.aim.Value.position);
-                bullet.AddDirection(entity.direction.Value);
-                bullet.AddVelocity(entity.direction.Value.normalized * 10f);
-                bullet.AddRotationAngle(entity.rotationAngle.Value);
+                _bulletFactory.Create(entity.weapon.Value, entity);
             }
         }
     }

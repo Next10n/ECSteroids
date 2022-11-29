@@ -4,7 +4,7 @@ using Infrastructure.Services.Time;
 
 namespace Core.Game.Systems
 {
-    public class AddRotationVelocitySystem : IExecuteSystem, IInitializeSystem
+    public class AddPlayerRotationSystem : IExecuteSystem, IInitializeSystem
     {
         private readonly Contexts _contexts;
         private readonly IGroup<GameEntity> _playerGroup;
@@ -12,7 +12,7 @@ namespace Core.Game.Systems
         private IInputService _inputService;
         private ITimeService _timeService;
 
-        public AddRotationVelocitySystem(Contexts contexts)
+        public AddPlayerRotationSystem(Contexts contexts)
         {
             _contexts = contexts;
             _playerGroup = contexts.game.GetGroup(GameMatcher.AllOf(

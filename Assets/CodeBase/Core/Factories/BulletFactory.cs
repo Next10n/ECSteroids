@@ -1,24 +1,46 @@
 ﻿using Core.Game.Components;
+using Infrastructure.Services.StaticData;
+using StaticData;
 
 namespace Core.Factories
 {
     public class BulletFactory : IBulletFactory
     {
-        private Contexts _contexts;
+        private readonly IStaticDataService _staticDataService;
         
+        private Contexts _contexts;
+
+        public BulletFactory(IStaticDataService staticDataService)
+        {
+            _staticDataService = staticDataService;
+        }
+
         public void Initialize(Contexts contexts)
         {
             _contexts = contexts;
         }
 
-        public GameEntity Create(WeaponType weaponType)
+        public GameEntity Create(WeaponType weaponType, GameEntity weaponEntity)
         {
-            GameEntity bullet = _contexts.game.CreateEntity();
-            bullet.AddAsset("Bullet");
-            bullet.isBullet = true;
-            bullet.isTeleportable = true;
-            bullet.AddDestroyDelay(5f);
-            return bullet;
+            WeaponStaticData weaponStaticData = _staticDataService.GetWeaponData(weaponType);
+            GameEntity projectile = _contexts.game.CreateEntity();
+            projectile.AddAsset(weaponStaticData.AssetPath);
+            projectile.isTeleportable = weaponStaticData.Teleportable;
+            projectile.AddDestroyDelay(weaponStaticData.DestroyTime);
+            projectile.AddPosition(weaponEntity.aim.Value.position);
+            projectile.AddDirection(weaponEntity.direction.Value);
+            projectile.AddVelocity(weaponEntity.direction.Value.normalized * weaponStaticData.ProjectileSpeed);
+            projectile.AddRotationAngle(weaponEntity.rotationAngle.Value);
+            switch(weaponType)
+            {
+                case WeaponType.Bullet:
+                    projectile.isBullet = true;
+                    break;
+                case WeaponType.Laser:
+                    projectile.isLaser = true;
+                    break;
+            }
+            return projectile;
         }
     }
 }

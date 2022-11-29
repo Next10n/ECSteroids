@@ -6,19 +6,15 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Factories;
-using Core.Meta.Components;
-
 public partial class MetaContext {
 
     public MetaEntity bulletFactoryEntity { get { return GetGroup(MetaMatcher.BulletFactory).GetSingleEntity(); } }
-    public BulletFactoryComponent bulletFactory { get { return bulletFactoryEntity.bulletFactory; } }
+    public Core.Meta.Components.BulletFactoryComponent bulletFactory { get { return bulletFactoryEntity.bulletFactory; } }
     public bool hasBulletFactory { get { return bulletFactoryEntity != null; } }
 
-    public MetaEntity SetBulletFactory(IBulletFactory newValue) {
+    public MetaEntity SetBulletFactory(Core.Factories.IBulletFactory newValue) {
         if (hasBulletFactory) {
-            throw new Entitas.EntitasException("Could not set BulletFactory!\n" + this + " already has an entity with Services.Components.BulletFactoryComponent!",
+            throw new Entitas.EntitasException("Could not set BulletFactory!\n" + this + " already has an entity with Core.Meta.Components.BulletFactoryComponent!",
                 "You should check if the context already has a bulletFactoryEntity before setting it or use context.ReplaceBulletFactory().");
         }
         var entity = CreateEntity();
@@ -26,7 +22,7 @@ public partial class MetaContext {
         return entity;
     }
 
-    public void ReplaceBulletFactory(IBulletFactory newValue) {
+    public void ReplaceBulletFactory(Core.Factories.IBulletFactory newValue) {
         var entity = bulletFactoryEntity;
         if (entity == null) {
             entity = SetBulletFactory(newValue);
@@ -50,19 +46,19 @@ public partial class MetaContext {
 //------------------------------------------------------------------------------
 public partial class MetaEntity {
 
-    public BulletFactoryComponent bulletFactory { get { return (BulletFactoryComponent)GetComponent(MetaComponentsLookup.BulletFactory); } }
+    public Core.Meta.Components.BulletFactoryComponent bulletFactory { get { return (Core.Meta.Components.BulletFactoryComponent)GetComponent(MetaComponentsLookup.BulletFactory); } }
     public bool hasBulletFactory { get { return HasComponent(MetaComponentsLookup.BulletFactory); } }
 
-    public void AddBulletFactory(IBulletFactory newValue) {
+    public void AddBulletFactory(Core.Factories.IBulletFactory newValue) {
         var index = MetaComponentsLookup.BulletFactory;
-        var component = (BulletFactoryComponent)CreateComponent(index, typeof(BulletFactoryComponent));
+        var component = (Core.Meta.Components.BulletFactoryComponent)CreateComponent(index, typeof(Core.Meta.Components.BulletFactoryComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceBulletFactory(IBulletFactory newValue) {
+    public void ReplaceBulletFactory(Core.Factories.IBulletFactory newValue) {
         var index = MetaComponentsLookup.BulletFactory;
-        var component = (BulletFactoryComponent)CreateComponent(index, typeof(BulletFactoryComponent));
+        var component = (Core.Meta.Components.BulletFactoryComponent)CreateComponent(index, typeof(Core.Meta.Components.BulletFactoryComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

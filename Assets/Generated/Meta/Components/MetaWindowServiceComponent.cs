@@ -6,19 +6,15 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Meta.Components;
-using Infrastructure.Services.Windows;
-
 public partial class MetaContext {
 
     public MetaEntity windowServiceEntity { get { return GetGroup(MetaMatcher.WindowService).GetSingleEntity(); } }
-    public WindowServiceComponent windowService { get { return windowServiceEntity.windowService; } }
+    public Core.Meta.Components.WindowServiceComponent windowService { get { return windowServiceEntity.windowService; } }
     public bool hasWindowService { get { return windowServiceEntity != null; } }
 
-    public MetaEntity SetWindowService(IWindowService newValue) {
+    public MetaEntity SetWindowService(Infrastructure.Services.Windows.IWindowService newValue) {
         if (hasWindowService) {
-            throw new Entitas.EntitasException("Could not set WindowService!\n" + this + " already has an entity with Services.Components.WindowServiceComponent!",
+            throw new Entitas.EntitasException("Could not set WindowService!\n" + this + " already has an entity with Core.Meta.Components.WindowServiceComponent!",
                 "You should check if the context already has a windowServiceEntity before setting it or use context.ReplaceWindowService().");
         }
         var entity = CreateEntity();
@@ -26,7 +22,7 @@ public partial class MetaContext {
         return entity;
     }
 
-    public void ReplaceWindowService(IWindowService newValue) {
+    public void ReplaceWindowService(Infrastructure.Services.Windows.IWindowService newValue) {
         var entity = windowServiceEntity;
         if (entity == null) {
             entity = SetWindowService(newValue);
@@ -50,19 +46,19 @@ public partial class MetaContext {
 //------------------------------------------------------------------------------
 public partial class MetaEntity {
 
-    public WindowServiceComponent windowService { get { return (WindowServiceComponent)GetComponent(MetaComponentsLookup.WindowService); } }
+    public Core.Meta.Components.WindowServiceComponent windowService { get { return (Core.Meta.Components.WindowServiceComponent)GetComponent(MetaComponentsLookup.WindowService); } }
     public bool hasWindowService { get { return HasComponent(MetaComponentsLookup.WindowService); } }
 
-    public void AddWindowService(IWindowService newValue) {
+    public void AddWindowService(Infrastructure.Services.Windows.IWindowService newValue) {
         var index = MetaComponentsLookup.WindowService;
-        var component = (WindowServiceComponent)CreateComponent(index, typeof(WindowServiceComponent));
+        var component = (Core.Meta.Components.WindowServiceComponent)CreateComponent(index, typeof(Core.Meta.Components.WindowServiceComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceWindowService(IWindowService newValue) {
+    public void ReplaceWindowService(Infrastructure.Services.Windows.IWindowService newValue) {
         var index = MetaComponentsLookup.WindowService;
-        var component = (WindowServiceComponent)CreateComponent(index, typeof(WindowServiceComponent));
+        var component = (Core.Meta.Components.WindowServiceComponent)CreateComponent(index, typeof(Core.Meta.Components.WindowServiceComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

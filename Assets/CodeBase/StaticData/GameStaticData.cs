@@ -8,6 +8,7 @@ namespace StaticData
         public PlayerStaticData Player;
         public SpawnerStaticData[] Spawners;
         public EnemyStaticData[] Enemies;
+        public WeaponStaticData[] Weapons;
         public int MinAsteroidFragments;
         public int MaxAsteroidsFragments;
     }

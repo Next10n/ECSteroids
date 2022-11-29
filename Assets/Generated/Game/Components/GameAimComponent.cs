@@ -6,24 +6,21 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Game.Components;
-
 public partial class GameEntity {
 
-    public AimComponent aim { get { return (AimComponent)GetComponent(GameComponentsLookup.Aim); } }
+    public Core.Game.Components.AimComponent aim { get { return (Core.Game.Components.AimComponent)GetComponent(GameComponentsLookup.Aim); } }
     public bool hasAim { get { return HasComponent(GameComponentsLookup.Aim); } }
 
     public void AddAim(UnityEngine.Transform newValue) {
         var index = GameComponentsLookup.Aim;
-        var component = (AimComponent)CreateComponent(index, typeof(AimComponent));
+        var component = (Core.Game.Components.AimComponent)CreateComponent(index, typeof(Core.Game.Components.AimComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceAim(UnityEngine.Transform newValue) {
         var index = GameComponentsLookup.Aim;
-        var component = (AimComponent)CreateComponent(index, typeof(AimComponent));
+        var component = (Core.Game.Components.AimComponent)CreateComponent(index, typeof(Core.Game.Components.AimComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

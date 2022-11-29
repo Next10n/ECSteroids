@@ -6,19 +6,15 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Factories;
-using Core.Meta.Components;
-
 public partial class MetaContext {
 
     public MetaEntity enemyFactoryEntity { get { return GetGroup(MetaMatcher.EnemyFactory).GetSingleEntity(); } }
-    public EnemyFactoryComponent enemyFactory { get { return enemyFactoryEntity.enemyFactory; } }
+    public Core.Meta.Components.EnemyFactoryComponent enemyFactory { get { return enemyFactoryEntity.enemyFactory; } }
     public bool hasEnemyFactory { get { return enemyFactoryEntity != null; } }
 
-    public MetaEntity SetEnemyFactory(IEnemyFactory newValue) {
+    public MetaEntity SetEnemyFactory(Core.Factories.IEnemyFactory newValue) {
         if (hasEnemyFactory) {
-            throw new Entitas.EntitasException("Could not set EnemyFactory!\n" + this + " already has an entity with Services.Components.EnemyFactoryComponent!",
+            throw new Entitas.EntitasException("Could not set EnemyFactory!\n" + this + " already has an entity with Core.Meta.Components.EnemyFactoryComponent!",
                 "You should check if the context already has a enemyFactoryEntity before setting it or use context.ReplaceEnemyFactory().");
         }
         var entity = CreateEntity();
@@ -26,7 +22,7 @@ public partial class MetaContext {
         return entity;
     }
 
-    public void ReplaceEnemyFactory(IEnemyFactory newValue) {
+    public void ReplaceEnemyFactory(Core.Factories.IEnemyFactory newValue) {
         var entity = enemyFactoryEntity;
         if (entity == null) {
             entity = SetEnemyFactory(newValue);
@@ -50,19 +46,19 @@ public partial class MetaContext {
 //------------------------------------------------------------------------------
 public partial class MetaEntity {
 
-    public EnemyFactoryComponent enemyFactory { get { return (EnemyFactoryComponent)GetComponent(MetaComponentsLookup.EnemyFactory); } }
+    public Core.Meta.Components.EnemyFactoryComponent enemyFactory { get { return (Core.Meta.Components.EnemyFactoryComponent)GetComponent(MetaComponentsLookup.EnemyFactory); } }
     public bool hasEnemyFactory { get { return HasComponent(MetaComponentsLookup.EnemyFactory); } }
 
-    public void AddEnemyFactory(IEnemyFactory newValue) {
+    public void AddEnemyFactory(Core.Factories.IEnemyFactory newValue) {
         var index = MetaComponentsLookup.EnemyFactory;
-        var component = (EnemyFactoryComponent)CreateComponent(index, typeof(EnemyFactoryComponent));
+        var component = (Core.Meta.Components.EnemyFactoryComponent)CreateComponent(index, typeof(Core.Meta.Components.EnemyFactoryComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceEnemyFactory(IEnemyFactory newValue) {
+    public void ReplaceEnemyFactory(Core.Factories.IEnemyFactory newValue) {
         var index = MetaComponentsLookup.EnemyFactory;
-        var component = (EnemyFactoryComponent)CreateComponent(index, typeof(EnemyFactoryComponent));
+        var component = (Core.Meta.Components.EnemyFactoryComponent)CreateComponent(index, typeof(Core.Meta.Components.EnemyFactoryComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

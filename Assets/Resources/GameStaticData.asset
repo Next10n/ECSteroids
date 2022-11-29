@@ -38,5 +38,16 @@ MonoBehaviour:
     MaxVelocity: 5
     AssetPath: Fragment
     Score: 1
+  Weapons:
+  - Teleportable: 1
+    WeaponType: 0
+    ProjectileSpeed: 10
+    DestroyTime: 3
+    AssetPath: Bullet
+  - Teleportable: 0
+    WeaponType: 1
+    ProjectileSpeed: 20
+    DestroyTime: 2
+    AssetPath: Laser
   MinAsteroidFragments: 2
   MaxAsteroidsFragments: 4

@@ -6,12 +6,9 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Game.Components;
-
 public partial class GameEntity {
 
-    static readonly LaserComponent laserComponent = new LaserComponent();
+    static readonly Core.Game.Components.LaserComponent laserComponent = new Core.Game.Components.LaserComponent();
 
     public bool isLaser {
         get { return HasComponent(GameComponentsLookup.Laser); }

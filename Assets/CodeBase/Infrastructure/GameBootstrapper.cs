@@ -62,7 +62,7 @@ namespace Infrastructure
             _playerFactory = new PlayerFactory();
             _staticDataService = new StaticDataService(_assetProvider);
             _enemyFactory = new EnemyFactory(_randomProvider, _cameraProvider, _staticDataService);
-            _bulletFactory = new BulletFactory();
+            _bulletFactory = new BulletFactory(_staticDataService);
             _ecsService = new EcsService(_viewService, _timeService, _inputService, _cameraProvider, _enemyFactory, _windowService,
                 _bulletFactory, _staticDataService, _randomProvider);
             _gameStateMachine = new GameStateMachine(_updateService, _windowService, _sceneProvider, _ecsService, _playerFactory, _enemyFactory,

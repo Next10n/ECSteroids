@@ -6,24 +6,21 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Game.Components;
-
 public partial class GameEntity {
 
-    public AccelerationSpeedComponent accelerationSpeed { get { return (AccelerationSpeedComponent)GetComponent(GameComponentsLookup.AccelerationSpeed); } }
+    public Core.Game.Components.AccelerationSpeedComponent accelerationSpeed { get { return (Core.Game.Components.AccelerationSpeedComponent)GetComponent(GameComponentsLookup.AccelerationSpeed); } }
     public bool hasAccelerationSpeed { get { return HasComponent(GameComponentsLookup.AccelerationSpeed); } }
 
     public void AddAccelerationSpeed(float newValue) {
         var index = GameComponentsLookup.AccelerationSpeed;
-        var component = (AccelerationSpeedComponent)CreateComponent(index, typeof(AccelerationSpeedComponent));
+        var component = (Core.Game.Components.AccelerationSpeedComponent)CreateComponent(index, typeof(Core.Game.Components.AccelerationSpeedComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceAccelerationSpeed(float newValue) {
         var index = GameComponentsLookup.AccelerationSpeed;
-        var component = (AccelerationSpeedComponent)CreateComponent(index, typeof(AccelerationSpeedComponent));
+        var component = (Core.Game.Components.AccelerationSpeedComponent)CreateComponent(index, typeof(Core.Game.Components.AccelerationSpeedComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

@@ -6,12 +6,9 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Game.Components;
-
 public partial class GameEntity {
 
-    static readonly ResetScoreComponent resetScoreComponent = new ResetScoreComponent();
+    static readonly Core.Game.Components.ResetScoreComponent resetScoreComponent = new Core.Game.Components.ResetScoreComponent();
 
     public bool isResetScore {
         get { return HasComponent(GameComponentsLookup.ResetScore); }

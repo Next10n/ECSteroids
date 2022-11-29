@@ -6,42 +6,39 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Game.Components;
-
 public static class GameComponentsLookup {
 
-    public const int DeadListener = 0;
-    public const int DestroyEntityListener = 1;
-    public const int Acceleration = 2;
-    public const int AccelerationSpeed = 3;
-    public const int AddScore = 4;
-    public const int Aim = 5;
-    public const int AngularSpeed = 6;
-    public const int Asset = 7;
-    public const int Bullet = 8;
-    public const int CurrentSpawnTime = 9;
-    public const int Dead = 10;
-    public const int Deceleration = 11;
-    public const int DestroyDelay = 12;
-    public const int DestroyEntity = 13;
-    public const int DestroyTimer = 14;
-    public const int Destructible = 15;
-    public const int Direction = 16;
-    public const int Enemy = 17;
-    public const int Laser = 18;
-    public const int Player = 19;
-    public const int Position = 20;
-    public const int ResetScore = 21;
-    public const int RotationAngle = 22;
-    public const int Score = 23;
-    public const int Spawner = 24;
-    public const int SpawnTime = 25;
-    public const int SpawnTimerReady = 26;
-    public const int Teleportable = 27;
-    public const int Triggered = 28;
-    public const int Velocity = 29;
-    public const int Weapon = 30;
+    public const int Acceleration = 0;
+    public const int AccelerationSpeed = 1;
+    public const int AddScore = 2;
+    public const int Aim = 3;
+    public const int AngularSpeed = 4;
+    public const int Asset = 5;
+    public const int Bullet = 6;
+    public const int CurrentSpawnTime = 7;
+    public const int Dead = 8;
+    public const int Deceleration = 9;
+    public const int DestroyDelay = 10;
+    public const int DestroyEntity = 11;
+    public const int DestroyTimer = 12;
+    public const int Destructible = 13;
+    public const int Direction = 14;
+    public const int Enemy = 15;
+    public const int Laser = 16;
+    public const int Player = 17;
+    public const int Position = 18;
+    public const int ResetScore = 19;
+    public const int RotationAngle = 20;
+    public const int Score = 21;
+    public const int Spawner = 22;
+    public const int SpawnTime = 23;
+    public const int SpawnTimerReady = 24;
+    public const int Teleportable = 25;
+    public const int Triggered = 26;
+    public const int Velocity = 27;
+    public const int Weapon = 28;
+    public const int DeadListener = 29;
+    public const int DestroyEntityListener = 30;
     public const int PositionListener = 31;
     public const int RotationAngleListener = 32;
     public const int ScoreListener = 33;
@@ -50,8 +47,6 @@ public static class GameComponentsLookup {
     public const int TotalComponents = 35;
 
     public static readonly string[] componentNames = {
-        "DeadListener",
-        "DestroyEntityListener",
         "Acceleration",
         "AccelerationSpeed",
         "AddScore",
@@ -81,6 +76,8 @@ public static class GameComponentsLookup {
         "Triggered",
         "Velocity",
         "Weapon",
+        "DeadListener",
+        "DestroyEntityListener",
         "PositionListener",
         "RotationAngleListener",
         "ScoreListener",
@@ -88,37 +85,37 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(Core.Game.Components.AccelerationComponent),
+        typeof(Core.Game.Components.AccelerationSpeedComponent),
+        typeof(Core.Game.Components.AddScoreComponent),
+        typeof(Core.Game.Components.AimComponent),
+        typeof(Core.Game.Components.AngularSpeedComponent),
+        typeof(Core.Game.Components.AssetComponent),
+        typeof(Core.Game.Components.BulletComponent),
+        typeof(Core.Game.Components.CurrentSpawnTimeComponent),
+        typeof(Core.Game.Components.DeadComponent),
+        typeof(Core.Game.Components.DecelerationComponent),
+        typeof(Core.Game.Components.DestroyDelayComponent),
+        typeof(Core.Game.Components.DestroyEntityComponent),
+        typeof(Core.Game.Components.DestroyTimerComponent),
+        typeof(Core.Game.Components.DestructibleComponent),
+        typeof(Core.Game.Components.DirectionComponent),
+        typeof(Core.Game.Components.EnemyComponent),
+        typeof(Core.Game.Components.LaserComponent),
+        typeof(Core.Game.Components.PlayerComponent),
+        typeof(Core.Game.Components.PositionComponent),
+        typeof(Core.Game.Components.ResetScoreComponent),
+        typeof(Core.Game.Components.RotationAngleComponent),
+        typeof(Core.Game.Components.ScoreComponent),
+        typeof(Core.Game.Components.SpawnerComponent),
+        typeof(Core.Game.Components.SpawnTimeComponent),
+        typeof(Core.Game.Components.SpawnTimerReadyComponent),
+        typeof(Core.Game.Components.TeleportableComponent),
+        typeof(Core.Game.Components.TriggeredComponent),
+        typeof(Core.Game.Components.VelocityComponent),
+        typeof(Core.Game.Components.WeaponComponent),
         typeof(DeadListenerComponent),
         typeof(DestroyEntityListenerComponent),
-        typeof(AccelerationComponent),
-        typeof(AccelerationSpeedComponent),
-        typeof(AddScoreComponent),
-        typeof(AimComponent),
-        typeof(AngularSpeedComponent),
-        typeof(AssetComponent),
-        typeof(BulletComponent),
-        typeof(CurrentSpawnTimeComponent),
-        typeof(DeadComponent),
-        typeof(DecelerationComponent),
-        typeof(DestroyDelayComponent),
-        typeof(DestroyEntityComponent),
-        typeof(DestroyTimerComponent),
-        typeof(DestructibleComponent),
-        typeof(DirectionComponent),
-        typeof(EnemyComponent),
-        typeof(LaserComponent),
-        typeof(PlayerComponent),
-        typeof(PositionComponent),
-        typeof(ResetScoreComponent),
-        typeof(RotationAngleComponent),
-        typeof(ScoreComponent),
-        typeof(SpawnerComponent),
-        typeof(SpawnTimeComponent),
-        typeof(SpawnTimerReadyComponent),
-        typeof(TeleportableComponent),
-        typeof(TriggeredComponent),
-        typeof(VelocityComponent),
-        typeof(WeaponComponent),
         typeof(PositionListenerComponent),
         typeof(RotationAngleListenerComponent),
         typeof(ScoreListenerComponent),

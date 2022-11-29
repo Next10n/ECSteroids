@@ -6,19 +6,15 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Meta.Components;
-using Infrastructure.Services;
-
 public partial class MetaContext {
 
     public MetaEntity cameraProviderEntity { get { return GetGroup(MetaMatcher.CameraProvider).GetSingleEntity(); } }
-    public CameraProviderComponent cameraProvider { get { return cameraProviderEntity.cameraProvider; } }
+    public Core.Meta.Components.CameraProviderComponent cameraProvider { get { return cameraProviderEntity.cameraProvider; } }
     public bool hasCameraProvider { get { return cameraProviderEntity != null; } }
 
-    public MetaEntity SetCameraProvider(ICameraProvider newValue) {
+    public MetaEntity SetCameraProvider(Infrastructure.Services.ICameraProvider newValue) {
         if (hasCameraProvider) {
-            throw new Entitas.EntitasException("Could not set CameraProvider!\n" + this + " already has an entity with Services.Components.CameraProviderComponent!",
+            throw new Entitas.EntitasException("Could not set CameraProvider!\n" + this + " already has an entity with Core.Meta.Components.CameraProviderComponent!",
                 "You should check if the context already has a cameraProviderEntity before setting it or use context.ReplaceCameraProvider().");
         }
         var entity = CreateEntity();
@@ -26,7 +22,7 @@ public partial class MetaContext {
         return entity;
     }
 
-    public void ReplaceCameraProvider(ICameraProvider newValue) {
+    public void ReplaceCameraProvider(Infrastructure.Services.ICameraProvider newValue) {
         var entity = cameraProviderEntity;
         if (entity == null) {
             entity = SetCameraProvider(newValue);
@@ -50,19 +46,19 @@ public partial class MetaContext {
 //------------------------------------------------------------------------------
 public partial class MetaEntity {
 
-    public CameraProviderComponent cameraProvider { get { return (CameraProviderComponent)GetComponent(MetaComponentsLookup.CameraProvider); } }
+    public Core.Meta.Components.CameraProviderComponent cameraProvider { get { return (Core.Meta.Components.CameraProviderComponent)GetComponent(MetaComponentsLookup.CameraProvider); } }
     public bool hasCameraProvider { get { return HasComponent(MetaComponentsLookup.CameraProvider); } }
 
-    public void AddCameraProvider(ICameraProvider newValue) {
+    public void AddCameraProvider(Infrastructure.Services.ICameraProvider newValue) {
         var index = MetaComponentsLookup.CameraProvider;
-        var component = (CameraProviderComponent)CreateComponent(index, typeof(CameraProviderComponent));
+        var component = (Core.Meta.Components.CameraProviderComponent)CreateComponent(index, typeof(Core.Meta.Components.CameraProviderComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceCameraProvider(ICameraProvider newValue) {
+    public void ReplaceCameraProvider(Infrastructure.Services.ICameraProvider newValue) {
         var index = MetaComponentsLookup.CameraProvider;
-        var component = (CameraProviderComponent)CreateComponent(index, typeof(CameraProviderComponent));
+        var component = (Core.Meta.Components.CameraProviderComponent)CreateComponent(index, typeof(Core.Meta.Components.CameraProviderComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

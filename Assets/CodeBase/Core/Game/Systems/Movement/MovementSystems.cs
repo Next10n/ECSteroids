@@ -4,7 +4,7 @@ namespace Core.Game.Systems
     {
         public MovementSystems(Contexts contexts)
         {
-            Add(new AddRotationVelocitySystem(contexts));
+            Add(new AddPlayerRotationSystem(contexts));
             Add(new CalculateDirectionSystem(contexts));
             Add(new AddPlayerVelocitySystem(contexts));
             Add(new DecelerationSystem(contexts));

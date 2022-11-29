@@ -6,19 +6,15 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Meta.Components;
-using Infrastructure.Services.View;
-
 public partial class MetaContext {
 
     public MetaEntity viewServiceEntity { get { return GetGroup(MetaMatcher.ViewService).GetSingleEntity(); } }
-    public ViewServiceComponent viewService { get { return viewServiceEntity.viewService; } }
+    public Core.Meta.Components.ViewServiceComponent viewService { get { return viewServiceEntity.viewService; } }
     public bool hasViewService { get { return viewServiceEntity != null; } }
 
-    public MetaEntity SetViewService(IViewService newValue) {
+    public MetaEntity SetViewService(Infrastructure.Services.View.IViewService newValue) {
         if (hasViewService) {
-            throw new Entitas.EntitasException("Could not set ViewService!\n" + this + " already has an entity with Services.Components.ViewServiceComponent!",
+            throw new Entitas.EntitasException("Could not set ViewService!\n" + this + " already has an entity with Core.Meta.Components.ViewServiceComponent!",
                 "You should check if the context already has a viewServiceEntity before setting it or use context.ReplaceViewService().");
         }
         var entity = CreateEntity();
@@ -26,7 +22,7 @@ public partial class MetaContext {
         return entity;
     }
 
-    public void ReplaceViewService(IViewService newValue) {
+    public void ReplaceViewService(Infrastructure.Services.View.IViewService newValue) {
         var entity = viewServiceEntity;
         if (entity == null) {
             entity = SetViewService(newValue);
@@ -50,19 +46,19 @@ public partial class MetaContext {
 //------------------------------------------------------------------------------
 public partial class MetaEntity {
 
-    public ViewServiceComponent viewService { get { return (ViewServiceComponent)GetComponent(MetaComponentsLookup.ViewService); } }
+    public Core.Meta.Components.ViewServiceComponent viewService { get { return (Core.Meta.Components.ViewServiceComponent)GetComponent(MetaComponentsLookup.ViewService); } }
     public bool hasViewService { get { return HasComponent(MetaComponentsLookup.ViewService); } }
 
-    public void AddViewService(IViewService newValue) {
+    public void AddViewService(Infrastructure.Services.View.IViewService newValue) {
         var index = MetaComponentsLookup.ViewService;
-        var component = (ViewServiceComponent)CreateComponent(index, typeof(ViewServiceComponent));
+        var component = (Core.Meta.Components.ViewServiceComponent)CreateComponent(index, typeof(Core.Meta.Components.ViewServiceComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceViewService(IViewService newValue) {
+    public void ReplaceViewService(Infrastructure.Services.View.IViewService newValue) {
         var index = MetaComponentsLookup.ViewService;
-        var component = (ViewServiceComponent)CreateComponent(index, typeof(ViewServiceComponent));
+        var component = (Core.Meta.Components.ViewServiceComponent)CreateComponent(index, typeof(Core.Meta.Components.ViewServiceComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

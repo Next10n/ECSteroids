@@ -6,24 +6,21 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Game.Components;
-
 public partial class GameEntity {
 
-    public DirectionComponent direction { get { return (DirectionComponent)GetComponent(GameComponentsLookup.Direction); } }
+    public Core.Game.Components.DirectionComponent direction { get { return (Core.Game.Components.DirectionComponent)GetComponent(GameComponentsLookup.Direction); } }
     public bool hasDirection { get { return HasComponent(GameComponentsLookup.Direction); } }
 
     public void AddDirection(UnityEngine.Vector2 newValue) {
         var index = GameComponentsLookup.Direction;
-        var component = (DirectionComponent)CreateComponent(index, typeof(DirectionComponent));
+        var component = (Core.Game.Components.DirectionComponent)CreateComponent(index, typeof(Core.Game.Components.DirectionComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceDirection(UnityEngine.Vector2 newValue) {
         var index = GameComponentsLookup.Direction;
-        var component = (DirectionComponent)CreateComponent(index, typeof(DirectionComponent));
+        var component = (Core.Game.Components.DirectionComponent)CreateComponent(index, typeof(Core.Game.Components.DirectionComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

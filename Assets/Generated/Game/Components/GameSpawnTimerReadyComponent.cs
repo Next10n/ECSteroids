@@ -6,12 +6,9 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Core.Game.Components;
-
 public partial class GameEntity {
 
-    static readonly SpawnTimerReadyComponent spawnTimerReadyComponent = new SpawnTimerReadyComponent();
+    static readonly Core.Game.Components.SpawnTimerReadyComponent spawnTimerReadyComponent = new Core.Game.Components.SpawnTimerReadyComponent();
 
     public bool isSpawnTimerReady {
         get { return HasComponent(GameComponentsLookup.SpawnTimerReady); }
