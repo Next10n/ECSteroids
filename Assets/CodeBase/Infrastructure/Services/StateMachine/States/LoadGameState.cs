@@ -1,4 +1,5 @@
 using Core.Factories;
+using Extensions;
 using Infrastructure.Services.Ecs;
 using Infrastructure.Services.SceneProvider;
 using Infrastructure.Services.StaticData;
@@ -10,7 +11,6 @@ namespace Infrastructure.Services.StateMachine.States
 {
     public class LoadGameState : IState
     {
-        private const string GameScene = "Game";
         private readonly ISceneProvider _sceneProvider;
         private readonly IEcsService _ecsService;
         private readonly IUpdateService _updateService;
@@ -40,7 +40,7 @@ namespace Infrastructure.Services.StateMachine.States
 
         public void Enter()
         {
-            _sceneProvider.Load(GameScene, OnLoad);
+            _sceneProvider.Load(Constants.GameScene, OnLoad);
         }
 
         public void Exit()
@@ -51,7 +51,6 @@ namespace Infrastructure.Services.StateMachine.States
         {
             Contexts contexts = _ecsService.CreateEcsWorld();
             _updateService.RegisterUpdatable(_ecsService);
-            _updateService.RegisterLateUpdatable(_ecsService);
             _bulletFactory.Initialize(contexts);
             _windowFactory.Initialize(_stateMachine, contexts);
             _playerFactory.Initialize(contexts.game);

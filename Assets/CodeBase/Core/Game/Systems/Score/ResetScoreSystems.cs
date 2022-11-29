@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Entitas;
 
-namespace Core.Game.Systems.ScoreSystems
+namespace Core.Game.Systems.Score
 {
     public class ResetScoreSystems : ReactiveSystem<GameEntity>
     {

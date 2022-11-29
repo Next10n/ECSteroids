@@ -6,6 +6,7 @@ namespace UI.View.Listeners
         {
             base.InitializeView(entity);
             Entity.AddRotationAngleListener(this);
+            OnRotationAngle(entity, entity.rotationAngle.Value);
         }
         
         public abstract void OnRotationAngle(GameEntity entity, float value);

@@ -1,16 +1,16 @@
 using Entitas;
 using Infrastructure.Services.Time;
 
-namespace Core.Game.Systems.Spawn
+namespace Core.Game.Systems.Collect
 {
-    public class AddSpawnerTimerSystem : IExecuteSystem, IInitializeSystem
+    public class CollectSpawnerTimerSystem : IExecuteSystem, IInitializeSystem
     {
         private readonly Contexts _contexts;
         private readonly IGroup<GameEntity> _timerGroup;
         
         private ITimeService _timeService;
 
-        public AddSpawnerTimerSystem(Contexts contexts)
+        public CollectSpawnerTimerSystem(Contexts contexts)
         {
             _contexts = contexts;
             _timerGroup = _contexts.game.GetGroup(GameMatcher.CurrentSpawnTime);

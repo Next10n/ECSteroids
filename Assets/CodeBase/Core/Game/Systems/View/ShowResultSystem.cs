@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Entitas;
 using Infrastructure.Services.Windows;
 
-namespace Core.Game.Systems.ViewSystems
+namespace Core.Game.Systems.View
 {
     public class ShowResultSystem : ReactiveSystem<GameEntity>, IInitializeSystem
     {

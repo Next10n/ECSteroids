@@ -1,4 +1,4 @@
-﻿namespace Core.Game.Systems.ScoreSystems
+﻿namespace Core.Game.Systems.Score
 {
     public sealed class ScoreSystems : Feature
     {

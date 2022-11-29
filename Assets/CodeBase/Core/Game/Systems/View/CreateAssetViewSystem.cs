@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Entitas;
 using Infrastructure.Services.View;
 
-namespace Core.Game.Systems.ViewSystems
+namespace Core.Game.Systems.View
 {
     public class CreateAssetViewSystem : ReactiveSystem<GameEntity>, IInitializeSystem
     {
@@ -32,7 +32,7 @@ namespace Core.Game.Systems.ViewSystems
         protected override void Execute(List<GameEntity> entities)
         {
             foreach (GameEntity viewEntity in entities)
-                _viewService.CreateView(_contexts, viewEntity, viewEntity.asset.Value);
+                _viewService.CreateView(viewEntity, viewEntity.asset.Value);
         }
     }
 }

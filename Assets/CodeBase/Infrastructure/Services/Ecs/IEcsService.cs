@@ -2,7 +2,7 @@
 
 namespace Infrastructure.Services.Ecs
 {
-    public interface IEcsService : ILateUpdatable, IUpdatable
+    public interface IEcsService : IUpdatable
     {
         Contexts CreateEcsWorld();
     }

@@ -13,7 +13,7 @@ namespace Infrastructure.Services.View
             _assetProvider = assetProvider;
         }
 
-        public void CreateView(Contexts contexts, GameEntity entity, string assetName)
+        public void CreateView(GameEntity entity, string assetName)
         {
             GameObject prefab = _assetProvider.Load(assetName);
             GameObject instantiate = Object.Instantiate(prefab);

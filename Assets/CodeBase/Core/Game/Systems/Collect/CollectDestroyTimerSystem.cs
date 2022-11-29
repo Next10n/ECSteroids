@@ -1,15 +1,15 @@
 ﻿using Entitas;
 using Infrastructure.Services.Time;
 
-namespace Core.Game.Systems.DestroySystems
+namespace Core.Game.Systems.Collect
 {
-    public class DestroyTimerSystem : IExecuteSystem, IInitializeSystem
+    public class CollectDestroyTimerSystem : IExecuteSystem, IInitializeSystem
     {
         private readonly Contexts _contexts;
         private readonly IGroup<GameEntity> _delayDestroyGroup;
         private ITimeService _timeService;
 
-        public DestroyTimerSystem(Contexts contexts)
+        public CollectDestroyTimerSystem(Contexts contexts)
         {
             _contexts = contexts;
             _delayDestroyGroup = _contexts.game.GetGroup(GameMatcher.DestroyDelay);

@@ -1,19 +1,9 @@
 ﻿using Core.Factories;
-using Core.Game.Systems.DestroySystems;
 using Entitas;
 using Infrastructure.Services.Input;
 
-namespace Core.Game.Systems.ScoreSystems
+namespace Core.Game.Systems.Score
 {
-    public sealed class WeaponSystems : Feature
-    {
-        public WeaponSystems(Contexts contexts)
-        {
-            Add(new ShootSystem(contexts));
-            Add(new DestroyBulletSystem(contexts));
-        }
-    }
-
     public class ShootSystem : IExecuteSystem, IInitializeSystem
     {
         private IInputService _inputService;
