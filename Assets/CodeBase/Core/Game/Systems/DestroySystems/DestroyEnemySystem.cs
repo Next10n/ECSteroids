@@ -9,7 +9,7 @@ namespace Core.Game.Systems.DestroySystems
 
         public DestroyEnemySystem(Contexts contexts) : base(contexts.game)
         {
-            _bullets = contexts.game.GetGroup(GameMatcher.Bullet);
+            _bullets = contexts.game.GetGroup(GameMatcher.AnyOf(GameMatcher.Bullet, GameMatcher.Laser));
         }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)

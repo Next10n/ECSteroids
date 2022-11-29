@@ -8,10 +8,13 @@ namespace UI.View.Collectors
         {
             if(Entity.isEnabled == false)
                 return;
-            
+
             if(col.TryGetComponent(out UnityGameView unityGameView))
             {
-                if(AlreadyTriggered(unityGameView.Entity, Entity) == false)
+                if(unityGameView.Entity.isEnabled == false)
+                    return;
+
+            if(AlreadyTriggered(unityGameView.Entity, Entity) == false)
                     unityGameView.Entity.ReplaceTriggered(Entity.creationIndex);
                 if(AlreadyTriggered(Entity, unityGameView.Entity) == false)
                     Entity.ReplaceTriggered(unityGameView.Entity.creationIndex);
