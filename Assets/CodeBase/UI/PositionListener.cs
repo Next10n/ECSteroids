@@ -5,9 +5,9 @@ namespace UI
 {
     public abstract class PositionListener : UnityGameView, IPositionListener
     {
-        public override void InitializeView(Contexts contexts, GameEntity entity)
+        public override void InitializeView(GameEntity entity)
         {
-            base.InitializeView(contexts, entity);
+            base.InitializeView(entity);
             entity.AddPositionListener(this);
         }
         

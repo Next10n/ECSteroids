@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Services.View
 {
-    public class Trigger2DGameView : UnityGameView
+    public class Trigger2DGameCollector : UnityGameView
     {
         private void OnTriggerEnter2D(Collider2D col)
         {

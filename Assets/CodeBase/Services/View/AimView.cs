@@ -6,9 +6,9 @@ namespace Services.View
     {
         [SerializeField] private Transform _aim;
 
-        public override void InitializeView(Contexts contexts, GameEntity entity)
+        public override void InitializeView(GameEntity entity)
         {
-            base.InitializeView(contexts, entity);
+            base.InitializeView(entity);
             entity.AddAim(_aim);
         }
     }

@@ -6,7 +6,8 @@ namespace Game.Components
     public enum EnemyType
     {
         Asteroid = 0,
-        Ufo = 1
+        Ufo = 1,
+        AsteroidFragments = 2
     }
     
     [Game]

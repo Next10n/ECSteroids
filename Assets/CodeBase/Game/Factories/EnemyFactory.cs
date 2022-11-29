@@ -1,5 +1,5 @@
+using System;
 using Game.Components;
-using Infrastructure.StateMachine.Gameplay;
 using Services;
 using Services.StaticData;
 using StaticData;
@@ -31,46 +31,53 @@ namespace Game.Factories
             _bounds = _cameraProvider.GetMainCameraBounds();
         }
 
-        public void Create(EnemyType enemyType)
+        public GameEntity Create(EnemyType enemyType)
         {
             EnemyStaticData enemyStaticData = _staticDataService.GetEnemyData(enemyType);
-            switch (enemyType)
+            switch(enemyType)
             {
                 case EnemyType.Asteroid:
-                    CreateAsteroid(enemyStaticData);
-                    break;
+                    return CreateAsteroid(enemyStaticData);
                 case EnemyType.Ufo:
-                    CreateUfo(enemyStaticData);
-                    break;
+                    return CreateUfo(enemyStaticData);
+                case EnemyType.AsteroidFragments:
+                    return CreateAsteroidFragment(enemyStaticData);
             }
+
+            throw new InvalidOperationException($"Unknown enemy Type {enemyType}");
+        }
+
+        private GameEntity CreateAsteroidFragment(EnemyStaticData enemyStaticData)
+        {
+            return CreateEnemy(enemyStaticData);
         }
 
         private GameEntity CreateAsteroid(EnemyStaticData enemyStaticData)
         {
-            return CreateEnemy(enemyStaticData);
+            GameEntity asteroid = CreateEnemy(enemyStaticData);
+            asteroid.isDestructible = true;
+            asteroid.AddPosition(RandomBoundsPosition());
+            return asteroid;
         }
 
         private GameEntity CreateUfo(EnemyStaticData enemyStaticData)
         {
-            return CreateEnemy(enemyStaticData);
+            GameEntity ufo = CreateEnemy(enemyStaticData);
+            ufo.AddPosition(RandomBoundsPosition());
+            return ufo;
         }
 
         private GameEntity CreateEnemy(EnemyStaticData enemyStaticData)
         {
             GameEntity enemy = _gameContext.CreateEntity();
-            AddSpaceComponents(enemy, enemyStaticData);
             enemy.AddAsset(enemyStaticData.AssetPath);
             enemy.isEnemy = true;
+            enemy.AddAddScore(enemyStaticData.Score);
+            enemy.AddVelocity(RandomVelocity(enemyStaticData));
+            enemy.isTeleportable = true;
             return enemy;
         }
-
-        private void AddSpaceComponents(GameEntity gameEntity, EnemyStaticData enemyStaticData)
-        {
-            gameEntity.AddPosition(RandomBoundsPosition());
-            gameEntity.AddVelocity(RandomVelocity(enemyStaticData));
-            gameEntity.isTeleportable = true;
-        }
-
+        
         private Vector2 RandomVelocity(EnemyStaticData enemyStaticData)
         {
             float randomX = _randomProvider.Random(0f, 1f) * (_randomProvider.RandomFlag() ? 1f : -1f);
@@ -82,7 +89,7 @@ namespace Game.Factories
 
         private Vector2 RandomBoundsPosition()
         {
-            if (_randomProvider.RandomFlag())
+            if(_randomProvider.RandomFlag())
             {
                 float x = _randomProvider.Random(-_bounds.extents.x, _bounds.extents.x);
                 float y = _bounds.extents.y;

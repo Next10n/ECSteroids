@@ -19,25 +19,34 @@ namespace Infrastructure.StateMachine.Gameplay
 
         public void Enter(Contexts contexts)
         {
-            DestroyEntities(contexts);
-            _windowService.HideResult();
-            GameEntity player = _playerFactory.Create(_staticDataService.PlayerStaticData);
-            _windowService.InitializeHud(contexts, player);
-        }
-
-        private static void DestroyEntities(Contexts contexts)
-        {
-            GameEntity[] gameEntities = contexts.game.GetEntities();
-            foreach(GameEntity gameEntity in gameEntities)
-            {
-                if(gameEntity.hasPosition)
-                    gameEntity.isDestroyEntity = true;
-            }
+            DestroyEnemies(contexts);
+            HideHud();
+            ResetScore(contexts);
+            InitializeHud(contexts, CreatePlayer());
         }
 
         public void Exit()
         {
             
+        }
+
+        private void InitializeHud(Contexts contexts, GameEntity player) => 
+            _windowService.InitializeHud(contexts, player);
+
+        private GameEntity CreatePlayer() => 
+            _playerFactory.Create(_staticDataService.PlayerStaticData);
+
+        private static void ResetScore(Contexts contexts) => 
+            contexts.game.scoreEntity.isResetScore = true;
+
+        private void HideHud() => 
+            _windowService.HideResult();
+
+        private static void DestroyEnemies(Contexts contexts)
+        {
+            foreach(GameEntity gameEntity in contexts.game.GetEntities())
+                if(gameEntity.isEnemy)
+                    gameEntity.isDestroyEntity = true;
         }
     }
 }

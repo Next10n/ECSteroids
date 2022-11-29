@@ -2,9 +2,9 @@ namespace Services.View
 {
     public abstract class DeadListener : UnityGameView, IDeadListener
     {
-        public override void InitializeView(Contexts contexts, GameEntity entity)
+        public override void InitializeView(GameEntity entity)
         {
-            base.InitializeView(contexts, entity);
+            base.InitializeView(entity);
             entity.AddDeadListener(this);
         }
         

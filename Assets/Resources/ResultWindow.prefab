@@ -91,8 +91,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efce0c2bd83418faae41c343fce15b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _score: {fileID: 6335292312797583574}
   _restartButton: {fileID: 6335292312893304117}
+  _contextsViews:
+  - {fileID: 8100166158143901700}
 --- !u!1 &6335292312797583572
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,8 +105,9 @@ GameObject:
   - component: {fileID: 6335292312797583573}
   - component: {fileID: 6335292312797583575}
   - component: {fileID: 6335292312797583574}
+  - component: {fileID: 8100166158143901700}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ScoreTextListener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,6 +230,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8100166158143901700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6335292312797583572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c0fc2c35a841f29373f4d46bdd3398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _score: {fileID: 6335292312797583574}
 --- !u!1 &6335292312893304107
 GameObject:
   m_ObjectHideFlags: 0

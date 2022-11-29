@@ -12,17 +12,21 @@ public static class MetaComponentsLookup {
     public const int CameraProvider = 1;
     public const int EnemyFactory = 2;
     public const int InputService = 3;
-    public const int TimeService = 4;
-    public const int ViewService = 5;
-    public const int WindowService = 6;
+    public const int RandomProvider = 4;
+    public const int StaticDataService = 5;
+    public const int TimeService = 6;
+    public const int ViewService = 7;
+    public const int WindowService = 8;
 
-    public const int TotalComponents = 7;
+    public const int TotalComponents = 9;
 
     public static readonly string[] componentNames = {
         "BulletFactory",
         "CameraProvider",
         "EnemyFactory",
         "InputService",
+        "RandomProvider",
+        "StaticDataService",
         "TimeService",
         "ViewService",
         "WindowService"
@@ -33,6 +37,8 @@ public static class MetaComponentsLookup {
         typeof(Services.Components.CameraProviderComponent),
         typeof(Services.Components.EnemyFactoryComponent),
         typeof(Services.Components.InputServiceComponent),
+        typeof(Services.Components.RandomProviderComponent),
+        typeof(Services.Components.StaticDataServiceComponent),
         typeof(Services.Components.TimeServiceComponent),
         typeof(Services.Components.ViewServiceComponent),
         typeof(Services.Components.WindowServiceComponent)

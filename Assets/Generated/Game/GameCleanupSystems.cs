@@ -12,5 +12,6 @@ public sealed class GameCleanupSystems : Feature {
         Add(new RemoveSpawnTimerReadyGameSystem(contexts));
         Add(new RemoveTriggeredGameSystem(contexts));
         Add(new DestroyDestroyEntityGameSystem(contexts));
+        Add(new RemoveResetScoreGameSystem(contexts));
     }
 }

@@ -60,30 +60,60 @@ namespace Game.Components
         Laser
     }
     
+    [Game]
     public sealed class WeaponComponent : IComponent
     {
         public WeaponType Value;
     }
     
+    [Game]
     public sealed class BulletComponent : IComponent
     {
         
     }
     
+    [Game]
     public sealed class LaserComponent : IComponent
     {
         
     }
     
+    [Game]
     public sealed class DestroyDelayComponent : IComponent
     {
         public float Value;
     }
     
+    [Game]
     public sealed class DestroyTimerComponent : IComponent
     {
         public float Value;
     }
+    
+    [Game, Unique, Event(EventTarget.Self)]
+    public sealed class ScoreComponent : IComponent
+    {
+        public int Value;
+    }
+    
+    [Game]
+    public sealed class AddScoreComponent : IComponent
+    {
+        public int Value;
+    }
+
+    [Game, Cleanup(CleanupMode.RemoveComponent)]
+    public sealed class ResetScoreComponent : IComponent
+    {
+        
+    }
+
+    [Game]
+    public sealed class DestructibleComponent : IComponent
+    {
+        
+    }
+
 
 
 

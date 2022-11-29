@@ -4,6 +4,7 @@ using Game.Systems.Dead;
 using Game.Systems.WeaponSystems;
 using Services;
 using Services.Input;
+using Services.StaticData;
 using Services.Systems;
 using Services.Time;
 using Services.View;
@@ -22,7 +23,8 @@ namespace Infrastructure.StateMachine.Game
         private SpawnSystems _spawnSystem;
         private Contexts _contexts;
         private ShowResultSystem _showResultSystem;
-        private DestroyDeadSystem _destroyDeadSystem;
+        private WeaponSystems _weaponSystems;
+        private GameplaySystems _gameplaySystems;
 
         private readonly IViewService _viewService;
         private readonly ITimeService _timeService;
@@ -31,11 +33,12 @@ namespace Infrastructure.StateMachine.Game
         private readonly IEnemyFactory _enemyFactory;
         private readonly IWindowService _windowService;
         private readonly IBulletFactory _bulletFactory;
-        private WeaponSystems _weaponSystems;
-        private CommonSystems _commonSystems;
+        private readonly IStaticDataService _staticDataService;
+        private readonly IRandomProvider _randomProvider;
 
         public EcsService(IViewService viewService, ITimeService timeService, IInputService inputService,
-            ICameraProvider cameraProvider, IEnemyFactory enemyFactory, IWindowService windowService, IBulletFactory bulletFactory)
+            ICameraProvider cameraProvider, IEnemyFactory enemyFactory, IWindowService windowService, IBulletFactory bulletFactory,
+            IStaticDataService staticDataService, IRandomProvider randomProvider)
         {
             _viewService = viewService;
             _timeService = timeService;
@@ -44,6 +47,8 @@ namespace Infrastructure.StateMachine.Game
             _enemyFactory = enemyFactory;
             _windowService = windowService;
             _bulletFactory = bulletFactory;
+            _staticDataService = staticDataService;
+            _randomProvider = randomProvider;
         }
 
         public Contexts CreateEcsWorld()
@@ -60,8 +65,7 @@ namespace Infrastructure.StateMachine.Game
             _spawnSystem.Execute();
             _weaponSystems.Execute();
             _destroyPlayerOnTriggerEnemySystem.Execute();
-            _destroyDeadSystem.Execute();
-            _commonSystems.Execute();
+            _gameplaySystems.Execute();
         }
 
         public void LateUpdate()
@@ -80,7 +84,7 @@ namespace Infrastructure.StateMachine.Game
             _spawnSystem.Initialize();
             _showResultSystem.Initialize();
             _weaponSystems.Initialize();
-            _commonSystems.Initialize();
+            _gameplaySystems.Initialize();
         }
 
         private Contexts CreateContexts() =>
@@ -91,15 +95,14 @@ namespace Infrastructure.StateMachine.Game
             _spawnSystem = new SpawnSystems(_contexts);
             _createAssetViewSystem = new CreateAssetViewSystem(_contexts.game, _contexts);
             _registerServicesSystem = new RegisterServicesSystem(_contexts, _viewService, _timeService, _inputService,
-                _cameraProvider, _enemyFactory, _windowService, _bulletFactory);
+                _cameraProvider, _enemyFactory, _windowService, _bulletFactory, _staticDataService, _randomProvider);
             _gameEventSystems = new GameEventSystems(_contexts);
             _movementSystems = new MovementSystems(_contexts);
             _gameCleanupSystems = new GameCleanupSystems(_contexts);
             _destroyPlayerOnTriggerEnemySystem = new DestroyPlayerOnTriggerEnemySystem(_contexts);
             _showResultSystem = new ShowResultSystem(_contexts);
-            _destroyDeadSystem = new DestroyDeadSystem(_contexts);
             _weaponSystems = new WeaponSystems(_contexts);
-            _commonSystems = new CommonSystems(_contexts);
+            _gameplaySystems = new GameplaySystems(_contexts);
         }
     }
 }

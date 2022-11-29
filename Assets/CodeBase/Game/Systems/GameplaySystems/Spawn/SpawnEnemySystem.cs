@@ -31,10 +31,8 @@ namespace Game.Systems.Spawn
 
         protected override void Execute(List<GameEntity> entities)
         {
-            foreach (GameEntity e in entities)
-            {
+            foreach (GameEntity e in entities) 
                 _enemyFactory.Create(e.spawner.Value);
-            }
         }
     }
 }

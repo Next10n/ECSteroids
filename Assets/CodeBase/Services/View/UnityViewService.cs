@@ -18,7 +18,7 @@ namespace Services.View
             GameObject instantiate = Object.Instantiate(prefab);
             UnityGameView[] unityGameViews = instantiate.GetComponents<UnityGameView>();
             foreach (UnityGameView unityGameView in unityGameViews)
-                unityGameView.InitializeView(contexts, entity);
+                unityGameView.InitializeView(entity);
         }
     }
 }

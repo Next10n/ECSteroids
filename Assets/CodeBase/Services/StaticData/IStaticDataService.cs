@@ -8,6 +8,8 @@ namespace Services.StaticData
     {
         public PlayerStaticData PlayerStaticData { get; }
         IEnumerable<SpawnerStaticData> SpawnersStaticData { get; }
+        int MaxAsteroidFragments { get; }
+        int MinAsteroidFragments { get; }
         EnemyStaticData GetEnemyData(EnemyType enemyType);
         void Load();
     }

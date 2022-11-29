@@ -1,7 +1,5 @@
-using Game.Components;
 using Game.Factories;
 using Game.Systems.WeaponSystems;
-using Infrastructure.StateMachine.Gameplay;
 using Services.SceneProvider;
 using Services.StaticData;
 using Services.UpdateService;
@@ -59,6 +57,7 @@ namespace Infrastructure.StateMachine.Game
             _playerFactory.Initialize(contexts.game);
             GameEntity player = _playerFactory.Create(_staticDataService.PlayerStaticData);
             _enemyFactory.Initialize(contexts.game, player.creationIndex);
+            contexts.game.ReplaceScore(0);
             CreateSpawners(contexts);
             CreateHud(contexts, player);
         }

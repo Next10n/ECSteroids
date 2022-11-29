@@ -27,7 +27,16 @@ MonoBehaviour:
     MinVelocity: 2
     MaxVelocity: 3
     AssetPath: Asteroid
+    Score: 1
   - EnemyType: 1
     MinVelocity: 3
     MaxVelocity: 4
     AssetPath: Ufo
+    Score: 2
+  - EnemyType: 2
+    MinVelocity: 4
+    MaxVelocity: 5
+    AssetPath: Fragment
+    Score: 1
+  MinAsteroidFragments: 2
+  MaxAsteroidsFragments: 4

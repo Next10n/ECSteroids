@@ -1,6 +1,7 @@
 using Game.Factories;
 using Game.Systems.WeaponSystems;
 using Services.Input;
+using Services.StaticData;
 using Services.Time;
 using Services.View;
 using Services.Windows;
@@ -11,7 +12,7 @@ namespace Services.Systems
     {
         public RegisterServicesSystem(Contexts contexts, IViewService viewService, ITimeService timeService,
             IInputService inputService, ICameraProvider cameraProvider, IEnemyFactory enemyFactory,
-            IWindowService windowService, IBulletFactory bulletFactory)
+            IWindowService windowService, IBulletFactory bulletFactory, IStaticDataService staticDataService, IRandomProvider randomProvider)
         {
             Add(new RegisterViewServiceSystem(contexts, viewService));
             Add(new RegisterTimeServiceSystem(contexts, timeService));
@@ -19,6 +20,8 @@ namespace Services.Systems
             Add(new RegisterCameraProviderSystem(contexts, cameraProvider));
             Add(new RegisterFactorySystem(contexts, enemyFactory, bulletFactory));
             Add(new RegisterWindowServiceSystem(contexts, windowService));
+            Add(new RegisterStaticDataServiceSystem(contexts, staticDataService));
+            Add(new RegisterRandomProviderSystem(contexts, randomProvider));
         }
     }
 }

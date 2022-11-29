@@ -7,9 +7,9 @@ namespace Services.View
     {
         [SerializeField] private TMP_Text _text;
 
-        public override void InitializeView(Contexts contexts, GameEntity entity)
+        public override void InitializeView(GameEntity entity)
         {
-            base.InitializeView(contexts, entity);
+            base.InitializeView(entity);
             entity.AddVelocityListener(this);
         }
 

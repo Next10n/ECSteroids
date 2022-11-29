@@ -19,6 +19,8 @@ namespace Services.StaticData
 
         public PlayerStaticData PlayerStaticData => _gameStaticData.Player;
         public IEnumerable<SpawnerStaticData> SpawnersStaticData => _gameStaticData.Spawners;
+        public int MinAsteroidFragments => _gameStaticData.MinAsteroidFragments;
+        public int MaxAsteroidFragments => _gameStaticData.MaxAsteroidsFragments;
 
         public void Load()
         {
