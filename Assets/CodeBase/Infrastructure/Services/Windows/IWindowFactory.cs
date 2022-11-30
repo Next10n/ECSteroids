@@ -1,5 +1,5 @@
 ﻿using Infrastructure.Services.StateMachine;
-using UI;
+using View.UI;
 
 namespace Infrastructure.Services.Windows
 {

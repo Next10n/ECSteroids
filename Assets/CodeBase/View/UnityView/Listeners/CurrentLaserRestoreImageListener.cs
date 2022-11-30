@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.View.Listeners
+namespace View.UnityView.Listeners
 {
     public class CurrentLaserRestoreImageListener : UnityGameView, ICurrentLaserRestoreTimeListener
     {

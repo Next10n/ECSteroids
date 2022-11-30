@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UI.View.Initializers
+namespace View.UnityView.Initializers
 {
     public class AimInitializer : UnityGameView
     {

@@ -1,10 +1,10 @@
 using Infrastructure.Services.StateMachine;
 using Infrastructure.Services.StateMachine.States;
-using UI.View;
 using UnityEngine;
 using UnityEngine.UI;
+using View.UnityView;
 
-namespace UI
+namespace View.UI
 {
     public class ResultWindow : MonoBehaviour
     {

@@ -1,7 +1,7 @@
-using UI.View;
 using UnityEngine;
+using View.UnityView;
 
-namespace UI
+namespace View.UI
 {
     public class PlayerHud : MonoBehaviour
     {

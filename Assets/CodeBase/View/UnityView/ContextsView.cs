@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UI.View
+namespace View.UnityView
 {
     public abstract class ContextsView : MonoBehaviour
     {

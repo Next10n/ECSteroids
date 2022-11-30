@@ -1,6 +1,6 @@
 using Infrastructure.Services.AssetProvider;
-using UI.View;
 using UnityEngine;
+using View.UnityView;
 
 namespace Infrastructure.Services.View
 {

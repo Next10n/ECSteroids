@@ -1,4 +1,4 @@
-namespace UI.View.Listeners
+namespace View.UnityView.Listeners
 {
     public abstract class DeadListener : UnityGameView, IDeadListener
     {

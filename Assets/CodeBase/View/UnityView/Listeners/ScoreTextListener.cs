@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace UI.View.Listeners
+namespace View.UnityView.Listeners
 {
     public class ScoreTextListener : ContextsView, IScoreListener
     {

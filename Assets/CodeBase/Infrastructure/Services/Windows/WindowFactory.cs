@@ -1,7 +1,7 @@
 ﻿using Infrastructure.Services.AssetProvider;
 using Infrastructure.Services.StateMachine;
-using UI;
 using UnityEngine;
+using View.UI;
 
 namespace Infrastructure.Services.Windows
 {

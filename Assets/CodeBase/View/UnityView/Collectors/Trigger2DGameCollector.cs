@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UI.View.Collectors
+namespace View.UnityView.Collectors
 {
     public class Trigger2DGameCollector : UnityGameView
     {
