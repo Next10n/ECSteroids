@@ -19,6 +19,7 @@ MonoBehaviour:
     Deceleration: 1
     AngularSpeed: 200
     PlayerAssetPath: Player
+    DestroyAsset: Explosion
   Spawners:
   - EnemyType: 0
     SpawnDelay: 5

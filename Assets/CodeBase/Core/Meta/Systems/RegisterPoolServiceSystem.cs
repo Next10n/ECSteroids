@@ -1,5 +1,4 @@
-﻿using Core.Game.Systems.View;
-using Entitas;
+﻿using Entitas;
 using Infrastructure.Services.Pool;
 
 namespace Core.Meta.Systems

@@ -21,7 +21,7 @@ namespace Infrastructure.Services.StateMachine.States
 
         public void Enter(Contexts contexts)
         {
-            DestroyEnemies(contexts);
+            DestroyGameplayEntities(contexts);
             HideHud();
             ResetScore(contexts);
             GameEntity player = CreatePlayer();
@@ -49,10 +49,10 @@ namespace Infrastructure.Services.StateMachine.States
         private void HideHud() => 
             _windowService.HideResult();
 
-        private static void DestroyEnemies(Contexts contexts)
+        private static void DestroyGameplayEntities(Contexts contexts)
         {
             foreach(GameEntity gameEntity in contexts.game.GetEntities())
-                if(gameEntity.isEnemy)
+                if(gameEntity.isEnemy || gameEntity.isBullet || gameEntity.isLaser)
                     gameEntity.isDestroyEntity = true;
         }
     }

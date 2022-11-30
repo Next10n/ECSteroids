@@ -29,6 +29,7 @@ namespace Core.Factories
             player.AddLaserStorage(playerStaticData.MaxLasers);
             player.AddMaxLasersWeapon(playerStaticData.MaxLasers);
             player.AddLaserRestoreTime(playerStaticData.LaserRestoreTime);
+            player.AddDestroyAssetView(playerStaticData.DestroyAsset);
             return player;
         }
     }

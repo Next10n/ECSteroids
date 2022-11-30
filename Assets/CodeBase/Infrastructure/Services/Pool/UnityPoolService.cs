@@ -19,10 +19,9 @@ namespace Infrastructure.Services.Pool
         public Pool PreparePool(string asset, int size)
         {
             GameObject prefab = _assetProvider.Load(asset);
-            PoolObject poolObjectPrefab = prefab.AddComponent<PoolObject>();
             GameObject poolRoot = new GameObject($"Pool : {asset}");
             poolRoot.transform.SetParent(GetOrCreateRoot());
-            Pool pool = new Pool(poolRoot.transform, poolObjectPrefab, size);
+            Pool pool = new Pool(poolRoot.transform, prefab, size);
             _pools[asset] = pool;
             return pool;
         }

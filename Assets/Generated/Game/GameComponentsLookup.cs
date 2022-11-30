@@ -20,45 +20,46 @@ public static class GameComponentsLookup {
     public const int CurrentSpawnTime = 9;
     public const int Dead = 10;
     public const int Deceleration = 11;
-    public const int DestroyDelay = 12;
-    public const int DestroyEntity = 13;
-    public const int DestroyTimer = 14;
-    public const int Destructible = 15;
-    public const int Direction = 16;
-    public const int Enemy = 17;
-    public const int FollowEntity = 18;
-    public const int Laser = 19;
-    public const int LaserRestoreTime = 20;
-    public const int LaserStorage = 21;
-    public const int LaserWeapon = 22;
-    public const int MaxLasersWeapon = 23;
-    public const int Player = 24;
-    public const int PoolObject = 25;
-    public const int Position = 26;
-    public const int ResetScore = 27;
-    public const int RestoreLaserRequest = 28;
-    public const int RotationAngle = 29;
-    public const int Score = 30;
-    public const int ShootEvent = 31;
-    public const int ShootRequest = 32;
-    public const int Spawner = 33;
-    public const int SpawnTime = 34;
-    public const int SpawnTimerReady = 35;
-    public const int SwitchWeapon = 36;
-    public const int Teleportable = 37;
-    public const int Triggered = 38;
-    public const int Velocity = 39;
-    public const int CurrentLaserRestoreTimeListener = 40;
-    public const int DeadListener = 41;
-    public const int DestroyEntityListener = 42;
-    public const int LaserStorageListener = 43;
-    public const int MaxLasersWeaponListener = 44;
-    public const int PositionListener = 45;
-    public const int RotationAngleListener = 46;
-    public const int ScoreListener = 47;
-    public const int VelocityListener = 48;
+    public const int DestroyAssetView = 12;
+    public const int DestroyDelay = 13;
+    public const int DestroyEntity = 14;
+    public const int DestroyTimer = 15;
+    public const int Destructible = 16;
+    public const int Direction = 17;
+    public const int Enemy = 18;
+    public const int FollowEntity = 19;
+    public const int Laser = 20;
+    public const int LaserRestoreTime = 21;
+    public const int LaserStorage = 22;
+    public const int LaserWeapon = 23;
+    public const int MaxLasersWeapon = 24;
+    public const int Player = 25;
+    public const int PoolObject = 26;
+    public const int Position = 27;
+    public const int ResetScore = 28;
+    public const int RestoreLaserRequest = 29;
+    public const int RotationAngle = 30;
+    public const int Score = 31;
+    public const int ShootEvent = 32;
+    public const int ShootRequest = 33;
+    public const int Spawner = 34;
+    public const int SpawnTime = 35;
+    public const int SpawnTimerReady = 36;
+    public const int SwitchWeapon = 37;
+    public const int Teleportable = 38;
+    public const int Triggered = 39;
+    public const int Velocity = 40;
+    public const int CurrentLaserRestoreTimeListener = 41;
+    public const int DeadListener = 42;
+    public const int DestroyEntityListener = 43;
+    public const int LaserStorageListener = 44;
+    public const int MaxLasersWeaponListener = 45;
+    public const int PositionListener = 46;
+    public const int RotationAngleListener = 47;
+    public const int ScoreListener = 48;
+    public const int VelocityListener = 49;
 
-    public const int TotalComponents = 49;
+    public const int TotalComponents = 50;
 
     public static readonly string[] componentNames = {
         "Acceleration",
@@ -73,6 +74,7 @@ public static class GameComponentsLookup {
         "CurrentSpawnTime",
         "Dead",
         "Deceleration",
+        "DestroyAssetView",
         "DestroyDelay",
         "DestroyEntity",
         "DestroyTimer",
@@ -125,6 +127,7 @@ public static class GameComponentsLookup {
         typeof(Core.Game.Components.CurrentSpawnTimeComponent),
         typeof(Core.Game.Components.DeadComponent),
         typeof(Core.Game.Components.DecelerationComponent),
+        typeof(Core.Game.Components.DestroyAssetViewComponent),
         typeof(Core.Game.Components.DestroyDelayComponent),
         typeof(Core.Game.Components.DestroyEntityComponent),
         typeof(Core.Game.Components.DestroyTimerComponent),

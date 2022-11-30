@@ -34,9 +34,12 @@ namespace Core.Game.Systems.Weapon
         {
             foreach(GameEntity entity in entities)
             {
-                GameEntity bullet = _bulletFactory.Create(WeaponType.Bullet, entity);
-                entity.isShootEvent = true;
-                bullet.isBullet = true;
+                if(entity.isEnabled)
+                {
+                    GameEntity bullet = _bulletFactory.Create(WeaponType.Bullet, entity);
+                    entity.isShootEvent = true;
+                    bullet.isBullet = true;
+                }
             }
         }
     }

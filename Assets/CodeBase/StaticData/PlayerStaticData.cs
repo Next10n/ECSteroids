@@ -11,5 +11,6 @@ namespace StaticData
         public float Deceleration;
         public float AngularSpeed;
         public string PlayerAssetPath;
+        public string DestroyAsset;
     }
 }

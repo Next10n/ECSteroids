@@ -11,5 +11,6 @@ namespace StaticData
         public float ProjectileSpeed;
         public float DestroyTime;
         public string AssetPath;
+        public string DestroyAsset;
     }
 }

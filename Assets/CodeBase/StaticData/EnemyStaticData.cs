@@ -11,5 +11,6 @@ namespace StaticData
         public float MaxVelocity;
         public string AssetPath;
         public int Score;
+        public string DestroyAsset;
     }
 }

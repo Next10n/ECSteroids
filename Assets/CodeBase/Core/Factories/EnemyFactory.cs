@@ -76,6 +76,8 @@ namespace Core.Factories
             enemy.AddAddScore(enemyStaticData.Score);
             enemy.AddVelocity(RandomVelocity(enemyStaticData));
             enemy.isTeleportable = true;
+            enemy.AddDestroyAssetView(enemyStaticData.DestroyAsset);
+
             return enemy;
         }
         

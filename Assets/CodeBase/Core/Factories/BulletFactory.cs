@@ -31,6 +31,7 @@ namespace Core.Factories
             projectile.AddDirection(weaponEntity.direction.Value);
             projectile.AddVelocity(weaponEntity.direction.Value.normalized * weaponStaticData.ProjectileSpeed);
             projectile.AddRotationAngle(weaponEntity.rotationAngle.Value);
+            projectile.AddDestroyAssetView(weaponStaticData.DestroyAsset);
             return projectile;
         }
     }

@@ -6,16 +6,13 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Infrastructure.Services.Pool;
-
 public partial class MetaContext {
 
     public MetaEntity poolServiceEntity { get { return GetGroup(MetaMatcher.PoolService).GetSingleEntity(); } }
     public Core.Meta.Components.PoolServiceComponent poolService { get { return poolServiceEntity.poolService; } }
     public bool hasPoolService { get { return poolServiceEntity != null; } }
 
-    public MetaEntity SetPoolService(IPoolService newValue) {
+    public MetaEntity SetPoolService(Infrastructure.Services.Pool.IPoolService newValue) {
         if (hasPoolService) {
             throw new Entitas.EntitasException("Could not set PoolService!\n" + this + " already has an entity with Core.Meta.Components.PoolServiceComponent!",
                 "You should check if the context already has a poolServiceEntity before setting it or use context.ReplacePoolService().");
@@ -25,7 +22,7 @@ public partial class MetaContext {
         return entity;
     }
 
-    public void ReplacePoolService(IPoolService newValue) {
+    public void ReplacePoolService(Infrastructure.Services.Pool.IPoolService newValue) {
         var entity = poolServiceEntity;
         if (entity == null) {
             entity = SetPoolService(newValue);
@@ -52,14 +49,14 @@ public partial class MetaEntity {
     public Core.Meta.Components.PoolServiceComponent poolService { get { return (Core.Meta.Components.PoolServiceComponent)GetComponent(MetaComponentsLookup.PoolService); } }
     public bool hasPoolService { get { return HasComponent(MetaComponentsLookup.PoolService); } }
 
-    public void AddPoolService(IPoolService newValue) {
+    public void AddPoolService(Infrastructure.Services.Pool.IPoolService newValue) {
         var index = MetaComponentsLookup.PoolService;
         var component = (Core.Meta.Components.PoolServiceComponent)CreateComponent(index, typeof(Core.Meta.Components.PoolServiceComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplacePoolService(IPoolService newValue) {
+    public void ReplacePoolService(Infrastructure.Services.Pool.IPoolService newValue) {
         var index = MetaComponentsLookup.PoolService;
         var component = (Core.Meta.Components.PoolServiceComponent)CreateComponent(index, typeof(Core.Meta.Components.PoolServiceComponent));
         component.Value = newValue;

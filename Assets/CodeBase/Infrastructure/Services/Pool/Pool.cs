@@ -6,13 +6,13 @@ namespace Infrastructure.Services.Pool
     public class Pool
     {
         private readonly Transform _root;
-        private readonly PoolObject _poolObject;
+        private readonly GameObject _prefab;
 
         private Queue<PoolObject> _poolObjects;
 
-        public Pool(Transform root, PoolObject poolObject, int startSize)
+        public Pool(Transform root, GameObject prefab, int startSize)
         {
-            _poolObject = poolObject;
+            _prefab = prefab;
             _root = root;
             Initialize(startSize);
         }
@@ -42,7 +42,8 @@ namespace Infrastructure.Services.Pool
 
         private void AddToPool()
         {
-            PoolObject poolObject = Object.Instantiate(_poolObject, _root);
+            GameObject instance = Object.Instantiate(_prefab, _root);
+            PoolObject poolObject = instance.AddComponent<PoolObject>();
             poolObject.gameObject.SetActive(false);
             _poolObjects.Enqueue(poolObject);
         }

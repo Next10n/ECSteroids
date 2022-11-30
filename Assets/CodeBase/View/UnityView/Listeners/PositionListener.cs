@@ -8,6 +8,7 @@ namespace View.UnityView.Listeners
         {
             base.InitializeView(entity);
             entity.AddPositionListener(this);
+            OnPosition(entity, entity.position.Value);
         }
         
         public abstract void OnPosition(GameEntity entity, Vector2 value);

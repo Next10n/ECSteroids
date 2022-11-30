@@ -179,6 +179,12 @@ namespace Core.Game.Components
         public string Value;
     }
 
+    [Game]
+    public sealed class DestroyAssetViewComponent : IComponent
+    {
+        public string Value;
+    } 
+
 
 
 
