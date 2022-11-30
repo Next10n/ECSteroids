@@ -4,6 +4,7 @@ using Core.Game.Systems.View;
 using Core.Meta.Systems;
 using Infrastructure.Services;
 using Infrastructure.Services.Input;
+using Infrastructure.Services.Pool;
 using Infrastructure.Services.StaticData;
 using Infrastructure.Services.Time;
 using Infrastructure.Services.View;
@@ -15,10 +16,10 @@ namespace Core
     {
         public AllSystems(Contexts contexts, IViewService viewService, ITimeService timeService, IInputService inputService,
             ICameraProvider cameraProvider, IEnemyFactory enemyFactory, IWindowService windowService, IBulletFactory bulletFactory,
-            IStaticDataService staticDataService, IRandomProvider randomProvider)
+            IStaticDataService staticDataService, IRandomProvider randomProvider, IPoolService poolService)
         {
             Add(new RegisterServicesSystem(contexts, viewService, timeService, inputService, cameraProvider, enemyFactory, windowService,
-                bulletFactory, staticDataService, randomProvider));
+                bulletFactory, staticDataService, randomProvider, poolService));
             Add(new GameplaySystems(contexts));
             Add(new ViewSystems(contexts));
             Add(new GameEventSystems(contexts));

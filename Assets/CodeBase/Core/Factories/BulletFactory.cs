@@ -24,7 +24,7 @@ namespace Core.Factories
         {
             WeaponStaticData weaponStaticData = _staticDataService.GetWeaponData(weaponType);
             GameEntity projectile = _contexts.game.CreateEntity();
-            projectile.AddAsset(weaponStaticData.AssetPath);
+            projectile.AddPoolObject(weaponStaticData.AssetPath);
             projectile.isTeleportable = weaponStaticData.Teleportable;
             projectile.AddDestroyDelay(weaponStaticData.DestroyTime);
             projectile.AddPosition(weaponEntity.aim.Value.position);

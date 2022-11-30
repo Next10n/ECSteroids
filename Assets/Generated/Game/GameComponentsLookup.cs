@@ -33,31 +33,32 @@ public static class GameComponentsLookup {
     public const int LaserWeapon = 22;
     public const int MaxLasersWeapon = 23;
     public const int Player = 24;
-    public const int Position = 25;
-    public const int ResetScore = 26;
-    public const int RestoreLaserRequest = 27;
-    public const int RotationAngle = 28;
-    public const int Score = 29;
-    public const int ShootEvent = 30;
-    public const int ShootRequest = 31;
-    public const int Spawner = 32;
-    public const int SpawnTime = 33;
-    public const int SpawnTimerReady = 34;
-    public const int SwitchWeapon = 35;
-    public const int Teleportable = 36;
-    public const int Triggered = 37;
-    public const int Velocity = 38;
-    public const int CurrentLaserRestoreTimeListener = 39;
-    public const int DeadListener = 40;
-    public const int DestroyEntityListener = 41;
-    public const int LaserStorageListener = 42;
-    public const int MaxLasersWeaponListener = 43;
-    public const int PositionListener = 44;
-    public const int RotationAngleListener = 45;
-    public const int ScoreListener = 46;
-    public const int VelocityListener = 47;
+    public const int PoolObject = 25;
+    public const int Position = 26;
+    public const int ResetScore = 27;
+    public const int RestoreLaserRequest = 28;
+    public const int RotationAngle = 29;
+    public const int Score = 30;
+    public const int ShootEvent = 31;
+    public const int ShootRequest = 32;
+    public const int Spawner = 33;
+    public const int SpawnTime = 34;
+    public const int SpawnTimerReady = 35;
+    public const int SwitchWeapon = 36;
+    public const int Teleportable = 37;
+    public const int Triggered = 38;
+    public const int Velocity = 39;
+    public const int CurrentLaserRestoreTimeListener = 40;
+    public const int DeadListener = 41;
+    public const int DestroyEntityListener = 42;
+    public const int LaserStorageListener = 43;
+    public const int MaxLasersWeaponListener = 44;
+    public const int PositionListener = 45;
+    public const int RotationAngleListener = 46;
+    public const int ScoreListener = 47;
+    public const int VelocityListener = 48;
 
-    public const int TotalComponents = 48;
+    public const int TotalComponents = 49;
 
     public static readonly string[] componentNames = {
         "Acceleration",
@@ -85,6 +86,7 @@ public static class GameComponentsLookup {
         "LaserWeapon",
         "MaxLasersWeapon",
         "Player",
+        "PoolObject",
         "Position",
         "ResetScore",
         "RestoreLaserRequest",
@@ -136,6 +138,7 @@ public static class GameComponentsLookup {
         typeof(Core.Game.Components.LaserWeaponComponent),
         typeof(Core.Game.Components.MaxLasersWeaponComponent),
         typeof(Core.Game.Components.PlayerComponent),
+        typeof(Core.Game.Components.PoolObjectComponent),
         typeof(Core.Game.Components.PositionComponent),
         typeof(Core.Game.Components.ResetScoreComponent),
         typeof(Core.Game.Components.RestoreLaserRequestComponent),

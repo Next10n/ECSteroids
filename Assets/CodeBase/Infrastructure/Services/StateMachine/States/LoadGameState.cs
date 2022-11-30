@@ -60,7 +60,7 @@ namespace Infrastructure.Services.StateMachine.States
             CreateSpawners(contexts);
             CreateHud(contexts, player);
         }
-
+        
         private void CreateHud(Contexts contexts, GameEntity player)
         {
             _windowService.ShowHud();

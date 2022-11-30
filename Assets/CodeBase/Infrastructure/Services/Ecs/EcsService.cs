@@ -1,7 +1,9 @@
 ﻿using Core;
 using Core.Factories;
 using Core.Game.Systems;
+using Core.Game.Systems.View;
 using Infrastructure.Services.Input;
+using Infrastructure.Services.Pool;
 using Infrastructure.Services.StaticData;
 using Infrastructure.Services.Time;
 using Infrastructure.Services.View;
@@ -20,12 +22,13 @@ namespace Infrastructure.Services.Ecs
         private readonly IBulletFactory _bulletFactory;
         private readonly IStaticDataService _staticDataService;
         private readonly IRandomProvider _randomProvider;
+        private readonly IPoolService _poolService;
 
         private AllSystems _allSystems;
 
         public EcsService(IViewService viewService, ITimeService timeService, IInputService inputService,
             ICameraProvider cameraProvider, IEnemyFactory enemyFactory, IWindowService windowService, IBulletFactory bulletFactory,
-            IStaticDataService staticDataService, IRandomProvider randomProvider)
+            IStaticDataService staticDataService, IRandomProvider randomProvider, IPoolService poolService)
         {
             _viewService = viewService;
             _timeService = timeService;
@@ -36,13 +39,14 @@ namespace Infrastructure.Services.Ecs
             _bulletFactory = bulletFactory;
             _staticDataService = staticDataService;
             _randomProvider = randomProvider;
+            _poolService = poolService;
         }
 
         public Contexts CreateEcsWorld()
         {
             Contexts contexts = new Contexts();
             _allSystems = new AllSystems(contexts, _viewService, _timeService, _inputService, _cameraProvider, _enemyFactory, _windowService,
-                _bulletFactory, _staticDataService, _randomProvider);
+                _bulletFactory, _staticDataService, _randomProvider, _poolService);
             _allSystems.Initialize();
             return contexts;
         }

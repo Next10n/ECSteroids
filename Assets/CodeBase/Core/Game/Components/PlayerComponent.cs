@@ -173,6 +173,12 @@ namespace Core.Game.Components
         
     }
 
+    [Game]
+    public sealed class PoolObjectComponent : IComponent
+    {
+        public string Value;
+    }
+
 
 
 

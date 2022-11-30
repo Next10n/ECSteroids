@@ -71,7 +71,7 @@ namespace Core.Factories
         private GameEntity CreateEnemy(EnemyStaticData enemyStaticData)
         {
             GameEntity enemy = _gameContext.CreateEntity();
-            enemy.AddAsset(enemyStaticData.AssetPath);
+            enemy.AddPoolObject(enemyStaticData.AssetPath);
             enemy.isEnemy = true;
             enemy.AddAddScore(enemyStaticData.Score);
             enemy.AddVelocity(RandomVelocity(enemyStaticData));
