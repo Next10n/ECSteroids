@@ -6,9 +6,12 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Movements;
+
 public partial class GameEntity {
 
-    static readonly Core.Game.Components.SwitchWeaponComponent switchWeaponComponent = new Core.Game.Components.SwitchWeaponComponent();
+    static readonly SwitchWeaponComponent switchWeaponComponent = new SwitchWeaponComponent();
 
     public bool isSwitchWeapon {
         get { return HasComponent(GameComponentsLookup.SwitchWeapon); }

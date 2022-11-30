@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Core.Game.Components;
+using Core.Game.Components.Enemies;
 using StaticData;
 
 namespace Infrastructure.Services.StaticData

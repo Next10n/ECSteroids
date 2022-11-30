@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Weapon;
+
 public partial class GameEntity {
 
-    public Core.Game.Components.MaxLasersWeaponComponent maxLasersWeapon { get { return (Core.Game.Components.MaxLasersWeaponComponent)GetComponent(GameComponentsLookup.MaxLasersWeapon); } }
+    public MaxLasersWeaponComponent maxLasersWeapon { get { return (MaxLasersWeaponComponent)GetComponent(GameComponentsLookup.MaxLasersWeapon); } }
     public bool hasMaxLasersWeapon { get { return HasComponent(GameComponentsLookup.MaxLasersWeapon); } }
 
     public void AddMaxLasersWeapon(int newValue) {
         var index = GameComponentsLookup.MaxLasersWeapon;
-        var component = (Core.Game.Components.MaxLasersWeaponComponent)CreateComponent(index, typeof(Core.Game.Components.MaxLasersWeaponComponent));
+        var component = (MaxLasersWeaponComponent)CreateComponent(index, typeof(MaxLasersWeaponComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceMaxLasersWeapon(int newValue) {
         var index = GameComponentsLookup.MaxLasersWeapon;
-        var component = (Core.Game.Components.MaxLasersWeaponComponent)CreateComponent(index, typeof(Core.Game.Components.MaxLasersWeaponComponent));
+        var component = (MaxLasersWeaponComponent)CreateComponent(index, typeof(MaxLasersWeaponComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

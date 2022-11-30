@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Movements;
+
 public partial class GameEntity {
 
-    public Core.Game.Components.VelocityComponent velocity { get { return (Core.Game.Components.VelocityComponent)GetComponent(GameComponentsLookup.Velocity); } }
+    public VelocityComponent velocity { get { return (VelocityComponent)GetComponent(GameComponentsLookup.Velocity); } }
     public bool hasVelocity { get { return HasComponent(GameComponentsLookup.Velocity); } }
 
     public void AddVelocity(UnityEngine.Vector2 newValue) {
         var index = GameComponentsLookup.Velocity;
-        var component = (Core.Game.Components.VelocityComponent)CreateComponent(index, typeof(Core.Game.Components.VelocityComponent));
+        var component = (VelocityComponent)CreateComponent(index, typeof(VelocityComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceVelocity(UnityEngine.Vector2 newValue) {
         var index = GameComponentsLookup.Velocity;
-        var component = (Core.Game.Components.VelocityComponent)CreateComponent(index, typeof(Core.Game.Components.VelocityComponent));
+        var component = (VelocityComponent)CreateComponent(index, typeof(VelocityComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

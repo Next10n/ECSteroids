@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Enemies;
+
 public partial class GameEntity {
 
-    public Core.Game.Components.AddScoreComponent addScore { get { return (Core.Game.Components.AddScoreComponent)GetComponent(GameComponentsLookup.AddScore); } }
+    public AddScoreComponent addScore { get { return (AddScoreComponent)GetComponent(GameComponentsLookup.AddScore); } }
     public bool hasAddScore { get { return HasComponent(GameComponentsLookup.AddScore); } }
 
     public void AddAddScore(int newValue) {
         var index = GameComponentsLookup.AddScore;
-        var component = (Core.Game.Components.AddScoreComponent)CreateComponent(index, typeof(Core.Game.Components.AddScoreComponent));
+        var component = (AddScoreComponent)CreateComponent(index, typeof(AddScoreComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceAddScore(int newValue) {
         var index = GameComponentsLookup.AddScore;
-        var component = (Core.Game.Components.AddScoreComponent)CreateComponent(index, typeof(Core.Game.Components.AddScoreComponent));
+        var component = (AddScoreComponent)CreateComponent(index, typeof(AddScoreComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

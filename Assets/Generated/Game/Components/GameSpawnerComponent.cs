@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Enemies;
+
 public partial class GameEntity {
 
-    public Core.Game.Components.SpawnerComponent spawner { get { return (Core.Game.Components.SpawnerComponent)GetComponent(GameComponentsLookup.Spawner); } }
+    public SpawnerComponent spawner { get { return (SpawnerComponent)GetComponent(GameComponentsLookup.Spawner); } }
     public bool hasSpawner { get { return HasComponent(GameComponentsLookup.Spawner); } }
 
-    public void AddSpawner(Core.Game.Components.EnemyType newValue) {
+    public void AddSpawner(EnemyType newValue) {
         var index = GameComponentsLookup.Spawner;
-        var component = (Core.Game.Components.SpawnerComponent)CreateComponent(index, typeof(Core.Game.Components.SpawnerComponent));
+        var component = (SpawnerComponent)CreateComponent(index, typeof(SpawnerComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceSpawner(Core.Game.Components.EnemyType newValue) {
+    public void ReplaceSpawner(EnemyType newValue) {
         var index = GameComponentsLookup.Spawner;
-        var component = (Core.Game.Components.SpawnerComponent)CreateComponent(index, typeof(Core.Game.Components.SpawnerComponent));
+        var component = (SpawnerComponent)CreateComponent(index, typeof(SpawnerComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

@@ -6,10 +6,13 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Enemies;
+
 public partial class GameContext {
 
     public GameEntity scoreEntity { get { return GetGroup(GameMatcher.Score).GetSingleEntity(); } }
-    public Core.Game.Components.ScoreComponent score { get { return scoreEntity.score; } }
+    public ScoreComponent score { get { return scoreEntity.score; } }
     public bool hasScore { get { return scoreEntity != null; } }
 
     public GameEntity SetScore(int newValue) {
@@ -46,19 +49,19 @@ public partial class GameContext {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Core.Game.Components.ScoreComponent score { get { return (Core.Game.Components.ScoreComponent)GetComponent(GameComponentsLookup.Score); } }
+    public ScoreComponent score { get { return (ScoreComponent)GetComponent(GameComponentsLookup.Score); } }
     public bool hasScore { get { return HasComponent(GameComponentsLookup.Score); } }
 
     public void AddScore(int newValue) {
         var index = GameComponentsLookup.Score;
-        var component = (Core.Game.Components.ScoreComponent)CreateComponent(index, typeof(Core.Game.Components.ScoreComponent));
+        var component = (ScoreComponent)CreateComponent(index, typeof(ScoreComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceScore(int newValue) {
         var index = GameComponentsLookup.Score;
-        var component = (Core.Game.Components.ScoreComponent)CreateComponent(index, typeof(Core.Game.Components.ScoreComponent));
+        var component = (ScoreComponent)CreateComponent(index, typeof(ScoreComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

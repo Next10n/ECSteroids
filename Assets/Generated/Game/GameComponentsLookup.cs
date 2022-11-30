@@ -6,6 +6,13 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Common;
+using Core.Game.Components.Enemies;
+using Core.Game.Components.Movements;
+using Core.Game.Components.View;
+using Core.Game.Components.Weapon;
+
 public static class GameComponentsLookup {
 
     public const int Acceleration = 0;
@@ -18,48 +25,46 @@ public static class GameComponentsLookup {
     public const int BulletWeapon = 7;
     public const int CurrentLaserRestoreTime = 8;
     public const int CurrentSpawnTime = 9;
-    public const int Dead = 10;
-    public const int Deceleration = 11;
-    public const int DestroyAssetView = 12;
-    public const int DestroyDelay = 13;
-    public const int DestroyEntity = 14;
-    public const int DestroyTimer = 15;
-    public const int Destructible = 16;
-    public const int Direction = 17;
-    public const int Enemy = 18;
-    public const int FollowEntity = 19;
-    public const int Laser = 20;
-    public const int LaserRestoreTime = 21;
-    public const int LaserStorage = 22;
-    public const int LaserWeapon = 23;
-    public const int MaxLasersWeapon = 24;
-    public const int Player = 25;
-    public const int PoolObject = 26;
-    public const int Position = 27;
-    public const int ResetScore = 28;
-    public const int RestoreLaserRequest = 29;
-    public const int RotationAngle = 30;
-    public const int Score = 31;
-    public const int ShootEvent = 32;
-    public const int ShootRequest = 33;
-    public const int Spawner = 34;
-    public const int SpawnTime = 35;
-    public const int SpawnTimerReady = 36;
-    public const int SwitchWeapon = 37;
-    public const int Teleportable = 38;
-    public const int Triggered = 39;
-    public const int Velocity = 40;
-    public const int CurrentLaserRestoreTimeListener = 41;
-    public const int DeadListener = 42;
-    public const int DestroyEntityListener = 43;
-    public const int LaserStorageListener = 44;
-    public const int MaxLasersWeaponListener = 45;
-    public const int PositionListener = 46;
-    public const int RotationAngleListener = 47;
-    public const int ScoreListener = 48;
-    public const int VelocityListener = 49;
+    public const int Deceleration = 10;
+    public const int DestroyAssetView = 11;
+    public const int DestroyDelay = 12;
+    public const int DestroyEntity = 13;
+    public const int DestroyTimer = 14;
+    public const int Destructible = 15;
+    public const int Direction = 16;
+    public const int Enemy = 17;
+    public const int FollowEntity = 18;
+    public const int Laser = 19;
+    public const int LaserRestoreTime = 20;
+    public const int LaserStorage = 21;
+    public const int LaserWeapon = 22;
+    public const int MaxLasersWeapon = 23;
+    public const int Player = 24;
+    public const int PoolObject = 25;
+    public const int Position = 26;
+    public const int ResetScore = 27;
+    public const int RestoreLaserRequest = 28;
+    public const int RotationAngle = 29;
+    public const int Score = 30;
+    public const int ShootEvent = 31;
+    public const int ShootRequest = 32;
+    public const int Spawner = 33;
+    public const int SpawnTime = 34;
+    public const int SpawnTimerReady = 35;
+    public const int SwitchWeapon = 36;
+    public const int Teleportable = 37;
+    public const int Triggered = 38;
+    public const int Velocity = 39;
+    public const int CurrentLaserRestoreTimeListener = 40;
+    public const int DestroyEntityListener = 41;
+    public const int LaserStorageListener = 42;
+    public const int MaxLasersWeaponListener = 43;
+    public const int PositionListener = 44;
+    public const int RotationAngleListener = 45;
+    public const int ScoreListener = 46;
+    public const int VelocityListener = 47;
 
-    public const int TotalComponents = 50;
+    public const int TotalComponents = 48;
 
     public static readonly string[] componentNames = {
         "Acceleration",
@@ -72,7 +77,6 @@ public static class GameComponentsLookup {
         "BulletWeapon",
         "CurrentLaserRestoreTime",
         "CurrentSpawnTime",
-        "Dead",
         "Deceleration",
         "DestroyAssetView",
         "DestroyDelay",
@@ -104,7 +108,6 @@ public static class GameComponentsLookup {
         "Triggered",
         "Velocity",
         "CurrentLaserRestoreTimeListener",
-        "DeadListener",
         "DestroyEntityListener",
         "LaserStorageListener",
         "MaxLasersWeaponListener",
@@ -115,49 +118,47 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(Core.Game.Components.AccelerationComponent),
-        typeof(Core.Game.Components.AccelerationSpeedComponent),
-        typeof(Core.Game.Components.AddScoreComponent),
-        typeof(Core.Game.Components.AimComponent),
-        typeof(Core.Game.Components.AngularSpeedComponent),
-        typeof(Core.Game.Components.AssetComponent),
-        typeof(Core.Game.Components.BulletComponent),
-        typeof(Core.Game.Components.BulletWeaponComponent),
-        typeof(Core.Game.Components.CurrentLaserRestoreTimeComponent),
-        typeof(Core.Game.Components.CurrentSpawnTimeComponent),
-        typeof(Core.Game.Components.DeadComponent),
-        typeof(Core.Game.Components.DecelerationComponent),
-        typeof(Core.Game.Components.DestroyAssetViewComponent),
-        typeof(Core.Game.Components.DestroyDelayComponent),
-        typeof(Core.Game.Components.DestroyEntityComponent),
-        typeof(Core.Game.Components.DestroyTimerComponent),
-        typeof(Core.Game.Components.DestructibleComponent),
-        typeof(Core.Game.Components.DirectionComponent),
-        typeof(Core.Game.Components.EnemyComponent),
-        typeof(Core.Game.Components.FollowEntityComponent),
-        typeof(Core.Game.Components.LaserComponent),
-        typeof(Core.Game.Components.LaserRestoreTimeComponent),
-        typeof(Core.Game.Components.LaserStorageComponent),
-        typeof(Core.Game.Components.LaserWeaponComponent),
-        typeof(Core.Game.Components.MaxLasersWeaponComponent),
-        typeof(Core.Game.Components.PlayerComponent),
-        typeof(Core.Game.Components.PoolObjectComponent),
-        typeof(Core.Game.Components.PositionComponent),
-        typeof(Core.Game.Components.ResetScoreComponent),
-        typeof(Core.Game.Components.RestoreLaserRequestComponent),
-        typeof(Core.Game.Components.RotationAngleComponent),
-        typeof(Core.Game.Components.ScoreComponent),
-        typeof(Core.Game.Components.ShootEventComponent),
-        typeof(Core.Game.Components.ShootRequestComponent),
-        typeof(Core.Game.Components.SpawnerComponent),
-        typeof(Core.Game.Components.SpawnTimeComponent),
-        typeof(Core.Game.Components.SpawnTimerReadyComponent),
-        typeof(Core.Game.Components.SwitchWeaponComponent),
-        typeof(Core.Game.Components.TeleportableComponent),
-        typeof(Core.Game.Components.TriggeredComponent),
-        typeof(Core.Game.Components.VelocityComponent),
+        typeof(AccelerationComponent),
+        typeof(AccelerationSpeedComponent),
+        typeof(AddScoreComponent),
+        typeof(AimComponent),
+        typeof(AngularSpeedComponent),
+        typeof(AssetComponent),
+        typeof(BulletComponent),
+        typeof(BulletWeaponComponent),
+        typeof(CurrentLaserRestoreTimeComponent),
+        typeof(CurrentSpawnTimeComponent),
+        typeof(DecelerationComponent),
+        typeof(DestroyAssetViewComponent),
+        typeof(DestroyDelayComponent),
+        typeof(DestroyEntityComponent),
+        typeof(DestroyTimerComponent),
+        typeof(DestructibleComponent),
+        typeof(DirectionComponent),
+        typeof(EnemyComponent),
+        typeof(FollowEntityComponent),
+        typeof(LaserComponent),
+        typeof(LaserRestoreTimeComponent),
+        typeof(LaserStorageComponent),
+        typeof(LaserWeaponComponent),
+        typeof(MaxLasersWeaponComponent),
+        typeof(PlayerComponent),
+        typeof(PoolObjectComponent),
+        typeof(PositionComponent),
+        typeof(ResetScoreComponent),
+        typeof(RestoreLaserRequestComponent),
+        typeof(RotationAngleComponent),
+        typeof(ScoreComponent),
+        typeof(ShootEventComponent),
+        typeof(ShootRequestComponent),
+        typeof(SpawnerComponent),
+        typeof(SpawnTimeComponent),
+        typeof(SpawnTimerReadyComponent),
+        typeof(SwitchWeaponComponent),
+        typeof(TeleportableComponent),
+        typeof(TriggeredComponent),
+        typeof(VelocityComponent),
         typeof(CurrentLaserRestoreTimeListenerComponent),
-        typeof(DeadListenerComponent),
         typeof(DestroyEntityListenerComponent),
         typeof(LaserStorageListenerComponent),
         typeof(MaxLasersWeaponListenerComponent),

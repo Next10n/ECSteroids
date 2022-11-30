@@ -6,9 +6,12 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Weapon;
+
 public partial class GameEntity {
 
-    static readonly Core.Game.Components.RestoreLaserRequestComponent restoreLaserRequestComponent = new Core.Game.Components.RestoreLaserRequestComponent();
+    static readonly RestoreLaserRequestComponent restoreLaserRequestComponent = new RestoreLaserRequestComponent();
 
     public bool isRestoreLaserRequest {
         get { return HasComponent(GameComponentsLookup.RestoreLaserRequest); }

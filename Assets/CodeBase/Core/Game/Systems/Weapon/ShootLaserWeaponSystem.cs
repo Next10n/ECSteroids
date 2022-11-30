@@ -2,6 +2,7 @@
 using Core.Factories;
 using Core.Game.Components;
 using Entitas;
+using StaticData;
 
 namespace Core.Game.Systems.Weapon
 {

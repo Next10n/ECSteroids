@@ -6,9 +6,12 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Weapon;
+
 public partial class GameEntity {
 
-    static readonly Core.Game.Components.BulletWeaponComponent bulletWeaponComponent = new Core.Game.Components.BulletWeaponComponent();
+    static readonly BulletWeaponComponent bulletWeaponComponent = new BulletWeaponComponent();
 
     public bool isBulletWeapon {
         get { return HasComponent(GameComponentsLookup.BulletWeapon); }

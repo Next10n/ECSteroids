@@ -1,4 +1,5 @@
 using Core.Game.Components;
+using Core.Game.Components.Enemies;
 
 namespace Core.Factories
 {

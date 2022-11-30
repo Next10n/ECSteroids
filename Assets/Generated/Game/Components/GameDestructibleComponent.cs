@@ -6,9 +6,12 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Enemies;
+
 public partial class GameEntity {
 
-    static readonly Core.Game.Components.DestructibleComponent destructibleComponent = new Core.Game.Components.DestructibleComponent();
+    static readonly DestructibleComponent destructibleComponent = new DestructibleComponent();
 
     public bool isDestructible {
         get { return HasComponent(GameComponentsLookup.Destructible); }

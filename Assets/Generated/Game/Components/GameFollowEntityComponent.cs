@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Enemies;
+
 public partial class GameEntity {
 
-    public Core.Game.Components.FollowEntityComponent followEntity { get { return (Core.Game.Components.FollowEntityComponent)GetComponent(GameComponentsLookup.FollowEntity); } }
+    public FollowEntityComponent followEntity { get { return (FollowEntityComponent)GetComponent(GameComponentsLookup.FollowEntity); } }
     public bool hasFollowEntity { get { return HasComponent(GameComponentsLookup.FollowEntity); } }
 
     public void AddFollowEntity(int newValue) {
         var index = GameComponentsLookup.FollowEntity;
-        var component = (Core.Game.Components.FollowEntityComponent)CreateComponent(index, typeof(Core.Game.Components.FollowEntityComponent));
+        var component = (FollowEntityComponent)CreateComponent(index, typeof(FollowEntityComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceFollowEntity(int newValue) {
         var index = GameComponentsLookup.FollowEntity;
-        var component = (Core.Game.Components.FollowEntityComponent)CreateComponent(index, typeof(Core.Game.Components.FollowEntityComponent));
+        var component = (FollowEntityComponent)CreateComponent(index, typeof(FollowEntityComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

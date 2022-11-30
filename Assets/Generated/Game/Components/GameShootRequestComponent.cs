@@ -6,9 +6,12 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Movements;
+
 public partial class GameEntity {
 
-    static readonly Core.Game.Components.ShootRequestComponent shootRequestComponent = new Core.Game.Components.ShootRequestComponent();
+    static readonly ShootRequestComponent shootRequestComponent = new ShootRequestComponent();
 
     public bool isShootRequest {
         get { return HasComponent(GameComponentsLookup.ShootRequest); }

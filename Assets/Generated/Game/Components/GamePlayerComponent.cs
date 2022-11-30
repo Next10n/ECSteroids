@@ -6,9 +6,12 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Movements;
+
 public partial class GameEntity {
 
-    static readonly Core.Game.Components.PlayerComponent playerComponent = new Core.Game.Components.PlayerComponent();
+    static readonly PlayerComponent playerComponent = new PlayerComponent();
 
     public bool isPlayer {
         get { return HasComponent(GameComponentsLookup.Player); }

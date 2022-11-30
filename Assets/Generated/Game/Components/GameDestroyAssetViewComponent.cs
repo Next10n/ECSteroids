@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.View;
+
 public partial class GameEntity {
 
-    public Core.Game.Components.DestroyAssetViewComponent destroyAssetView { get { return (Core.Game.Components.DestroyAssetViewComponent)GetComponent(GameComponentsLookup.DestroyAssetView); } }
+    public DestroyAssetViewComponent destroyAssetView { get { return (DestroyAssetViewComponent)GetComponent(GameComponentsLookup.DestroyAssetView); } }
     public bool hasDestroyAssetView { get { return HasComponent(GameComponentsLookup.DestroyAssetView); } }
 
     public void AddDestroyAssetView(string newValue) {
         var index = GameComponentsLookup.DestroyAssetView;
-        var component = (Core.Game.Components.DestroyAssetViewComponent)CreateComponent(index, typeof(Core.Game.Components.DestroyAssetViewComponent));
+        var component = (DestroyAssetViewComponent)CreateComponent(index, typeof(DestroyAssetViewComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceDestroyAssetView(string newValue) {
         var index = GameComponentsLookup.DestroyAssetView;
-        var component = (Core.Game.Components.DestroyAssetViewComponent)CreateComponent(index, typeof(Core.Game.Components.DestroyAssetViewComponent));
+        var component = (DestroyAssetViewComponent)CreateComponent(index, typeof(DestroyAssetViewComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

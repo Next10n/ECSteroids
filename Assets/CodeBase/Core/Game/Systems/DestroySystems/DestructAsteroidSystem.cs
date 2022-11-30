@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Core.Factories;
 using Core.Game.Components;
+using Core.Game.Components.Enemies;
 using Entitas;
 using Infrastructure.Services;
 using Infrastructure.Services.StaticData;

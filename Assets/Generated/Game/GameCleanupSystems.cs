@@ -10,12 +10,12 @@ public sealed class GameCleanupSystems : Feature {
 
     public GameCleanupSystems(Contexts contexts) {
         Add(new RemoveSpawnTimerReadyGameSystem(contexts));
-        Add(new RemoveTriggeredGameSystem(contexts));
-        Add(new DestroyDestroyEntityGameSystem(contexts));
-        Add(new RemoveResetScoreGameSystem(contexts));
+        Add(new RemoveRestoreLaserRequestGameSystem(contexts));
+        Add(new RemoveShootEventGameSystem(contexts));
         Add(new RemoveSwitchWeaponGameSystem(contexts));
         Add(new RemoveShootRequestGameSystem(contexts));
-        Add(new RemoveShootEventGameSystem(contexts));
-        Add(new RemoveRestoreLaserRequestGameSystem(contexts));
+        Add(new RemoveResetScoreGameSystem(contexts));
+        Add(new DestroyDestroyEntityGameSystem(contexts));
+        Add(new RemoveTriggeredGameSystem(contexts));
     }
 }

@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Weapon;
+
 public partial class GameEntity {
 
-    public Core.Game.Components.LaserStorageComponent laserStorage { get { return (Core.Game.Components.LaserStorageComponent)GetComponent(GameComponentsLookup.LaserStorage); } }
+    public LaserStorageComponent laserStorage { get { return (LaserStorageComponent)GetComponent(GameComponentsLookup.LaserStorage); } }
     public bool hasLaserStorage { get { return HasComponent(GameComponentsLookup.LaserStorage); } }
 
     public void AddLaserStorage(int newValue) {
         var index = GameComponentsLookup.LaserStorage;
-        var component = (Core.Game.Components.LaserStorageComponent)CreateComponent(index, typeof(Core.Game.Components.LaserStorageComponent));
+        var component = (LaserStorageComponent)CreateComponent(index, typeof(LaserStorageComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceLaserStorage(int newValue) {
         var index = GameComponentsLookup.LaserStorage;
-        var component = (Core.Game.Components.LaserStorageComponent)CreateComponent(index, typeof(Core.Game.Components.LaserStorageComponent));
+        var component = (LaserStorageComponent)CreateComponent(index, typeof(LaserStorageComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

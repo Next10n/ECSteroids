@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Common;
+
 public partial class GameEntity {
 
-    public Core.Game.Components.DestroyDelayComponent destroyDelay { get { return (Core.Game.Components.DestroyDelayComponent)GetComponent(GameComponentsLookup.DestroyDelay); } }
+    public DestroyDelayComponent destroyDelay { get { return (DestroyDelayComponent)GetComponent(GameComponentsLookup.DestroyDelay); } }
     public bool hasDestroyDelay { get { return HasComponent(GameComponentsLookup.DestroyDelay); } }
 
     public void AddDestroyDelay(float newValue) {
         var index = GameComponentsLookup.DestroyDelay;
-        var component = (Core.Game.Components.DestroyDelayComponent)CreateComponent(index, typeof(Core.Game.Components.DestroyDelayComponent));
+        var component = (DestroyDelayComponent)CreateComponent(index, typeof(DestroyDelayComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceDestroyDelay(float newValue) {
         var index = GameComponentsLookup.DestroyDelay;
-        var component = (Core.Game.Components.DestroyDelayComponent)CreateComponent(index, typeof(Core.Game.Components.DestroyDelayComponent));
+        var component = (DestroyDelayComponent)CreateComponent(index, typeof(DestroyDelayComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Common;
+
 public partial class GameEntity {
 
-    public Core.Game.Components.DestroyTimerComponent destroyTimer { get { return (Core.Game.Components.DestroyTimerComponent)GetComponent(GameComponentsLookup.DestroyTimer); } }
+    public DestroyTimerComponent destroyTimer { get { return (DestroyTimerComponent)GetComponent(GameComponentsLookup.DestroyTimer); } }
     public bool hasDestroyTimer { get { return HasComponent(GameComponentsLookup.DestroyTimer); } }
 
     public void AddDestroyTimer(float newValue) {
         var index = GameComponentsLookup.DestroyTimer;
-        var component = (Core.Game.Components.DestroyTimerComponent)CreateComponent(index, typeof(Core.Game.Components.DestroyTimerComponent));
+        var component = (DestroyTimerComponent)CreateComponent(index, typeof(DestroyTimerComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceDestroyTimer(float newValue) {
         var index = GameComponentsLookup.DestroyTimer;
-        var component = (Core.Game.Components.DestroyTimerComponent)CreateComponent(index, typeof(Core.Game.Components.DestroyTimerComponent));
+        var component = (DestroyTimerComponent)CreateComponent(index, typeof(DestroyTimerComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

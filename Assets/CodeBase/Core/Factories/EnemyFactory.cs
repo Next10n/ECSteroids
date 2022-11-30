@@ -1,5 +1,6 @@
 using System;
 using Core.Game.Components;
+using Core.Game.Components.Enemies;
 using Infrastructure.Services;
 using Infrastructure.Services.StaticData;
 using StaticData;

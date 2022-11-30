@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Weapon;
+
 public partial class GameEntity {
 
-    public Core.Game.Components.LaserRestoreTimeComponent laserRestoreTime { get { return (Core.Game.Components.LaserRestoreTimeComponent)GetComponent(GameComponentsLookup.LaserRestoreTime); } }
+    public LaserRestoreTimeComponent laserRestoreTime { get { return (LaserRestoreTimeComponent)GetComponent(GameComponentsLookup.LaserRestoreTime); } }
     public bool hasLaserRestoreTime { get { return HasComponent(GameComponentsLookup.LaserRestoreTime); } }
 
     public void AddLaserRestoreTime(float newValue) {
         var index = GameComponentsLookup.LaserRestoreTime;
-        var component = (Core.Game.Components.LaserRestoreTimeComponent)CreateComponent(index, typeof(Core.Game.Components.LaserRestoreTimeComponent));
+        var component = (LaserRestoreTimeComponent)CreateComponent(index, typeof(LaserRestoreTimeComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceLaserRestoreTime(float newValue) {
         var index = GameComponentsLookup.LaserRestoreTime;
-        var component = (Core.Game.Components.LaserRestoreTimeComponent)CreateComponent(index, typeof(Core.Game.Components.LaserRestoreTimeComponent));
+        var component = (LaserRestoreTimeComponent)CreateComponent(index, typeof(LaserRestoreTimeComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

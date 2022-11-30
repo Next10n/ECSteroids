@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Game.Components.Movements;
+
 public partial class GameEntity {
 
-    public Core.Game.Components.DecelerationComponent deceleration { get { return (Core.Game.Components.DecelerationComponent)GetComponent(GameComponentsLookup.Deceleration); } }
+    public DecelerationComponent deceleration { get { return (DecelerationComponent)GetComponent(GameComponentsLookup.Deceleration); } }
     public bool hasDeceleration { get { return HasComponent(GameComponentsLookup.Deceleration); } }
 
     public void AddDeceleration(float newValue) {
         var index = GameComponentsLookup.Deceleration;
-        var component = (Core.Game.Components.DecelerationComponent)CreateComponent(index, typeof(Core.Game.Components.DecelerationComponent));
+        var component = (DecelerationComponent)CreateComponent(index, typeof(DecelerationComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceDeceleration(float newValue) {
         var index = GameComponentsLookup.Deceleration;
-        var component = (Core.Game.Components.DecelerationComponent)CreateComponent(index, typeof(Core.Game.Components.DecelerationComponent));
+        var component = (DecelerationComponent)CreateComponent(index, typeof(DecelerationComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }
