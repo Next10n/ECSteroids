@@ -21,9 +21,9 @@ namespace Infrastructure.Services.StateMachine
         {
             _states = new Dictionary<Type, IExitableState>
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, staticDataService),
-                [typeof(LoadGameState)] = new LoadGameState(sceneProvider, ecsService, updateService, windowService, playerFactory,
-                    enemyFactory, windowFactory, this, staticDataService, bulletFactory),
+                [typeof(BootstrapState)] = new BootstrapState(this, staticDataService, ecsService, updateService, bulletFactory, playerFactory),
+                [typeof(LoadGameState)] = new LoadGameState(sceneProvider, windowService, playerFactory,
+                    enemyFactory, windowFactory, this, staticDataService),
                 [typeof(RestartState)] = new RestartState(playerFactory, windowService, staticDataService, enemyFactory)
             };
         }

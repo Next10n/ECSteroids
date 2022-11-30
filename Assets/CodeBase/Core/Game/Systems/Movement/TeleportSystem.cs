@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Entitas;
+using Infrastructure.Services;
 using UnityEngine;
 
 namespace Core.Game.Systems
@@ -7,7 +8,7 @@ namespace Core.Game.Systems
     public class TeleportSystem : ReactiveSystem<GameEntity>, IInitializeSystem
     {
         private readonly Contexts _contexts;
-        private Bounds _orthographicBounds;
+        private ICameraProvider _cameraProvider;
 
         public TeleportSystem(Contexts contexts) : base(contexts.game)
         {
@@ -16,7 +17,7 @@ namespace Core.Game.Systems
 
         public void Initialize()
         {
-            _orthographicBounds = _contexts.meta.cameraProvider.Value.GetMainCameraBounds();
+            _cameraProvider = _contexts.meta.cameraProvider.Value;
         }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -31,10 +32,11 @@ namespace Core.Game.Systems
 
         protected override void Execute(List<GameEntity> entities)
         {
+            Bounds mainCameraBounds = _cameraProvider.GetMainCameraBounds();
             foreach (GameEntity e in entities)
             {
-                float x = CalculateTeleportValue(e.position.Value.x, _orthographicBounds.extents.x);
-                float y = CalculateTeleportValue(e.position.Value.y, _orthographicBounds.extents.y);
+                float x = CalculateTeleportValue(e.position.Value.x, mainCameraBounds.extents.x);
+                float y = CalculateTeleportValue(e.position.Value.y, mainCameraBounds.extents.y);
                 e.ReplacePosition(new Vector2(x, y));
             }
         }
