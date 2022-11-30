@@ -13,5 +13,9 @@ public sealed class GameCleanupSystems : Feature {
         Add(new RemoveTriggeredGameSystem(contexts));
         Add(new DestroyDestroyEntityGameSystem(contexts));
         Add(new RemoveResetScoreGameSystem(contexts));
+        Add(new RemoveSwitchWeaponGameSystem(contexts));
+        Add(new RemoveShootRequestGameSystem(contexts));
+        Add(new RemoveShootEventGameSystem(contexts));
+        Add(new RemoveRestoreLaserRequestGameSystem(contexts));
     }
 }

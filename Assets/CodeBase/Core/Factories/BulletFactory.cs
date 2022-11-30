@@ -31,15 +31,6 @@ namespace Core.Factories
             projectile.AddDirection(weaponEntity.direction.Value);
             projectile.AddVelocity(weaponEntity.direction.Value.normalized * weaponStaticData.ProjectileSpeed);
             projectile.AddRotationAngle(weaponEntity.rotationAngle.Value);
-            switch(weaponType)
-            {
-                case WeaponType.Bullet:
-                    projectile.isBullet = true;
-                    break;
-                case WeaponType.Laser:
-                    projectile.isLaser = true;
-                    break;
-            }
             return projectile;
         }
     }

@@ -61,12 +61,6 @@ namespace Core.Game.Components
     }
     
     [Game]
-    public sealed class WeaponComponent : IComponent
-    {
-        public WeaponType Value;
-    }
-    
-    [Game]
     public sealed class BulletComponent : IComponent
     {
         
@@ -113,9 +107,71 @@ namespace Core.Game.Components
     {
         
     }
+    
+    [Game]
+    public sealed class FollowEntityComponent : IComponent
+    {
+        public int Value;
+    }
 
+    [Game]
+    public sealed class BulletWeaponComponent : IComponent
+    {
+        
+    }
+    
+    [Game]
+    public sealed class LaserWeaponComponent : IComponent
+    {
+        
+    }
+    
+    [Game, Event(EventTarget.Self)]
+    public sealed class MaxLasersWeaponComponent : IComponent
+    {
+        public int Value;
+    }
+    
+    [Game, Event(EventTarget.Self)]
+    public sealed class LaserStorageComponent : IComponent
+    {
+        public int Value;
+    }
+    
+    [Game]
+    public sealed class LaserRestoreTimeComponent : IComponent
+    {
+        public float Value;
+    }
+    
+    [Game, Event(EventTarget.Self)]
+    public sealed class CurrentLaserRestoreTimeComponent : IComponent
+    {
+        public float Value;
+    }
+    
+    [Game, Cleanup(CleanupMode.RemoveComponent)]
+    public sealed class SwitchWeaponComponent : IComponent
+    {
+    }
 
-
+    [Game, Cleanup(CleanupMode.RemoveComponent)]
+    public sealed class ShootRequestComponent : IComponent
+    {
+        
+    }
+    
+    [Game, Cleanup(CleanupMode.RemoveComponent)]
+    public sealed class ShootEventComponent : IComponent
+    {
+        
+    }
+    
+    [Game, Cleanup(CleanupMode.RemoveComponent)]
+    public sealed class RestoreLaserRequestComponent : IComponent
+    {
+        
+    }
 
 
 

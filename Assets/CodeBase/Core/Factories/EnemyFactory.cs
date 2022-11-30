@@ -64,6 +64,7 @@ namespace Core.Factories
         {
             GameEntity ufo = CreateEnemy(enemyStaticData);
             ufo.AddPosition(RandomBoundsPosition());
+            ufo.AddFollowEntity(_playerIndex);
             return ufo;
         }
 

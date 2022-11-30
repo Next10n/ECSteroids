@@ -25,7 +25,10 @@ namespace Core.Factories
             player.AddVelocity(Vector2.zero);
             player.isPlayer = true;
             player.isTeleportable = true;
-            player.AddWeapon(WeaponType.Bullet);
+            player.isBulletWeapon = true;
+            player.AddLaserStorage(playerStaticData.MaxLasers);
+            player.AddMaxLasersWeapon(playerStaticData.MaxLasers);
+            player.AddLaserRestoreTime(playerStaticData.LaserRestoreTime);
             return player;
         }
     }

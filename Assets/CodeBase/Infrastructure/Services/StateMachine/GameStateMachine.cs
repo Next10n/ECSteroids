@@ -24,7 +24,7 @@ namespace Infrastructure.Services.StateMachine
                 [typeof(BootstrapState)] = new BootstrapState(this, staticDataService),
                 [typeof(LoadGameState)] = new LoadGameState(sceneProvider, ecsService, updateService, windowService, playerFactory,
                     enemyFactory, windowFactory, this, staticDataService, bulletFactory),
-                [typeof(RestartState)] = new RestartState(playerFactory, windowService, staticDataService)
+                [typeof(RestartState)] = new RestartState(playerFactory, windowService, staticDataService, enemyFactory)
             };
         }
 

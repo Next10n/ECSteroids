@@ -8,15 +8,24 @@
 //------------------------------------------------------------------------------
 public static class InputComponentsLookup {
 
+    public const int AccelerationInput = 0;
+    public const int HorizontalInput = 1;
+    public const int ShootInput = 2;
+    public const int SwitchWeaponInput = 3;
 
-
-    public const int TotalComponents = 0;
+    public const int TotalComponents = 4;
 
     public static readonly string[] componentNames = {
-
+        "AccelerationInput",
+        "HorizontalInput",
+        "ShootInput",
+        "SwitchWeaponInput"
     };
 
     public static readonly System.Type[] componentTypes = {
-
+        typeof(Core.Input.Components.AccelerationInputComponent),
+        typeof(Core.Input.Components.HorizontalInputComponent),
+        typeof(Core.Input.Components.ShootInputComponent),
+        typeof(Core.Input.Components.SwitchWeaponInputComponent)
     };
 }

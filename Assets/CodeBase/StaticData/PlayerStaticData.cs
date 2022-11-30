@@ -5,6 +5,8 @@ namespace StaticData
     [Serializable]
     public class PlayerStaticData
     {
+        public int MaxLasers;
+        public float LaserRestoreTime;
         public float AccelerationSpeed;
         public float Deceleration;
         public float AngularSpeed;

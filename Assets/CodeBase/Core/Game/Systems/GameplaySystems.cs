@@ -3,6 +3,7 @@ using Core.Game.Systems.DestroySystems;
 using Core.Game.Systems.Score;
 using Core.Game.Systems.Spawn;
 using Core.Game.Systems.Weapon;
+using Core.Input.Systems;
 
 namespace Core.Game.Systems
 {
@@ -10,6 +11,7 @@ namespace Core.Game.Systems
     {
         public GameplaySystems(Contexts contexts)
         {
+            Add(new InputSystems(contexts));
             Add(new CollectSystems(contexts));
             Add(new MovementSystems(contexts));
             Add(new SpawnSystems(contexts));
