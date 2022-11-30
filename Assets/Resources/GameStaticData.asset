@@ -31,26 +31,31 @@ MonoBehaviour:
     MaxVelocity: 3
     AssetPath: Asteroid
     Score: 1
+    DestroyAsset: Explosion
   - EnemyType: 1
     MinVelocity: 3
     MaxVelocity: 4
     AssetPath: Ufo
     Score: 2
+    DestroyAsset: Explosion
   - EnemyType: 2
     MinVelocity: 4
     MaxVelocity: 5
     AssetPath: Fragment
     Score: 1
+    DestroyAsset: Explosion
   Weapons:
   - Teleportable: 1
     WeaponType: 0
     ProjectileSpeed: 10
     DestroyTime: 3
     AssetPath: Bullet
+    DestroyAsset: Explosion
   - Teleportable: 0
     WeaponType: 1
     ProjectileSpeed: 20
     DestroyTime: 2
     AssetPath: Laser
+    DestroyAsset: Explosion
   MinAsteroidFragments: 2
   MaxAsteroidsFragments: 4
